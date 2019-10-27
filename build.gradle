@@ -2,6 +2,16 @@
 
 buildscript {
     ext.kotlin_version = '1.3.50'
+    ext.versions = [
+            minSdk    : 23,
+            compileSdk: 29,
+            androidx  : '1.0.0',
+            rxBindings: '2.1.0',
+            timber    : '4.7.0',
+            kotlin    : '1.3.31',
+            dokka     : '0.9.17',
+    ]
+
     repositories {
         google()
         jcenter()
