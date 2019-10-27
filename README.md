@@ -1,1 +1,1 @@
-# ManLiHyang Mobie-Application(Android)
+# ManLiHyang Mobile Application(Android)
