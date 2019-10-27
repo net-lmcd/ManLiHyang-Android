@@ -12,7 +12,6 @@ import android.content.pm.ActivityInfo
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
 
-
 class SplashActivity : AppCompatActivity() {
 
     lateinit var splashThread : Thread
@@ -20,10 +19,6 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
-        val gifImage : GlideDrawableImageViewTarget = GlideDrawableImageViewTarget(splash)
-        Glide.with(this).load(R.raw.splashgif).into(gifImage)
 
         startAnimations()
     }
@@ -34,6 +29,10 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startAnimations() {
+
+        val gifImage = GlideDrawableImageViewTarget(splash)
+        Glide.with(this).load(R.raw.splashgif).into(gifImage)
+
         var anim : Animation = AnimationUtils.loadAnimation(this, R.anim.alpha)
         anim.reset()
         lin_lay.clearAnimation()
