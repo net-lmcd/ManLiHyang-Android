@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package com.example.sideproject;
+
+option java_package = "com.example.sideproject.proto";
+option java_outer_classname = "SampleProto";
+
+message User {
+    required int32 id = 1;
+    required string name = 2;
+    optional string address = 3;
+
+    enum PhoneType {
+        UNKNOWN = 0;
+        MOBILE = 1;
+        HOME = 2;
+    }
+
+    message PhoneNumber {
+        required string number = 1;
+        optional PhoneType type = 2 [default = UNKNOWN];
+    }
+
+    repeated PhoneNumber phoneNumbers = 4;
+}
+
+message UserList {
+    repeated User users = 1;
+}
