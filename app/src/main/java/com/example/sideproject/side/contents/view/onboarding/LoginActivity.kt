@@ -1,4 +1,4 @@
-package com.example.sideproject.side.contents.view.login
+package com.example.sideproject.side.contents.view.onboarding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

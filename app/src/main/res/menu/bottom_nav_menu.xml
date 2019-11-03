@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/navigation_content"
+            android:icon="@drawable/navigation_content"
+            android:title="contents"
+    />
+
+    <item
+            android:id="@+id/navigation_chat"
+            android:icon="@drawable/navigation_chat"
+            android:title="chat"
+    />
+
+    <item
+            android:id="@+id/navigation_write"
+            android:icon="@drawable/navigation_write"
+            android:title="write"
+    />
+
+    <item
+            android:id="@+id/navigation_discount"
+            android:icon="@drawable/navigation_mypage"
+            android:title="mypage"
+        />
+
+</menu>

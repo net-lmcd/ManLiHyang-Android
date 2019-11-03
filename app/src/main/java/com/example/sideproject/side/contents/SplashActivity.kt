@@ -1,4 +1,4 @@
-package com.example.sideproject.side.contents.view.login
+package com.example.sideproject.side.contents
 
 import android.graphics.PixelFormat
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +8,10 @@ import android.view.animation.AnimationUtils
 import com.example.sideproject.R
 import kotlinx.android.synthetic.main.activity_splash.*
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
+import com.example.sideproject.side.contents.view.main.MainActivity
+import com.example.sideproject.side.contents.view.onboarding.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -53,7 +54,7 @@ class SplashActivity : AppCompatActivity() {
                         waited += 100
                     }
                     val intent = Intent(
-                        this@SplashActivity, LoginActivity::class.java
+                        this@SplashActivity, MainActivity::class.java
                     )
                     intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
                     startActivity(intent)

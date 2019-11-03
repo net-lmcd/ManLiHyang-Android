@@ -8,7 +8,9 @@ import timber.log.Timber
 
 
 open class MVVMViewModel : ViewModel() {
+
     internal var compositeDisposable: CompositeDisposable = CompositeDisposable()
+
     internal val _isLoading: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>(false)
     }
@@ -18,6 +20,7 @@ open class MVVMViewModel : ViewModel() {
     internal val _successMessage: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
+
     val isLoading: LiveData<Boolean> = _isLoading
     val errorMessage: LiveData<String> = _errorMessage
     val successMessage: LiveData<String> = _successMessage

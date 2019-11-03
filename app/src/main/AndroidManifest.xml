@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:screenOrientation="portrait"
-            android:name=".side.contents.view.login.SplashActivity"
+            android:name=".side.contents.SplashActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".side.contents.view.login.LoginActivity"></activity>
+        <activity android:name=".side.contents.view.onboarding.LoginActivity"></activity>
         <activity android:name=".side.contents.view.main.MainActivity"></activity>
     </application>
 
