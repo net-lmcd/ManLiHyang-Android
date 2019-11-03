@@ -10,6 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity
             android:screenOrientation="portrait"
@@ -22,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".side.contents.view.onboarding.LoginActivity"></activity>
-        <activity android:name=".side.contents.view.main.MainActivity"></activity>
+        <activity android:name=".side.contents.view.main.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
     </application>
 
 </manifest>

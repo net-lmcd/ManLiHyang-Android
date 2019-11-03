@@ -16,17 +16,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val webSetting = webView.settings
-        webSetting.javaScriptEnabled = true
 
-        webView.setWebViewClient(object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(
-                view: WebView?,
-                request: WebResourceRequest?
-            ): Boolean {
-                view!!.loadUrl(request!!.method)
-                return true
-            }
-        })
+        webSetting.javaScriptEnabled = true
+        webSetting.loadWithOverviewMode = true
+
+        webView.webViewClient = WebViewClient()
+
 
         webView.loadUrl("https://www.naver.com")
     }
