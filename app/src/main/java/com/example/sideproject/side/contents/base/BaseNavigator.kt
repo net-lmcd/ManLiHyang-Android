@@ -80,9 +80,6 @@ interface BaseNavigator {
 
     fun onRefreshData()
 
-
-    fun openNextActivity(intent: Intent)
-
     fun finishActivityFromViewModel()
 
     fun showSelectRequiredDialogMessage(s: String, messageDialogClickListener: MessageDialogClickListener){

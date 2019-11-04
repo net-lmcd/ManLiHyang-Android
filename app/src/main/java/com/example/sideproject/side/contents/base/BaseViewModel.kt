@@ -9,8 +9,10 @@ import java.lang.ref.WeakReference
 
 
 open class BaseViewModel<T>(val schedulerProvider: SchedulerProvider) : ViewModel() {
+
     var loading = ObservableBoolean(false)
     var compositeDisposable: CompositeDisposable = CompositeDisposable()
+
     private lateinit var mNavigator: WeakReference<T>
 
     fun setNavigator(navigator: T) {
