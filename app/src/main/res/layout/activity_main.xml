@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         tools:context=".side.contents.view.onboarding.LoginActivity">
 
-        <WebView
+        <!--<WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -18,6 +18,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bottomNavView"
             android:tag="1"
+            />-->
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavView"
             />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -34,6 +44,8 @@
             app:menu="@menu/bottom_nav_menu"
             app:labelVisibilityMode="unlabeled"
             android:tag="2"
+            app:string="@{10}"
+            app:number="@{5}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
