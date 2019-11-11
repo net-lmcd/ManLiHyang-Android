@@ -15,36 +15,23 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
-    private val mainViewModel : MainViewModel by viewModel()
+    private val mMainViewModel : MainViewModel by viewModel()
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        val webSetting = webView.settings
+        mMainViewModel.setNavigator(this)
 
-//        webSetting.javaScriptEnabled = true
-//        webSetting.loadWithOverviewMode = true
-
-        /**
-         *  어떠한 것을 추가기능을 넣고싶을때 WebViewClient 이용함
-         */
-        /*webView.webViewClient = CustomWebViewClient()
-
-        webView.loadUrl("https://www.naver.com")*/
-
-
-//        FirstFragment.instantiate()
-        val currentFragment = FirstFragment.instantiate()
-
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container, currentFragment)
-            .commit()
-
+        binding.bottomNavView.setOnNavigationItemSelectedListener(mMainViewModel.navigationItemSelectedListener)
+        onNavigationTabSelected(mMainViewModel.currentTab)
     }
 
-
+    /**
+     *  어떠한 것을 추가기능을 넣고싶을때 WebViewClient 이용함
+     */
+    
     class CustomWebViewClient : WebViewClient() {
 
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
@@ -53,13 +40,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
         override fun onPageFinished(view: WebView?, url: String?) {
             Toast.makeText(view!!.context, "로딩 끝", Toast.LENGTH_SHORT).show()
         }
+        on
     }
 
     override fun onNavigationTabSelected(tab: TypeofTab) {
-        val currentFragment = FirstFragment.instantiate()
 
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container, currentFragment)
-            .commit()
+        val webSetting = webView.settings
+        webSetting.javaScriptEnabled = true
+        webSetting.loadWithOverviewMode = true
+        webView.webViewClient = CustomWebViewClient()
+
+        var url : String = ""
+        when(tab) {
+            TypeofTab.Content -> url = "https://www.naver.com"
+            TypeofTab.Chat -> url = "https://www.google.com"
+            TypeofTab.Write -> url = "https://www.naver.com"
+            TypeofTab.Mypage -> url ="https://www.google.com"
+        }
+        webView.loadUrl(url)
     }
 }

@@ -21,7 +21,7 @@
     />
 
     <item
-            android:id="@+id/navigation_discount"
+            android:id="@+id/navigation_mypage"
             android:icon="@drawable/navigation_mypage"
             android:title="mypage"
         />

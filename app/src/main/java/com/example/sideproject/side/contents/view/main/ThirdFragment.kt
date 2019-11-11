@@ -11,12 +11,13 @@ import androidx.browser.customtabs.CustomTabsIntent
 
 import com.example.sideproject.R
 import com.example.sideproject.databinding.FragmentFirstBinding
+import com.example.sideproject.databinding.FragmentThirdBinding
 import com.example.sideproject.side.contents.base.BaseFragment
 import com.example.sideproject.side.contents.viewmodel.MainViewModel
 
-class FirstFragment : BaseFragment<FragmentFirstBinding>()  {
+class ThirdFragment : BaseFragment<FragmentThirdBinding>()  {
 
-    override fun getLayoutId() = R.layout.fragment_first
+    override fun getLayoutId() = R.layout.fragment_third
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,8 +29,8 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>()  {
     }
 
     companion object {
-      fun instantiate() : FirstFragment{
-          return FirstFragment()
+      fun instantiate() : ThirdFragment{
+          return ThirdFragment()
       }
     }
 }

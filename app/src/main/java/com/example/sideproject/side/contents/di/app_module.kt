@@ -3,6 +3,7 @@ package com.example.sideproject.side.contents.di
 import android.graphics.Point
 import com.example.sideproject.side.contents.rx.AppSchedulerProvider
 import com.example.sideproject.side.contents.rx.SchedulerProvider
+import com.example.sideproject.side.contents.view.main.MainDataManager
 import com.example.sideproject.side.contents.view.onboarding.OnBoardingDatamanager
 import com.example.sideproject.side.contents.viewmodel.MainViewModel
 import com.example.sideproject.side.contents.viewmodel.OnBoardingViewModel
@@ -16,6 +17,7 @@ val appModule : Module = module {
 
     single { AppSchedulerProvider() as SchedulerProvider }
     single { OnBoardingDatamanager() }
+    single { MainDataManager() }
 
 }
 
