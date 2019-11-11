@@ -31,7 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
     /**
      *  어떠한 것을 추가기능을 넣고싶을때 WebViewClient 이용함
      */
-    
+
     class CustomWebViewClient : WebViewClient() {
 
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
@@ -40,7 +40,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
         override fun onPageFinished(view: WebView?, url: String?) {
             Toast.makeText(view!!.context, "로딩 끝", Toast.LENGTH_SHORT).show()
         }
-        on
     }
 
     override fun onNavigationTabSelected(tab: TypeofTab) {

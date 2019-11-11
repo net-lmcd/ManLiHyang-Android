@@ -3,7 +3,7 @@ syntax = "proto2";
 package com.example.sideproject;
 
 option java_package = "com.example.sideproject.proto";
-option java_outer_classname = "SampleProto";
+option java_outer_classname = "SampleProtoClass";
 
 message User {
     required int32 id = 1;
