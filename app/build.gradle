@@ -136,13 +136,6 @@ dependencies {
     // Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
-    // Dependency injection (dagger2)
-    /*implementation 'com.google.dagger:dagger:2.23.2'
-    kapt 'com.google.dagger:dagger-compiler:2.23.2'
-    implementation 'com.google.dagger:dagger-android:2.23.2'
-    implementation 'com.google.dagger:dagger-android-support:2.23.2'
-    kapt 'com.google.dagger:dagger-android-processor:2.23.2'*/
-
     // Dependency injection (koin)
     implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-core-ext:$koin_version"
@@ -151,6 +144,13 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     implementation "org.koin:koin-androidx-ext:$koin_version"
     testImplementation "org.koin:koin-test:$koin_version"
+    
+    // Dependency injection (dagger2)
+    /*implementation 'com.google.dagger:dagger:2.23.2'
+    kapt 'com.google.dagger:dagger-compiler:2.23.2'
+    implementation 'com.google.dagger:dagger-android:2.23.2'
+    implementation 'com.google.dagger:dagger-android-support:2.23.2'
+    kapt 'com.google.dagger:dagger-android-processor:2.23.2'*/
 
     // ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha04'
