@@ -10,12 +10,14 @@ import com.example.sideproject.databinding.ActivityMainBinding
 import com.example.sideproject.side.contents.base.BaseActivity
 import com.example.sideproject.side.contents.util.TypeofTab
 import com.example.sideproject.side.contents.viewmodel.MainViewModel
+import com.example.sideproject.side.contents.viewmodel.OnBoardingViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
     private val mMainViewModel : MainViewModel by viewModel()
+    private val mOnBoardingViewModel : OnBoardingViewModel by viewModel()
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
@@ -26,6 +28,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
         binding.bottomNavView.setOnNavigationItemSelectedListener(mMainViewModel.navigationItemSelectedListener)
         onNavigationTabSelected(mMainViewModel.currentTab)
+    }
+
+    override fun onNavigationTabSelected(tab: TypeofTab) {
+
+        val webSetting = webView.settings
+        webSetting.javaScriptEnabled = true
+        webSetting.loadWithOverviewMode = true
+        webView.webViewClient = CustomWebViewClient()
+
+        var url : String = when(tab) {
+            TypeofTab.Content -> "https://www.naver.com"
+            TypeofTab.Chat    -> "https://www.google.com"
+            TypeofTab.Write   -> "https://www.naver.com"
+            TypeofTab.Mypage  -> "https://www.google.com"
+        }
+        webView.loadUrl(url)
     }
 
     /**
@@ -40,22 +58,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
         override fun onPageFinished(view: WebView?, url: String?) {
             Toast.makeText(view!!.context, "로딩 끝", Toast.LENGTH_SHORT).show()
         }
-    }
 
-    override fun onNavigationTabSelected(tab: TypeofTab) {
-
-        val webSetting = webView.settings
-        webSetting.javaScriptEnabled = true
-        webSetting.loadWithOverviewMode = true
-        webView.webViewClient = CustomWebViewClient()
-
-        var url : String = ""
-        when(tab) {
-            TypeofTab.Content -> url = "https://www.naver.com"
-            TypeofTab.Chat -> url = "https://www.google.com"
-            TypeofTab.Write -> url = "https://www.naver.com"
-            TypeofTab.Mypage -> url ="https://www.google.com"
-        }
-        webView.loadUrl(url)
     }
 }

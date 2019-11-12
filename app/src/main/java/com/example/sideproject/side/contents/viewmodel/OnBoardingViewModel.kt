@@ -5,8 +5,9 @@ import com.example.sideproject.side.contents.base.BaseViewModel
 import com.example.sideproject.side.contents.base.MVVMViewModel
 import com.example.sideproject.side.contents.rx.SchedulerProvider
 import com.example.sideproject.side.contents.view.onboarding.OnBoardingDatamanager
+import io.reactivex.Flowable
 
-class OnBoardingViewModel constructor(private  var onBoardingDatamanager: OnBoardingDatamanager,
-    schedulerProvider: SchedulerProvider) : MVVMViewModel() {
+class OnBoardingViewModel constructor(private var onBoardingDatamanager: OnBoardingDatamanager,
+    private var schedulerProvider: SchedulerProvider) : MVVMViewModel() {
 
 }

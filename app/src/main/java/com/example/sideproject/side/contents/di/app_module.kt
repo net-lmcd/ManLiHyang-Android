@@ -1,6 +1,7 @@
 package com.example.sideproject.side.contents.di
 
 import android.graphics.Point
+import com.example.sideproject.side.contents.local.preference.PreferenceManager
 import com.example.sideproject.side.contents.rx.AppSchedulerProvider
 import com.example.sideproject.side.contents.rx.SchedulerProvider
 import com.example.sideproject.side.contents.view.main.MainDataManager
@@ -16,7 +17,8 @@ import org.koin.dsl.module
 val appModule : Module = module {
 
     single { AppSchedulerProvider() as SchedulerProvider }
-    single { OnBoardingDatamanager() }
+    single { PreferenceManager(get()) }
+    single { OnBoardingDatamanager(get(), get()) }
     single { MainDataManager() }
 
 }
