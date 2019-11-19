@@ -1,8 +1,8 @@
 syntax = "proto2";
 
-package com.example.sideproject;
+package com.sideproject.manlihyang;
 
-option java_package = "com.example.sideproject.proto";
+option java_package = "com.sideproject.manlihyang.proto";
 option java_outer_classname = "SampleProtoClass";
 
 message User {
