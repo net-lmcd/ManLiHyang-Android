@@ -11,6 +11,7 @@ import com.sideproject.manlihyang.side.contents.base.BaseActivity
 import com.sideproject.manlihyang.side.contents.util.TypeofTab
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
+import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -44,6 +45,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
             TypeofTab.Mypage  -> "https://www.google.com"
         }
         webView.loadUrl(url)
+        
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.example.sideproject
+package com.sideproject.manlihyang
 
 import org.junit.Test
 
