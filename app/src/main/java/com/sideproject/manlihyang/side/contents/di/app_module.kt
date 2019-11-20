@@ -1,5 +1,6 @@
 package com.sideproject.manlihyang.side.contents.di
 
+import com.crashlytics.android.Crashlytics
 import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
 import com.sideproject.manlihyang.side.contents.rx.AppSchedulerProvider
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
@@ -14,6 +15,7 @@ import org.koin.dsl.module
 //single 전역으로 사용
 val appModule : Module = module {
 
+    single { Crashlytics() }
     single { AppSchedulerProvider() as SchedulerProvider }
     single { PreferenceManager(get()) }
     single { OnBoardingDatamanager(get(), get()) }

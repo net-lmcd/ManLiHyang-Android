@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import com.crashlytics.android.Crashlytics
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityMainBinding
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
@@ -13,10 +14,12 @@ import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
+    private val mCrashlytics : Crashlytics by inject()
     private val mMainViewModel : MainViewModel by viewModel()
     private val mOnBoardingViewModel : OnBoardingViewModel by viewModel()
 
@@ -45,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
             TypeofTab.Mypage  -> "https://www.google.com"
         }
         webView.loadUrl(url)
-        
+        mCrashlytics.crash()
     }
 
     /**
