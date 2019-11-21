@@ -2,10 +2,12 @@ package com.sideproject.manlihyang.side.contents.base
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.sideproject.manlihyang.side.contents.util.Intented
+import com.sideproject.manlihyang.side.contents.util.Keyboard
 
 abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavigator {
 
@@ -19,6 +21,10 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
         binding.lifecycleOwner = this
 
     }
+
+    /**
+     *   Activity to be moved with sth...
+     */
 
     fun openNextActivity(nextActivity: Class<*>) {
 
@@ -54,6 +60,22 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()
         }
+    }
+
+    /**
+     *  Can use functions for Keyboard
+     */
+
+    fun showKeyboard() {
+        Keyboard.showKeyboard(this)
+    }
+
+    fun hideKeyboard() {
+        Keyboard.hideKeyboard(this)
+    }
+
+    fun hideKeyboardChildAswell(view : View) {
+        Keyboard.hideKeyboardChildAswell(view, this)
     }
 
 

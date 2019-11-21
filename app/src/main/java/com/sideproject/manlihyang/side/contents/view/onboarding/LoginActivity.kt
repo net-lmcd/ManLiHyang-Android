@@ -1,6 +1,9 @@
 package com.sideproject.manlihyang.side.contents.view.onboarding
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityLoginBinding
