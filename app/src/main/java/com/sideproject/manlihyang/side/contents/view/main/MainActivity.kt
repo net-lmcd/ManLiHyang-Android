@@ -29,9 +29,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
         super.onCreate(savedInstanceState)
 
         mMainViewModel.setNavigator(this)
-
         binding.bottomNavView.setOnNavigationItemSelectedListener(mMainViewModel.navigationItemSelectedListener)
         onNavigationTabSelected(mMainViewModel.currentTab)
+
     }
 
     override fun onNavigationTabSelected(tab: TypeofTab) {
@@ -48,7 +48,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
             TypeofTab.Mypage  -> "https://www.google.com"
         }
         webView.loadUrl(url)
-        mCrashlytics.crash()
     }
 
     /**

@@ -10,7 +10,9 @@ import com.sideproject.manlihyang.side.contents.view.main.MainDataManager
 import com.sideproject.manlihyang.side.contents.view.main.MainNavigator
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainViewModel constructor(val mainDataManager: MainDataManager, schedulerProvider: SchedulerProvider)
+class MainViewModel constructor(
+    val mainDataManager: MainDataManager,
+    schedulerProvider: SchedulerProvider)
     : BaseViewModel<MainNavigator>(schedulerProvider) {
 
     var currentTab = TypeofTab.Content

@@ -16,6 +16,7 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
+        binding.lifecycleOwner = this
 
     }
 

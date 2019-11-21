@@ -152,7 +152,7 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     implementation "org.koin:koin-androidx-ext:$koin_version"
     testImplementation "org.koin:koin-test:$koin_version"
-    
+
     // Dependency injection (dagger2)
     /*implementation 'com.google.dagger:dagger:2.23.2'
     kapt 'com.google.dagger:dagger-compiler:2.23.2'
