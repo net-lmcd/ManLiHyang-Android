@@ -22,5 +22,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
         binding.setVariable(BR.onBoardingModel, onBoardingViewModel)
         //just including login UI on .xml
+
+    }
+
+    fun onClick(view : View) {
+        hideKeyboardChildAswell(view)
     }
 }

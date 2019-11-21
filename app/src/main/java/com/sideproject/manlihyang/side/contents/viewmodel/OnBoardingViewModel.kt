@@ -34,6 +34,4 @@ class OnBoardingViewModel constructor(
         Log.e("password", Validation.isValidOrNot(password.value.toString(), type = Validation.CheckType.Password).toString())
         Log.e("phonenumber", Validation.isValidOrNot("01012345678", type = Validation.CheckType.PhoneNumber).toString())
     }
-
-
 }
