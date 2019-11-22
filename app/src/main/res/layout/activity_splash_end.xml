@@ -1,0 +1,83 @@
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efeff4"
+    android:id="@+id/_constraint"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/_title_start1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:alpha="1"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="100dp"
+        android:textSize="50sp"
+        android:text="만"
+        />
+
+    <TextView
+        android:id="@+id/_title_start2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:alpha="1"
+        android:layout_marginTop="200dp"
+        android:textSize="50sp"
+        android:text="리"
+        />
+
+    <TextView
+        android:id="@+id/_title_start3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:alpha="1"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="100dp"
+        android:textSize="50sp"
+        android:text="향"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/_logo_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_android_black_24dp"
+        />
+
+    <TextView
+        android:id="@+id/_title_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="12sp"
+        android:alpha="1"
+        android:layout_marginBottom="30dp"
+        android:text="copyright by net-lmcd since 2019"
+        />
+
+    <!--<ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/splash"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

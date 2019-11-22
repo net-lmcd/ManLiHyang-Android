@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="#E0E0E0"/>
+        </shape>
+    </item>
+
+    <item
+        android:gravity="center"
+        android:drawable="@drawable/ic_android_black_24dp" />
+</layer-list>
