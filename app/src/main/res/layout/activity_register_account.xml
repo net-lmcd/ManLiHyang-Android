@@ -26,27 +26,14 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/_register_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="회원가입"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginStart="14dp"
-                    android:textSize="22sp"
-                    android:textColor="#000000"
-                    android:letterSpacing="-0.03"
-                    />
+                android:layout_height="wrap_content"
+                android:onClick="hideKeyboardFromEditText">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/_email_group_child"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/_register_title"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="14dp">
@@ -78,8 +65,10 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/confirm_duplicate"
                             android:hint="이메일을 입력해주세요."
+                            android:text="@={onBoardingModel.email}"
                             android:textStyle="normal"
                             android:textSize="14sp"
+                            android:imeOptions="actionNext"
                             />
                         <Button
                             android:id="@+id/confirm_duplicate"
@@ -103,6 +92,8 @@
                         android:hint="*올바른 이메일 형식이 아닙니다."
                         android:textSize="10sp"
                         android:layout_marginStart="6dp"
+                        android:tag="email"
+                        input="@{onBoardingModel.email}"
                         />
 
 
@@ -139,12 +130,15 @@
                             android:id="@+id/name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
                             android:hint="이름을 입력해주세요."
-                            android:textStyle="normal"
+                            android:text="@={onBoardingModel.name}"
                             android:textSize="14sp"
+                            android:textStyle="normal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:imeOptions="actionNext"
                             />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -158,6 +152,8 @@
                         android:hint="*올바른 이름 형식이 아닙니다."
                         android:layout_marginStart="6dp"
                         android:textSize="10sp"
+                        android:tag="name"
+                        input="@{onBoardingModel.name}"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -197,8 +193,10 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:hint="패스워드를 입력해주세요."
+                            android:text="@={onBoardingModel.passwordFirst}"
                             android:textStyle="normal"
                             android:textSize="14sp"
+                            android:imeOptions="actionNext"
                             />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -212,6 +210,8 @@
                         android:hint="*올바른 비밀번호 형식이 아닙니다."
                         android:layout_marginStart="6dp"
                         android:textSize="10sp"
+                        android:tag="password"
+                        input="@{onBoardingModel.passwordFirst}"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -251,8 +251,10 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:hint="패스워드를 다시 한번 입력해주세요."
+                            android:text="@={onBoardingModel.passwordSecond}"
                             android:textStyle="normal"
                             android:textSize="14sp"
+                            android:imeOptions="actionNext"
                             />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -266,6 +268,8 @@
                         android:hint="*올바른 비밀번호 형식이 아닙니다."
                         android:layout_marginStart="6dp"
                         android:textSize="10sp"
+                        android:tag="password"
+                        input="@{onBoardingModel.passwordSecond}"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

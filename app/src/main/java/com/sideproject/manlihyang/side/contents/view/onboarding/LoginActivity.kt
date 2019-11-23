@@ -19,7 +19,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     override fun getLayoutId(): Int = R.layout.activity_login
 
     private val onBoardingViewModel : OnBoardingViewModel by viewModel()
-    private val mainViewModel : MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

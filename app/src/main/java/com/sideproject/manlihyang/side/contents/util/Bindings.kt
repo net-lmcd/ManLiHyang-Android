@@ -1,10 +1,11 @@
 package com.sideproject.manlihyang.side.contents.util
 
+import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
@@ -23,10 +24,10 @@ object Bindings {
                        number : Int) {
         Log.e("BottomNavigationView",  "$string " + number)
     }
-
+/*
     @JvmStatic
     @BindingAdapter("textChanged")
-    fun isChanged(view : TextView, listener: InverseBindingListener) {
+    fun confirmTextViewChanged(view : EditText, listener: InverseBindingListener) {
         view.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -38,13 +39,33 @@ object Bindings {
 
     @JvmStatic
     @InverseBindingAdapter(attribute = "input", event = "textChanged")
-    fun viewtextChanged(view : TextView): String  {
-        return view.text.toString()
-    }
+    fun viewTextChanged(view : EditText): String  {
+        var check : Boolean = false
+
+        check = Validation.isValidOrNot(view.text.toString(), view.tag as String)
+
+        var result =  when(check) {
+            true -> "올바른 형식입니다."
+            false -> "올바르지 않은 형식입니다."
+        }
+        return result
+    }*/
 
     @JvmStatic
     @BindingAdapter("input")
     fun viewTextChanged(view: TextView, text: String) {
-        view.text = text
+        var check : Boolean = false
+
+        check = Validation.isValidOrNot(text, view.tag as String)
+
+        var result =  when(check) {
+            true -> {
+                view.setTextColor(Color.BLUE)
+                "*올바른 형식입니다."
+            }
+            false -> "*올바르지 않은 형식입니다."
+        }
+
+        view.text = result
     }
 }

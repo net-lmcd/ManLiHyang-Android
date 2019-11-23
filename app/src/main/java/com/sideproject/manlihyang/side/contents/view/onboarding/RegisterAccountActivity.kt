@@ -2,6 +2,7 @@ package com.sideproject.manlihyang.side.contents.view.onboarding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityRegisterAccountBinding
@@ -20,5 +21,14 @@ class RegisterAccountActivity : BaseActivity<ActivityRegisterAccountBinding>() {
 
         // Set variable for binding
         binding.setVariable(BR.onBoardingModel, onBoardingViewModel)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        onBoardingViewModel.setNavigator(this)
+    }
+
+    fun hideKeyboardFromEditText(view : View) {
+        hideKeyboardChildAswell(view)
     }
 }
