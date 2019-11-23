@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
         val root = DataBindingUtil.setContentView<ActivitySplashBinding>(this, R.layout.activity_splash)
             .root as ConstraintLayout
 
-        //setTheme(R.style.Activities)
+        setTheme(R.style.Activities)
 
         root.post{
             TransitionManager.beginDelayedTransition(root, AutoTransition().apply {
@@ -53,6 +53,9 @@ class SplashActivity : AppCompatActivity() {
     }
 
     /*
+
+    // gif splash screen
+
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         window.setFormat(PixelFormat.RGBA_8888)

@@ -1,6 +1,5 @@
 package com.sideproject.manlihyang.side.contents.viewmodel
 
-import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,10 +7,9 @@ import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 import com.sideproject.manlihyang.side.contents.base.BaseViewModel
 import com.sideproject.manlihyang.side.contents.remote.model.User
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
+import com.sideproject.manlihyang.side.contents.util.Intented
 import com.sideproject.manlihyang.side.contents.util.Validation
 import com.sideproject.manlihyang.side.contents.view.onboarding.OnBoardingDatamanager
-import io.reactivex.Flowable
-import java.util.regex.Pattern
 
 class OnBoardingViewModel constructor(
     private var onBoardingDatamanager: OnBoardingDatamanager,
@@ -33,5 +31,9 @@ class OnBoardingViewModel constructor(
         Log.e("check", Validation.isValidOrNot(email.value.toString(), type = Validation.CheckType.Email).toString())
         Log.e("password", Validation.isValidOrNot(password.value.toString(), type = Validation.CheckType.Password).toString())
         Log.e("phonenumber", Validation.isValidOrNot("01012345678", type = Validation.CheckType.PhoneNumber).toString())
+    }
+
+    fun toRegisterAccountActivity() {
+        getNavigator().openNextActivity(Intented.ToRegisterAccountActivity)
     }
 }

@@ -14,12 +14,10 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
     lateinit var binding : T
 
     protected abstract fun getLayoutId() : Int
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.lifecycleOwner = this
-
     }
 
     /**

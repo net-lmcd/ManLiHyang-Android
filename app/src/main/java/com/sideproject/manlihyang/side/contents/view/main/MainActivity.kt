@@ -28,7 +28,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Now, BaseActivity has got a BaseNavigator so If you user another navigator, you just implement it!
         mMainViewModel.setNavigator(this)
+
         binding.bottomNavView.setOnNavigationItemSelectedListener(mMainViewModel.navigationItemSelectedListener)
         onNavigationTabSelected(mMainViewModel.currentTab)
 

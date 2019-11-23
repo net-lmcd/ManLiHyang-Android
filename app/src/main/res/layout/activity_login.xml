@@ -9,9 +9,10 @@
             name="onBoardingModel"
             type="com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="onClick">
 
         <TextView
@@ -23,7 +24,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="48dp"
             android:textSize="30sp"
-            android:textColor="@color/colorPrimary"
             android:gravity="center_vertical|center_horizontal"
             android:text="Application"
             />
@@ -49,11 +49,11 @@
                 android:layout_marginBottom="20dp"
                 android:letterSpacing="-0.02"
                 android:text="로그인"
-                android:textColor="@color/colorPrimary"
                 android:textSize="22sp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="6dp"/>
 
             <TextView
                 android:id="@+id/_email_title"
@@ -62,10 +62,12 @@
                 android:layout_marginBottom="10dp"
                 android:letterSpacing="-0.02"
                 android:text="이메일"
-                android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/_login_title"/>
+                app:layout_constraintTop_toBottomOf="@id/_login_title"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                />
 
             <EditText
                 android:id="@+id/email"
@@ -93,10 +95,11 @@
                 android:layout_marginBottom="10dp"
                 android:letterSpacing="-0.02"
                 android:text="비밀번호"
-                android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
                 app:layout_constraintTop_toBottomOf="@id/email"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"/>
 
             <EditText
                 android:id="@+id/password"
@@ -142,6 +145,7 @@
                     android:textSize="13sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="10dp"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -151,7 +155,7 @@
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/login_btn_bg"
                 android:clickable="true"
                 android:gravity="center"
@@ -168,7 +172,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="@id/password"
@@ -214,13 +218,15 @@
                         android:gravity="end"
                         android:letterSpacing="-0.02"
                         android:text="이메일로 가입하기"
-                        android:textColor="@color/colorPrimary"
                         android:textSize="14sp"
-                        android:textStyle="normal" />
+                        android:textStyle="normal"
+                        android:contextClickable="true"
+                        android:onClick="@{() -> onBoardingModel.toRegisterAccountActivity()}"/>
                 </LinearLayout>
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
