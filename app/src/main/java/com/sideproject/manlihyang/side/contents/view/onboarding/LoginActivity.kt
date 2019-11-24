@@ -27,7 +27,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         binding.setVariable(BR.onBoardingModel, onBoardingViewModel)
     }
 
-    fun onClick(view : View) {
+    fun hideKeyboardFromEditText(view : View) {
         hideKeyboardChildAswell(view)
     }
 

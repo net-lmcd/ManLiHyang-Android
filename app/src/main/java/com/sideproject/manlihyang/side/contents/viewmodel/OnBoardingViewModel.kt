@@ -20,7 +20,7 @@ class OnBoardingViewModel constructor(
     var name = MutableLiveData<String>("")
     var passwordFirst = MutableLiveData<String>("")
     var passwordSecond = MutableLiveData<String>("")
-
+    var check = MutableLiveData<Boolean>(false)
 
 //    val isValidEmail: MediatorLiveData<Boolean> = MediatorLiveData<Boolean>().apply{
 //        addSource(email){
@@ -35,7 +35,15 @@ class OnBoardingViewModel constructor(
         Log.e("phonenumber", Validation.isValidOrNot("01012345678", type = Validation.CheckType.PhoneNumber).toString())
     }*/
 
+    fun registerAccount() {
+
+    }
+
     fun toRegisterAccountActivity() {
         getNavigator().openNextActivity(Intented.ToRegisterAccountActivity)
+    }
+
+    fun toMainActivity() {
+        getNavigator().openNextActivity(Intented.ToMainActivity)
     }
 }

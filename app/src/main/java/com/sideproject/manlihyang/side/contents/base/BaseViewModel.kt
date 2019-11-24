@@ -22,12 +22,6 @@ open class BaseViewModel<T>(val schedulerProvider: SchedulerProvider) : ViewMode
         return mNavigator.get()!!
     }
 
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
-    }
-
-
     fun isLoading(): ObservableBoolean {
         return loading
     }
@@ -35,4 +29,10 @@ open class BaseViewModel<T>(val schedulerProvider: SchedulerProvider) : ViewMode
     fun setLoading(isLoading: Boolean) {
         loading.set(isLoading)
     }
+
+    override fun onCleared() {
+        compositeDisposable.clear()
+        super.onCleared()
+    }
+
 }

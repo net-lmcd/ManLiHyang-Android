@@ -24,10 +24,10 @@ object Bindings {
                        number : Int) {
         Log.e("BottomNavigationView",  "$string " + number)
     }
-/*
+
     @JvmStatic
     @BindingAdapter("textChanged")
-    fun confirmTextViewChanged(view : EditText, listener: InverseBindingListener) {
+    fun confirmTextViewChanged(view : TextView, listener: InverseBindingListener) {
         view.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -39,31 +39,25 @@ object Bindings {
 
     @JvmStatic
     @InverseBindingAdapter(attribute = "input", event = "textChanged")
-    fun viewTextChanged(view : EditText): String  {
-        var check : Boolean = false
+    fun viewsetTextChanged(view : TextView): String  {
 
-        check = Validation.isValidOrNot(view.text.toString(), view.tag as String)
-
-        var result =  when(check) {
-            true -> "올바른 형식입니다."
-            false -> "올바르지 않은 형식입니다."
-        }
-        return result
-    }*/
+        Log.e("asdf","asdf")
+        return ""
+    }
 
     @JvmStatic
     @BindingAdapter("input")
-    fun viewTextChanged(view: TextView, text: String) {
-        var check : Boolean = false
-
-        check = Validation.isValidOrNot(text, view.tag as String)
-
+    fun viewgetTextChanged(view: TextView, text: String) {
+        var check = Validation.isValidOrNot(text, view.tag as String)
         var result =  when(check) {
             true -> {
                 view.setTextColor(Color.BLUE)
                 "*올바른 형식입니다."
             }
-            false -> "*올바르지 않은 형식입니다."
+            false -> {
+                view.setTextColor(Color.BLACK)
+                "*올바르지 않은 형식입니다."
+            }
         }
 
         view.text = result

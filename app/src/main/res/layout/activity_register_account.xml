@@ -8,6 +8,9 @@
         <variable
             name="onBoardingModel"
             type="com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel" />
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

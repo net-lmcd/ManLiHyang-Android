@@ -8,16 +8,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.sideproject.manlihyang.side.contents.util.Intented
 import com.sideproject.manlihyang.side.contents.util.Keyboard
+import com.sideproject.manlihyang.side.contents.widget.CircularProgress
 
 abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavigator {
 
     lateinit var binding : T
+    lateinit var loading : CircularProgress
 
     protected abstract fun getLayoutId() : Int
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.lifecycleOwner = this
+        loading = CircularProgress(this)
     }
 
     /**
@@ -76,16 +79,21 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
         Keyboard.hideKeyboardChildAswell(view, this)
     }
 
-
-    override fun handleError(throwable: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    /**
+     *  Can use loading with a dialog
+     */
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        runOnUiThread {
+            loading.show()
+        }
     }
 
     override fun hideLoading() {
+        loading.dismiss()
+    }
+
+    override fun handleError(throwable: Throwable) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
