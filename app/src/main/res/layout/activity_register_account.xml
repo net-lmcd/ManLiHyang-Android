@@ -63,16 +63,16 @@
                             android:id="@+id/email"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:inputType="textEmailAddress"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/confirm_duplicate"
                             android:hint="이메일을 입력해주세요."
-                            android:text="@={onBoardingModel.email}"
-                            android:textStyle="normal"
-                            android:textSize="14sp"
                             android:imeOptions="actionNext"
-                            />
+                            android:inputType="textEmailAddress"
+                            android:text="@={onBoardingModel.email}"
+                            android:textSize="14sp"
+                            android:textStyle="normal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/confirm_duplicate"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
                         <Button
                             android:id="@+id/confirm_duplicate"
                             android:layout_width="wrap_content"
@@ -93,10 +93,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/_email_confirm_group"
                         android:hint="*올바른 이메일 형식이 아닙니다."
+                        android:text="@{onBoardingModel.email}"
                         android:textSize="10sp"
                         android:layout_marginStart="6dp"
                         android:tag="email"
-                        input="@{onBoardingModel.email}"
                         />
 
 
@@ -153,10 +153,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/_name_confirm_group"
                         android:hint="*올바른 이름 형식이 아닙니다."
+                        android:text="@{onBoardingModel.name}"
                         android:layout_marginStart="6dp"
                         android:textSize="10sp"
                         android:tag="name"
-                        input="@{onBoardingModel.name}"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -211,10 +211,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/_password1_confirm_group"
                         android:hint="*올바른 비밀번호 형식이 아닙니다."
+                        android:text="@{onBoardingModel.passwordFirst}"
                         android:layout_marginStart="6dp"
                         android:textSize="10sp"
                         android:tag="password"
-                        input="@{onBoardingModel.passwordFirst}"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -269,10 +269,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/_password2_confirm_group"
                         android:hint="*올바른 비밀번호 형식이 아닙니다."
+                        android:text="@{onBoardingModel.passwordSecond}"
+                        android:tag="password"
                         android:layout_marginStart="6dp"
                         android:textSize="10sp"
-                        android:tag="password"
-                        input="@{onBoardingModel.passwordSecond}"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

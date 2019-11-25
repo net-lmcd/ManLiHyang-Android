@@ -26,7 +26,7 @@ object Bindings {
     }
 
     @JvmStatic
-    @BindingAdapter("textChanged")
+    @BindingAdapter("textAttrChanged")
     fun confirmTextViewChanged(view : TextView, listener: InverseBindingListener) {
         view.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -38,16 +38,15 @@ object Bindings {
     }
 
     @JvmStatic
-    @InverseBindingAdapter(attribute = "input", event = "textChanged")
-    fun viewsetTextChanged(view : TextView): String  {
-
-        Log.e("asdf","asdf")
-        return ""
+    @InverseBindingAdapter(attribute = "android:text", event = "textAttrChanged")
+    fun viewgetTextChanged(view : TextView): String  {
+        Log.e("asdf",view.text.toString())
+        return view.text.toString()
     }
 
     @JvmStatic
-    @BindingAdapter("input")
-    fun viewgetTextChanged(view: TextView, text: String) {
+    @BindingAdapter("android:text")
+    fun viewsetTextChanged(view: TextView, text: String) {
         var check = Validation.isValidOrNot(text, view.tag as String)
         var result =  when(check) {
             true -> {
@@ -59,7 +58,6 @@ object Bindings {
                 "*올바르지 않은 형식입니다."
             }
         }
-
         view.text = result
     }
 }
