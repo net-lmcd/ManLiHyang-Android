@@ -14,6 +14,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity android:name=".side.contents.view.onboarding.RegisterAccountActivity"></activity>
         <activity
             android:name=".side.contents.SplashActivity"
@@ -27,10 +34,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".side.contents.view.onboarding.LoginActivity"></activity>
+        <activity android:name=".side.contents.view.onboarding.LoginActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".side.contents.view.main.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
     </application>
+
 
 </manifest>

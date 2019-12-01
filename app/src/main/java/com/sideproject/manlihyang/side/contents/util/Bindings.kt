@@ -25,7 +25,7 @@ object Bindings {
         Log.e("BottomNavigationView",  "$string " + number)
     }
 
-    @JvmStatic
+  /*  @JvmStatic
     @BindingAdapter("textAttrChanged")
     fun confirmTextViewChanged(view : TextView, listener: InverseBindingListener) {
         view.addTextChangedListener(object : TextWatcher {
@@ -43,7 +43,7 @@ object Bindings {
         Log.e("asdf",view.text.toString())
         return view.text.toString()
     }
-
+*/
     @JvmStatic
     @BindingAdapter("android:text")
     fun viewsetTextChanged(view: TextView, text: String) {

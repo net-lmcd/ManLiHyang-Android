@@ -166,7 +166,6 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:onClick="@{() -> onBoardingModel.toMainActivity()}"
                 app:layout_constraintTop_toBottomOf="@id/_constraint_search"
                 app:layout_constraintStart_toStartOf="@id/password"/>
 
@@ -175,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="@id/password"
                 app:layout_constraintTop_toBottomOf="@id/login">
 
@@ -185,20 +184,35 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
-
-                    <ImageButton
+                    <Button
+                        android:id="@+id/facebook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@null" />
+                        android:textSize="12sp"
+                        android:text="facebook"/>
 
-                    <ImageView
+                    <Button
+                        android:id="@+id/kakao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="kakao"
+                        android:textSize="12sp"
                         android:layout_marginLeft="10dp" />
 
-                    <ImageView
+                    <Button
+                        android:id="@+id/fb_logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="facebook\nlogout"
+                        android:layout_marginStart="10dp"/>
+
+                    <Button
+                        android:id="@+id/kakao_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="kakao logout"
                         android:layout_marginLeft="10dp" />
 
                 </LinearLayout>

@@ -72,7 +72,10 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/confirm_duplicate"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:tag="email"
+                            />
+
                         <Button
                             android:id="@+id/confirm_duplicate"
                             android:layout_width="wrap_content"
@@ -142,6 +145,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:imeOptions="actionNext"
+                            android:tag="name"
                             />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -200,6 +204,7 @@
                             android:textStyle="normal"
                             android:textSize="14sp"
                             android:imeOptions="actionNext"
+                            android:tag="password"
                             />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -258,6 +263,7 @@
                             android:textStyle="normal"
                             android:textSize="14sp"
                             android:imeOptions="actionNext"
+                            android:tag="password"
                             />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.sideproject.manlihyang.side.contents.viewmodel
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -45,5 +47,13 @@ class OnBoardingViewModel constructor(
 
     fun toMainActivity() {
         getNavigator().openNextActivity(Intented.ToMainActivity)
+    }
+
+    fun textChanged() : TextWatcher = object : TextWatcher{
+        override fun afterTextChanged(s: Editable?) {}
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
     }
 }

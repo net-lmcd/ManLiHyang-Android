@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">SideProject</string>
+    <string name="facebook_app_id">438580773698925</string> <string name="fb_login_protocol_scheme">fb438580773698925</string>
+    <string name="kakao_app_key">90fc138451462c45af9bd521c2030d61</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

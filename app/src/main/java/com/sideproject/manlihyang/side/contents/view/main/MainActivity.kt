@@ -2,10 +2,12 @@ package com.sideproject.manlihyang.side.contents.view.main
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
+import com.facebook.AccessToken
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityMainBinding
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
