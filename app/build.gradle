@@ -111,8 +111,10 @@ dependencies {
     implementation "androidx.navigation:navigation-runtime-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-common-ktx:$navigation_version"
 
-    // Social
+    // Facebook login
     implementation 'com.facebook.android:facebook-login:5.11.2'
+
+    // Kakao login
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.22.0'
 
     // Firebase
