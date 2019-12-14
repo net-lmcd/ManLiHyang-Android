@@ -11,6 +11,7 @@ import com.sideproject.manlihyang.side.contents.view.main.MainDataManager
 import com.sideproject.manlihyang.side.contents.view.main.MainNavigator
 import com.sideproject.manlihyang.side.contents.view.onboarding.OnBoardingDatamanager
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
+import com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -31,6 +32,7 @@ val viewModule : Module = module {
 
     viewModel { OnBoardingViewModel<BaseNavigator>(get()) }
     viewModel { MainViewModel<MainNavigator>(get()) }
+    viewModel { MoveVIewModel<BaseNavigator>(get()) }
 }
 
 val module = listOf(appModule, viewModule)

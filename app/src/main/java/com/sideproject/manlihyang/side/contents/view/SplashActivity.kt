@@ -1,11 +1,7 @@
-package com.sideproject.manlihyang.side.contents
+package com.sideproject.manlihyang.side.contents.view
 
-import android.graphics.PixelFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import kotlinx.android.synthetic.main.activity_splash.*
 import android.content.Intent
 import android.transition.AutoTransition
 import android.transition.TransitionManager
@@ -14,12 +10,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.transition.addListener
 import androidx.databinding.DataBindingUtil
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
-import com.sideproject.manlihyang.side.contents.view.main.MainActivity
 import com.sideproject.manlihyang.side.contents.view.onboarding.LoginActivity
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivitySplashBinding
+import com.sideproject.manlihyang.side.contents.view.onboarding.AfterSplashActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -29,15 +23,15 @@ class SplashActivity : AppCompatActivity() {
         val root = DataBindingUtil.setContentView<ActivitySplashBinding>(this, R.layout.activity_splash)
             .root as ConstraintLayout
 
-        setTheme(R.style.Activities)
+        setTheme(R.style.AppTheme)
 
         root.post{
             TransitionManager.beginDelayedTransition(root, AutoTransition().apply {
-                duration = 2000L
+                duration = 3000L
                 interpolator = AccelerateInterpolator()
                 addListener(onEnd = {
                     startActivity(
-                        Intent(applicationContext, LoginActivity::class.java)
+                        Intent(applicationContext, AfterSplashActivity::class.java)
                             .apply {
                                 flags = flags or Intent.FLAG_ACTIVITY_CLEAR_TOP
                             }

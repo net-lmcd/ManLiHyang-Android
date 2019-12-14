@@ -7,15 +7,22 @@
     android:id="@+id/_constraint"
     android:gravity="center">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/_top_guide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintGuide_percent="0.3"
+        android:orientation="horizontal"
+        />
+
     <TextView
         android:id="@+id/_title_start1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/_top_guide"
         app:layout_constraintStart_toStartOf="parent"
         android:alpha="1"
-        android:layout_marginTop="200dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="115dp"
         android:textSize="50sp"
         android:text="만"
         />
@@ -24,11 +31,11 @@
         android:id="@+id/_title_start2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/_top_guide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
         android:alpha="1"
-        android:layout_marginTop="200dp"
         android:textSize="50sp"
         android:text="리"
         />
@@ -37,11 +44,10 @@
         android:id="@+id/_title_start3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/_top_guide"
         app:layout_constraintEnd_toEndOf="parent"
         android:alpha="1"
-        android:layout_marginTop="200dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginRight="115dp"
         android:textSize="50sp"
         android:text="향"
         />

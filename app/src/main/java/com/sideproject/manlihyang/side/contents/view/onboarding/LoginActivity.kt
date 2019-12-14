@@ -23,9 +23,10 @@ import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.BuildConfig
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityLoginBinding
-import com.sideproject.manlihyang.side.contents.SplashActivity
+import com.sideproject.manlihyang.side.contents.view.SplashActivity
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
+import com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
@@ -40,17 +41,19 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
     override fun getLayoutId(): Int = R.layout.activity_login
 
     private val onBoardingViewModel: OnBoardingViewModel<BaseNavigator> by viewModel()
+    private val moveVIewModel : MoveVIewModel<BaseNavigator> by viewModel()
 
     lateinit var callbackManager: CallbackManager
     lateinit var sessionCallback: SessionCallback
 
-    //before initializing view
     override fun initViewModel() {
         onBoardingViewModel.setNavigator(this)
+        moveVIewModel.setNavigator(this)
     }
-
-    //after initalizing viewmodel
-    override fun initView() {}
+    override fun initView() {
+        binding.setVariable(BR.onBoardingModel, onBoardingViewModel)
+        binding.setVariable(BR.moveModel, moveVIewModel)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

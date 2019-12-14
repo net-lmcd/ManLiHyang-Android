@@ -21,9 +21,10 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".side.contents.view.onboarding.RegisterAccountActivity"></activity>
+        <activity android:name=".side.contents.view.onboarding.AfterSplashActivity"/>
+        <activity android:name=".side.contents.view.onboarding.RegisterAccountActivity" />
         <activity
-            android:name=".side.contents.SplashActivity"
+            android:name=".side.contents.view.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
@@ -34,9 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".side.contents.view.onboarding.LoginActivity"
-            android:exported="true">
 
+        <activity
+            android:name=".side.contents.view.onboarding.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -45,12 +47,10 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".side.contents.view.main.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
     </application>
-
 
 </manifest>
