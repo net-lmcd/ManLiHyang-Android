@@ -1,9 +1,7 @@
 package com.sideproject.manlihyang.side.contents.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.side.contents.base.BaseViewModel
-import com.sideproject.manlihyang.side.contents.base.MVVMViewModel
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
 import com.sideproject.manlihyang.side.contents.util.TypeofTab
 import com.sideproject.manlihyang.side.contents.view.main.MainDataManager
@@ -11,7 +9,6 @@ import com.sideproject.manlihyang.side.contents.view.main.MainNavigator
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainViewModel constructor(
-    val mainDataManager: MainDataManager,
     schedulerProvider: SchedulerProvider)
     : BaseViewModel<MainNavigator>(schedulerProvider) {
 

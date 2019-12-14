@@ -3,17 +3,16 @@ package com.sideproject.manlihyang.side.contents.viewmodel
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
+import com.sideproject.manlihyang.side.contents.base.BaseNavigatorImpl
 import com.sideproject.manlihyang.side.contents.base.BaseViewModel
 import com.sideproject.manlihyang.side.contents.remote.model.User
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
-import com.sideproject.manlihyang.side.contents.util.Intented
+import com.sideproject.manlihyang.side.contents.util.Move
 import com.sideproject.manlihyang.side.contents.view.onboarding.OnBoardingDatamanager
 
 class OnBoardingViewModel constructor(
-    private var onBoardingDatamanager: OnBoardingDatamanager,
     schedulerProvider: SchedulerProvider)
     : BaseViewModel<BaseNavigator>(schedulerProvider) {
 
@@ -37,16 +36,15 @@ class OnBoardingViewModel constructor(
         Log.e("phonenumber", Validation.isValidOrNot("01012345678", type = Validation.CheckType.PhoneNumber).toString())
     }*/
 
-    fun registerAccount() {
+    fun test() {
 
     }
-
     fun toRegisterAccountActivity() {
-        getNavigator().openNextActivity(Intented.ToRegisterAccountActivity)
+        getNavigator().openNextActivity(Move.ToRegisterAccountActivity)
     }
 
     fun toMainActivity() {
-        getNavigator().openNextActivity(Intented.ToMainActivity)
+        getNavigator().openNextActivity(Move.ToMainActivity)
     }
 
     fun textChanged() : TextWatcher = object : TextWatcher{

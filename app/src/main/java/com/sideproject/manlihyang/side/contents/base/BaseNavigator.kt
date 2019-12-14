@@ -1,28 +1,28 @@
 package com.sideproject.manlihyang.side.contents.base
 
-import com.sideproject.manlihyang.side.contents.util.Intented
+import com.sideproject.manlihyang.side.contents.util.Move
 import com.sideproject.manlihyang.side.contents.util.MessageDialogClickListener
 
 interface BaseNavigator {
 
     /**
-     * @param intented: Open activity depending on intented
-     * @see Intented
+     * @param move: Open activity depending on move
+     * @see Move
      */
-    fun openNextActivity(intented: Intented)
+    fun openNextActivity(move: Move)
 
 
     /**
-     * @param intented: Open activity depending on intented and finish
-     * @see Intented
+     * @param move: Open activity depending on move and finish
+     * @see Move
      */
-    fun openNextActivityFinish(intented: Intented)
+    fun openNextActivityFinish(move: Move)
 
     /**
-     * @param intented: Open activity depending on intented and finish
-     * @see Intented
+     * @param move: Open activity depending on move and finish
+     * @see Move
      */
-    fun openNextActivityClearTop(intented: Intented)
+    fun openNextActivityClearTop(move: Move)
 
 
     /**

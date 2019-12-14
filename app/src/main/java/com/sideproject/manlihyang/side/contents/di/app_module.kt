@@ -19,15 +19,14 @@ val appModule : Module = module {
     single { AppSchedulerProvider() as SchedulerProvider }
     single { PreferenceManager(get()) }
     single { OnBoardingDatamanager(get(), get()) }
-    single { MainDataManager() }
 
 }
 
 //viewModel, factory 사용
 val viewModule : Module = module {
 
-    viewModel { OnBoardingViewModel(get(), get()) }
-    viewModel { MainViewModel(get(), get()) }
+    viewModel { OnBoardingViewModel(get()) }
+    viewModel { MainViewModel(get()) }
 }
 
 val module = listOf(appModule, viewModule)

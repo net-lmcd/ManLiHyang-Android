@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.sideproject.manlihyang.side.contents.util.Intented
+import com.sideproject.manlihyang.side.contents.util.Move
 import com.sideproject.manlihyang.side.contents.util.Keyboard
 import com.sideproject.manlihyang.side.contents.widget.CircularProgress
 
@@ -32,19 +32,19 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
         startActivity(Intent(this, nextActivity))
     }
 
-    override fun openNextActivity(intented: Intented) {
+    override fun openNextActivity(move: Move) {
 
         try {
-            openNextActivity(Class.forName(intented.getName()))
+            openNextActivity(Class.forName(move.getName()))
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()
         }
     }
 
-    override fun openNextActivityClearTop(intented: Intented) {
+    override fun openNextActivityClearTop(move: Move) {
 
         try {
-            val intent = Intent(this, Class.forName(intented.getName()))
+            val intent = Intent(this, Class.forName(move.getName()))
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         } catch (e: ClassNotFoundException) {
@@ -52,10 +52,10 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
         }
     }
 
-    override fun openNextActivityFinish(intented: Intented) {
+    override fun openNextActivityFinish(move: Move) {
 
         try {
-            val intent = Intent(this, Class.forName(intented.getName()))
+            val intent = Intent(this, Class.forName(move.getName()))
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         } catch (e: ClassNotFoundException) {

@@ -26,6 +26,7 @@
             android:textSize="30sp"
             android:gravity="center_vertical|center_horizontal"
             android:text="만리향"
+            android:onClick="@{() -> onBoardingModel.test()}"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout

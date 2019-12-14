@@ -4,7 +4,7 @@ import com.sideproject.manlihyang.side.contents.view.main.MainActivity;
 import com.sideproject.manlihyang.side.contents.view.onboarding.LoginActivity;
 import com.sideproject.manlihyang.side.contents.view.onboarding.RegisterAccountActivity;
 
-public enum Intented {
+public enum Move {
 
     ToMainActivity(MainActivity.class.getName()),
     ToLoginActivity(LoginActivity.class.getName()),
@@ -12,7 +12,7 @@ public enum Intented {
 
     private String name;
 
-    Intented(String name) {
+    Move(String name) {
         this.name = name;
     }
 

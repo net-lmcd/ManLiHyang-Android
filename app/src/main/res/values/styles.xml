@@ -23,4 +23,8 @@
         <item name="android:textColorSecondary">@color/black</item>
     </style>
 
+    <style name="labTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 </resources>

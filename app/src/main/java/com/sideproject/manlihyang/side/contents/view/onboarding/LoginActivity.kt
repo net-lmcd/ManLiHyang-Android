@@ -1,14 +1,11 @@
 package com.sideproject.manlihyang.side.contents.view.onboarding
 
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.facebook.*
 import com.facebook.login.LoginManager
@@ -19,20 +16,15 @@ import com.kakao.auth.Session
 import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.LogoutResponseCallback
-import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.callback.MeV2ResponseCallback
 import com.kakao.usermgmt.response.MeV2Response
-import com.kakao.usermgmt.response.model.UserProfile
 import com.kakao.util.exception.KakaoException
-import com.kakao.util.helper.Utility.getPackageInfo
 import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.BuildConfig
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityLoginBinding
 import com.sideproject.manlihyang.side.contents.SplashActivity
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
-import com.sideproject.manlihyang.side.contents.util.Intented
-import com.sideproject.manlihyang.side.contents.view.main.MainActivity
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
@@ -138,11 +130,30 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         onBoardingViewModel.setNavigator(this)
 
         getHashKey()
+        Log.e("aaaaresume","resume")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Session.getCurrentSession().removeCallback(sessionCallback)
+        Log.e("aaaadestroy","destroy")
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        Log.e("aaaastart","start")
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.e("aaaapause","pause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.e("aaaastop","stop")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -157,8 +168,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     fun hideKeyboardFromEditText(view: View) {
         hideKeyboardChildAswell(view)
     }
-
-
 
     inner class SessionCallback : ISessionCallback {
         override fun onSessionOpenFailed(exception: KakaoException?) {
