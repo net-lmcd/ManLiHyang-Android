@@ -18,13 +18,13 @@
         android:layout_height="match_parent"
         tools:context=".side.contents.view.onboarding.RegisterAccountActivity">
 
-        <include android:id="@+id/bar"
+        <include
             layout="@layout/actionbar" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/bar"
+            app:layout_constraintTop_toBottomOf="@+id/actionBar"
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout

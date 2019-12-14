@@ -6,14 +6,8 @@ import android.content.Intent
 import com.sideproject.manlihyang.side.contents.util.Move
 
 class BaseNavigatorImpl(
-    activity : Activity
+    private val activity: Activity
 ) : BaseNavigator {
-
-    private var activity : Activity? = null
-
-    init {
-        this.activity = activity
-    }
 
     override fun openNextActivity(move: Move) {
         activity?.startActivity(Intent(activity, Class.forName(move.getName())))

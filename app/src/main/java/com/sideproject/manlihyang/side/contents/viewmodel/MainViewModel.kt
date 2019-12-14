@@ -7,10 +7,11 @@ import com.sideproject.manlihyang.side.contents.util.TypeofTab
 import com.sideproject.manlihyang.side.contents.view.main.MainDataManager
 import com.sideproject.manlihyang.side.contents.view.main.MainNavigator
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 
-class MainViewModel constructor(
+class MainViewModel<N : MainNavigator>(
     schedulerProvider: SchedulerProvider)
-    : BaseViewModel<MainNavigator>(schedulerProvider) {
+    : BaseViewModel<N>(schedulerProvider) {
 
     var currentTab = TypeofTab.Content
 

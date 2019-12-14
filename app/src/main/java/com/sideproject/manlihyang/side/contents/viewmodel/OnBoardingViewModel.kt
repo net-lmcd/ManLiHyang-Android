@@ -12,9 +12,9 @@ import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
 import com.sideproject.manlihyang.side.contents.util.Move
 import com.sideproject.manlihyang.side.contents.view.onboarding.OnBoardingDatamanager
 
-class OnBoardingViewModel constructor(
+class OnBoardingViewModel<N : BaseNavigator>(
     schedulerProvider: SchedulerProvider)
-    : BaseViewModel<BaseNavigator>(schedulerProvider) {
+    : BaseViewModel<N>(schedulerProvider) {
 
     val _user : MutableLiveData<User> by lazy { MutableLiveData<User>() }
     var email = MutableLiveData<String>("")
@@ -37,8 +37,8 @@ class OnBoardingViewModel constructor(
     }*/
 
     fun test() {
-
     }
+
     fun toRegisterAccountActivity() {
         getNavigator().openNextActivity(Move.ToRegisterAccountActivity)
     }

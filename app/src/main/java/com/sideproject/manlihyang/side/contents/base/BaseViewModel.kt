@@ -9,17 +9,17 @@ import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 
 
-open class BaseViewModel<T>(val schedulerProvider: SchedulerProvider) : ViewModel() {
+open class BaseViewModel<N : BaseNavigator>(val schedulerProvider: SchedulerProvider) : ViewModel() {
 
     var loading = ObservableBoolean(false)
     var compositeDisposable: CompositeDisposable = CompositeDisposable()
-    private lateinit var mNavigator: WeakReference<T>
+    private lateinit var mNavigator: WeakReference<N>
 
-    fun setNavigator(navigator: T) {
-        mNavigator = WeakReference<T>(navigator)
+    fun setNavigator(navigator: N) {
+        mNavigator = WeakReference<N>(navigator)
     }
 
-    fun getNavigator(): T {
+    fun getNavigator(): N {
         return mNavigator.get()!!
     }
 

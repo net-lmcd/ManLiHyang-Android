@@ -3,29 +3,82 @@ package com.sideproject.manlihyang.side.contents.base
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.side.contents.util.Move
 import com.sideproject.manlihyang.side.contents.util.Keyboard
 import com.sideproject.manlihyang.side.contents.widget.CircularProgress
+import kotlinx.android.synthetic.main.actionbar.*
+import java.util.*
 
 abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavigator {
 
     lateinit var binding : T
     lateinit var loading : CircularProgress
 
+    private var mActionToolbar : Toolbar? = null
+    private var actionbar_title : TextView? = null
+
+    protected abstract fun initViewModel()
+    protected abstract fun initView()
     protected abstract fun getLayoutId() : Int
+
+    open fun hasActionBar(): Boolean = false
+    open fun hasBackIcon(): Boolean = false
+    open fun hasMoreImage() : Boolean = false
+    open fun hasEdit() : Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.lifecycleOwner = this
         loading = CircularProgress(this)
+
+        initViewModel()
+        setActionBar()
+        initView()
     }
 
-    /**
-     *   Activity to be moved with sth...
-     */
+    fun setActionBar() {
+        if (hasActionBar()) {
+            mActionToolbar = binding.root.findViewById(R.id.actionBar)
+            actionbar_title = mActionToolbar?.findViewById<View>(R.id.bar_title) as? TextView
+
+            if (mActionToolbar != null) {
+                setSupportActionBar(mActionToolbar)
+                Objects.requireNonNull<ActionBar>(supportActionBar).setDisplayHomeAsUpEnabled(false)
+                supportActionBar!!.setHomeButtonEnabled(false)
+                supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+                if (hasBackIcon()) {
+                    supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+                    supportActionBar!!.setHomeButtonEnabled(true)
+                    supportActionBar!!.setDisplayShowTitleEnabled(false)
+                    supportActionBar!!.setHomeAsUpIndicator(R.drawable.button_back_black)
+                    mActionToolbar!!.setNavigationOnClickListener(View.OnClickListener { onBackPressed() })
+                }
+            }
+
+            if(hasMoreImage()) {
+                select.apply {
+                    visibility = View.VISIBLE
+
+                }
+            }
+
+            if(hasEdit()) {
+                edit.apply {
+                    visibility = View.VISIBLE
+                }
+            }
+
+        }
+    }
 
     fun openNextActivity(nextActivity: Class<*>) {
 

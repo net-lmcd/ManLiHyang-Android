@@ -25,6 +25,7 @@ import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityLoginBinding
 import com.sideproject.manlihyang.side.contents.SplashActivity
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
+import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
@@ -33,15 +34,23 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.security.MessageDigest
 import java.util.*
 
-class LoginActivity : BaseActivity<ActivityLoginBinding>() {
+class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
 
     private val mCrashlytics: Crashlytics by inject()
     override fun getLayoutId(): Int = R.layout.activity_login
 
-    private val onBoardingViewModel: OnBoardingViewModel by viewModel()
+    private val onBoardingViewModel: OnBoardingViewModel<BaseNavigator> by viewModel()
 
     lateinit var callbackManager: CallbackManager
     lateinit var sessionCallback: SessionCallback
+
+    //before initializing view
+    override fun initViewModel() {
+        onBoardingViewModel.setNavigator(this)
+    }
+
+    //after initalizing viewmodel
+    override fun initView() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -239,4 +248,5 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
             }
         });
     }
+
 }

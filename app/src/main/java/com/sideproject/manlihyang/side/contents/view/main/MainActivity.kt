@@ -11,6 +11,7 @@ import com.facebook.AccessToken
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityMainBinding
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
+import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 import com.sideproject.manlihyang.side.contents.util.TypeofTab
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
@@ -22,19 +23,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
     private val mCrashlytics : Crashlytics by inject()
-    private val mMainViewModel : MainViewModel by viewModel()
-    private val mOnBoardingViewModel : OnBoardingViewModel by viewModel()
+    private val mainViewModel : MainViewModel<MainNavigator> by viewModel()
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initViewModel() {
+        mainViewModel.setNavigator(this)
+    }
 
-        //Now, BaseActivity has got a BaseNavigator so If you user another navigator, you just implement it!
-        mMainViewModel.setNavigator(this)
-
-        binding.bottomNavView.setOnNavigationItemSelectedListener(mMainViewModel.navigationItemSelectedListener)
-        onNavigationTabSelected(mMainViewModel.currentTab)
+    override fun initView() {
+        navigation.setOnNavigationItemSelectedListener(mainViewModel.navigationItemSelectedListener)
+        onNavigationTabSelected(mainViewModel.currentTab)
     }
 
     override fun onNavigationTabSelected(tab: TypeofTab) {
@@ -67,4 +66,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
         }
 
     }
+
 }
