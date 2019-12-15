@@ -1,2 +1,6 @@
 # ManLiHyang Mobile Application(Android)
- ### Login(Facebook, Kakao), RxJava, Firebase, Koin, ViewModel, Crashlytics, Glide, DataBinding, Grpc...
+
+ ### language : Kotlin, Java
+ ### architecture : MVVM
+ ### skills : Firebase(Distribution), Koin(Di), Glide, DataBinding + AAC, RxJava + Retrofit(Network) 
+ ### social : Facebook, Kakao
