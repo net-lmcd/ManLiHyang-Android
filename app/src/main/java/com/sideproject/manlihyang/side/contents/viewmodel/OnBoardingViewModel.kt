@@ -39,8 +39,8 @@ class OnBoardingViewModel<N : BaseNavigator>(
     fun test() {
     }
 
-    fun toRegisterAccountActivity() {
-        getNavigator().openNextActivity(Move.ToRegisterAccountActivity)
+    fun toRegisterEmailActivity() {
+        getNavigator().openNextActivity(Move.ToRegisterEmailActivity)
     }
 
     fun toMainActivity() {

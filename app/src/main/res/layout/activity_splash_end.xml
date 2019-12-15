@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efeff4"
+    android:background="@color/white"
     android:id="@+id/_constraint"
     android:gravity="center">
 
@@ -24,6 +24,7 @@
         android:alpha="1"
         android:layout_marginStart="115dp"
         android:textSize="50sp"
+        android:textColor="@color/black"
         android:text="만"
         />
 
@@ -37,6 +38,7 @@
         android:layout_marginTop="5dp"
         android:alpha="1"
         android:textSize="50sp"
+        android:textColor="@color/black"
         android:text="리"
         />
 
@@ -49,18 +51,19 @@
         android:alpha="1"
         android:layout_marginRight="115dp"
         android:textSize="50sp"
+        android:textColor="@color/black"
         android:text="향"
         />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/_logo_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_android_black_24dp"
+        android:src="@drawable/app_icon"
         />
 
     <TextView
@@ -71,6 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="12sp"
+        android:textColor="@color/black"
         android:alpha="1"
         android:layout_marginBottom="30dp"
         android:text="copyright by net-lmcd since 2019"

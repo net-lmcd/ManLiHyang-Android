@@ -13,7 +13,6 @@ import androidx.databinding.DataBindingUtil
 import com.sideproject.manlihyang.side.contents.view.onboarding.LoginActivity
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivitySplashBinding
-import com.sideproject.manlihyang.side.contents.view.onboarding.AfterSplashActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -27,11 +26,11 @@ class SplashActivity : AppCompatActivity() {
 
         root.post{
             TransitionManager.beginDelayedTransition(root, AutoTransition().apply {
-                duration = 3000L
+                duration = 2500L
                 interpolator = AccelerateInterpolator()
                 addListener(onEnd = {
                     startActivity(
-                        Intent(applicationContext, AfterSplashActivity::class.java)
+                        Intent(applicationContext, LoginActivity::class.java)
                             .apply {
                                 flags = flags or Intent.FLAG_ACTIVITY_CLEAR_TOP
                             }

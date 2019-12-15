@@ -16,11 +16,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="hideKeyboardFromEditText">
+        android:background="@color/white">
 
        <androidx.core.widget.NestedScrollView
            android:layout_width="match_parent"
-           android:layout_height="match_parent">
+           android:layout_height="match_parent"
+           android:onClick="hideKeyboardFromEditText">
 
            <androidx.constraintlayout.widget.ConstraintLayout
                android:layout_width="match_parent"
@@ -103,7 +104,7 @@
                        android:textColor="#c8c8c8"
                        android:textStyle="normal"
                        android:gravity="start|center_vertical"
-                       android:background="@drawable/edittext_selector"
+                       android:background="@drawable/edittext_border"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintStart_toStartOf="parent"
                        app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +128,7 @@
                        android:textColor="#c8c8c8"
                        android:textStyle="normal"
                        android:gravity="start|center_vertical"
-                       android:background="@drawable/edittext_selector"
+                       android:background="@drawable/edittext_border"
                        app:layout_constraintTop_toBottomOf="@id/email"
                        app:layout_constraintStart_toStartOf="parent"
                        android:layout_marginTop="10dp"
@@ -167,9 +168,9 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="회원가입"
-                           app:layout_constraintTop_toTopOf="parent"
                            app:layout_constraintStart_toStartOf="parent"
-                           />
+                           app:layout_constraintTop_toTopOf="parent"
+                           android:onClick="@{()->moveModel.toRegisterEmailActivity()}"/>
 
                        <ImageView
                            android:id="@+id/_line_left"
@@ -186,6 +187,9 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="아이디찾기"
+                           app:layout_constraintStart_toEndOf="@id/_line_left"
+                           app:layout_constraintTop_toTopOf="parent"
+                           android:layout_marginStart="10dp"
                            />
 
                        <ImageView
@@ -193,6 +197,9 @@
                            android:layout_width="1dp"
                            android:layout_height="11dp"
                            android:background="@color/line_color"
+                           app:layout_constraintStart_toEndOf="@id/find_id"
+                           app:layout_constraintTop_toTopOf="parent"
+                           android:layout_marginStart="10dp"
                            />
 
                        <TextView
@@ -200,39 +207,51 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="비밀번호찾기"
+                           app:layout_constraintStart_toEndOf="@id/_line_right"
+                           app:layout_constraintTop_toTopOf="parent"
+                           android:layout_marginStart="10dp"
                            />
 
                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                   <LinearLayout
+                   <androidx.constraintlayout.widget.ConstraintLayout
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:layout_marginTop="30dp"
+                       android:layout_marginTop="35dp"
                        android:layout_marginBottom="20dp"
                        android:orientation="vertical"
                        app:layout_constraintStart_toStartOf="@id/password"
                        app:layout_constraintTop_toBottomOf="@id/_group_info">
 
                        <LinearLayout
+                           android:id="@+id/_group_social"
+                           app:layout_constraintTop_toTopOf="parent"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintEnd_toEndOf="parent"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:layout_weight="1"
                            android:orientation="horizontal">
 
-                           <Button
+                           <ImageView
                                android:id="@+id/facebook"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:textSize="12sp"
-                               android:text="facebook"/>
+                               android:background="@drawable/button_facebook"/>
 
-                           <Button
+                           <ImageView
                                android:id="@+id/kakao"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:text="kakao"
-                               android:textSize="12sp"
+                               android:background="@drawable/button_kakao"
                                android:layout_marginLeft="10dp" />
+
+                       </LinearLayout>
+
+                       <androidx.constraintlayout.widget.ConstraintLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           app:layout_constraintTop_toBottomOf="@id/_group_social">
 
                            <Button
                                android:id="@+id/fb_logout"
@@ -240,7 +259,10 @@
                                android:layout_height="wrap_content"
                                android:textSize="12sp"
                                android:text="facebook\nlogout"
-                               android:layout_marginStart="10dp"/>
+                               android:layout_marginStart="10dp"
+                               app:layout_constraintTop_toTopOf="parent"
+                               app:layout_constraintStart_toStartOf="parent"
+                               android:visibility="invisible"/>
 
                            <Button
                                android:id="@+id/kakao_logout"
@@ -248,31 +270,14 @@
                                android:layout_height="wrap_content"
                                android:textSize="12sp"
                                android:text="kakao logout"
-                               android:layout_marginLeft="10dp" />
+                               android:layout_marginLeft="10dp"
+                               app:layout_constraintStart_toEndOf="@id/fb_logout"
+                               app:layout_constraintTop_toTopOf="parent"
+                               android:visibility="invisible"/>
 
-                       </LinearLayout>
+                       </androidx.constraintlayout.widget.ConstraintLayout>
 
-                       <LinearLayout
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center_vertical"
-                           android:layout_weight="1"
-                           android:orientation="vertical">
-
-                           <TextView
-                               android:id="@+id/moveToRegister"
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               android:layout_gravity="end"
-                               android:clickable="true"
-                               android:gravity="end"
-                               android:letterSpacing="-0.02"
-                               android:text="이메일로 가입하기"
-                               android:textSize="14sp"
-                               android:textStyle="normal"
-                               android:contextClickable="true"/>
-                       </LinearLayout>
-                   </LinearLayout>
+                   </androidx.constraintlayout.widget.ConstraintLayout>
 
                </androidx.constraintlayout.widget.ConstraintLayout>
 

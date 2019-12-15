@@ -12,4 +12,8 @@ class MoveVIewModel <N : BaseNavigator>(
     fun toLoginActivity() {
         getNavigator().openNextActivity(Move.ToLoginActivity)
     }
+
+    fun toRegisterEmailActivity() {
+        getNavigator().openNextActivity(Move.ToRegisterEmailActivity)
+    }
 }

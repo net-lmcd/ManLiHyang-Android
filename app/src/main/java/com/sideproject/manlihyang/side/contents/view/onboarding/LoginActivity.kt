@@ -43,8 +43,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
     private val onBoardingViewModel: OnBoardingViewModel<BaseNavigator> by viewModel()
     private val moveVIewModel : MoveVIewModel<BaseNavigator> by viewModel()
 
-    lateinit var callbackManager: CallbackManager
-    lateinit var sessionCallback: SessionCallback
+    var callbackManager: CallbackManager? = null
+    var sessionCallback: SessionCallback? = null
 
     override fun initViewModel() {
         onBoardingViewModel.setNavigator(this)
@@ -137,35 +137,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
     override fun onResume() {
         super.onResume()
         // Set variable for binding
-        binding.setVariable(BR.onBoardingModel, onBoardingViewModel)
-
-        onBoardingViewModel.setNavigator(this)
 
         getHashKey()
-        Log.e("aaaaresume","resume")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Session.getCurrentSession().removeCallback(sessionCallback)
-        Log.e("aaaadestroy","destroy")
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        Log.e("aaaastart","start")
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        Log.e("aaaapause","pause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.e("aaaastop","stop")
+        if(sessionCallback != null) {
+            Session.getCurrentSession().removeCallback(sessionCallback)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -174,7 +154,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
         super.onActivityResult(requestCode, resultCode, data);
 
         //facebook
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        callbackManager?.onActivityResult(requestCode, resultCode, data);
     }
 
     fun hideKeyboardFromEditText(view: View) {
