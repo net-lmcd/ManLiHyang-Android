@@ -51,9 +51,11 @@ object Keyboard {
 
         when(view) {
             is ViewGroup -> {
-                for(pos in 0 until view.childCount) {
-                    val childView = view.getChildAt(pos)
-                    hideKeyboardChildAswell(childView, now)
+                kotlin.run {
+                    for(pos in 0 until view.childCount) {
+                        val childView = view.getChildAt(pos)
+                        hideKeyboardChildAswell(childView, now)
+                    }
                 }
             }
             !is EditText -> {

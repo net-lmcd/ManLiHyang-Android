@@ -17,4 +17,49 @@
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>
 
+    <style name="Text">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:minLines">1</item>
+    </style>
+
+    <style name="Edit" parent="Text">
+        <item name="android:background">@drawable/edittext_border</item>
+    </style>
+
+    <style name="NotoRegularText" parent="Text">
+        <item name="android:fontFamily">@font/notosanscjkkr_regular</item>
+        <item name="fontFamily">@font/notosanscjkkr_regular</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="NotoBoldText" parent="Text">
+        <item name="android:fontFamily">@font/notoserifkr_bold</item>
+        <item name="fontFamily">@font/notoserifkr_bold</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="NotoMediumText" parent="Text">
+        <item name="android:fontFamily">@font/notoserifkr_medium</item>
+        <item name="fontFamily">@font/notoserifkr_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="NotoRegularEdit" parent="Edit">
+        <item name="android:fontFamily">@font/notosanscjkkr_regular</item>
+        <item name="fontFamily">@font/notosanscjkkr_regular</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="NotoBoldEdit" parent="Edit">
+        <item name="android:fontFamily">@font/notoserifkr_bold</item>
+        <item name="fontFamily">@font/notoserifkr_bold</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="NotoMediumEdit" parent="Edit">
+        <item name="android:fontFamily">@font/notoserifkr_medium</item>
+        <item name="fontFamily">@font/notoserifkr_medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

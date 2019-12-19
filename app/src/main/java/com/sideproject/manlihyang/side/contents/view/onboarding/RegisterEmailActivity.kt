@@ -28,9 +28,4 @@ class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding>() {
     override fun initView() {
         binding.setVariable(BR.onBoardingModel, onBoardingViewModel)
     }
-
-    fun hideKeyboardFromEditText(view : View) {
-        hideKeyboardChildAswell(view)
-    }
-
 }

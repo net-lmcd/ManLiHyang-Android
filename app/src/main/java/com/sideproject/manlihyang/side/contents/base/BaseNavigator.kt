@@ -9,21 +9,19 @@ interface BaseNavigator {
      * @param move: Open activity depending on move
      * @see Move
      */
-    fun openNextActivity(move: Move)
-
-
-    /**
-     * @param move: Open activity depending on move and finish
-     * @see Move
-     */
-    fun openNextActivityFinish(move: Move)
+    fun nextActivity(move: Move)
 
     /**
      * @param move: Open activity depending on move and finish
      * @see Move
      */
-    fun openNextActivityClearTop(move: Move)
+    fun nextActivityFinish(move: Move)
 
+    /**
+     * @param move: Open activity depending on move and finish
+     * @see Move
+     */
+    fun nextActivityClearTop(move: Move)
 
     /**
      * @param message is a text to show popup dialog

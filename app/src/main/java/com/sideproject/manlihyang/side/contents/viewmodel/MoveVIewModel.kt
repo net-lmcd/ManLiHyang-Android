@@ -10,10 +10,10 @@ class MoveVIewModel <N : BaseNavigator>(
 ) : BaseViewModel<N>(schedulerProvider) {
 
     fun toLoginActivity() {
-        getNavigator().openNextActivity(Move.ToLoginActivity)
+        getNavigator().nextActivity(Move.ToLoginActivity)
     }
 
     fun toRegisterEmailActivity() {
-        getNavigator().openNextActivity(Move.ToRegisterEmailActivity)
+        getNavigator().nextActivity(Move.ToRegisterEmailActivity)
     }
 }

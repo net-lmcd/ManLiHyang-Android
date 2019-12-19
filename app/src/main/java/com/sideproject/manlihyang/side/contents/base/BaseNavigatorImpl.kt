@@ -9,15 +9,15 @@ class BaseNavigatorImpl(
     private val activity: Activity
 ) : BaseNavigator {
 
-    override fun openNextActivity(move: Move) {
+    override fun nextActivity(move: Move) {
         activity?.startActivity(Intent(activity, Class.forName(move.getName())))
     }
 
-    override fun openNextActivityFinish(move: Move) {
+    override fun nextActivityFinish(move: Move) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun openNextActivityClearTop(move: Move) {
+    override fun nextActivityClearTop(move: Move) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

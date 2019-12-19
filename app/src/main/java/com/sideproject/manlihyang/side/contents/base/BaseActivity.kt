@@ -76,25 +76,15 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
                     visibility = View.VISIBLE
                 }
             }
-
         }
     }
 
-    fun openNextActivity(nextActivity: Class<*>) {
+    override fun nextActivity(move: Move) {
 
-        startActivity(Intent(this, nextActivity))
+        startActivity(Intent(this, Class.forName(move.getName())))
     }
 
-    override fun openNextActivity(move: Move) {
-
-        try {
-            openNextActivity(Class.forName(move.getName()))
-        } catch (e: ClassNotFoundException) {
-            e.printStackTrace()
-        }
-    }
-
-    override fun openNextActivityClearTop(move: Move) {
+    override fun nextActivityClearTop(move: Move) {
 
         try {
             val intent = Intent(this, Class.forName(move.getName()))
@@ -105,7 +95,7 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
         }
     }
 
-    override fun openNextActivityFinish(move: Move) {
+    override fun nextActivityFinish(move: Move) {
 
         try {
             val intent = Intent(this, Class.forName(move.getName()))

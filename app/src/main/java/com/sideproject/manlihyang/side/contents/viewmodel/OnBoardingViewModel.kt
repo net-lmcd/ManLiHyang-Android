@@ -40,11 +40,11 @@ class OnBoardingViewModel<N : BaseNavigator>(
     }
 
     fun toRegisterEmailActivity() {
-        getNavigator().openNextActivity(Move.ToRegisterEmailActivity)
+        getNavigator().nextActivity(Move.ToRegisterEmailActivity)
     }
 
     fun toMainActivity() {
-        getNavigator().openNextActivity(Move.ToMainActivity)
+        getNavigator().nextActivity(Move.ToMainActivity)
     }
 
     fun textChanged() : TextWatcher = object : TextWatcher{

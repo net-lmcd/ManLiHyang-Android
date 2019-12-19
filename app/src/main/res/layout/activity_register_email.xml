@@ -36,10 +36,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:onClick="hideKeyboardFromEditText">
+                android:onClick="hideKeyboardChildAswell">
 
                 <TextView
                     android:id="@+id/_regi_title"
+                    style="@style/NotoBoldText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
@@ -70,6 +71,7 @@
 
                 <TextView
                     android:id="@+id/_email_title"
+                    style="@style/NotoRegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/_regi_title"
@@ -82,6 +84,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/email"
+                    style="@style/NotoRegularEdit"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginBottom="10dp"
@@ -95,7 +98,6 @@
                     android:textColor="#c8c8c8"
                     android:textStyle="normal"
                     android:gravity="start|center_vertical"
-                    android:background="@drawable/edittext_border"
                     app:layout_constraintTop_toBottomOf="@id/_email_title"
                     app:layout_constraintStart_toEndOf="@id/_start_guide"
                     app:layout_constraintEnd_toStartOf="@id/_end_guide"
@@ -106,6 +108,7 @@
 
                 <TextView
                     android:id="@+id/_pw_title"
+                    style="@style/NotoRegularText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/email"
@@ -118,6 +121,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/pw"
+                    style="@style/NotoRegularEdit"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginBottom="10dp"
@@ -131,7 +135,6 @@
                     android:textColor="#c8c8c8"
                     android:textStyle="normal"
                     android:gravity="start|center_vertical"
-                    android:background="@drawable/edittext_border"
                     app:layout_constraintTop_toBottomOf="@id/_pw_title"
                     app:layout_constraintStart_toEndOf="@id/_start_guide"
                     app:layout_constraintEnd_toStartOf="@id/_end_guide"
@@ -142,6 +145,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/pw_check"
+                    style="@style/NotoRegularEdit"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginBottom="10dp"
@@ -155,7 +159,6 @@
                     android:textColor="#c8c8c8"
                     android:textStyle="normal"
                     android:gravity="start|center_vertical"
-                    android:background="@drawable/edittext_border"
                     app:layout_constraintTop_toBottomOf="@id/pw"
                     app:layout_constraintStart_toEndOf="@id/_start_guide"
                     app:layout_constraintEnd_toStartOf="@id/_end_guide"
@@ -175,6 +178,7 @@
 
                     <CheckBox
                         android:id="@+id/policy_check"
+                        style="@style/NotoRegularText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
@@ -202,6 +206,7 @@
 
         <TextView
             android:id="@+id/next"
+            style="@style/NotoRegularText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
