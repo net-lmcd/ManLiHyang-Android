@@ -13,6 +13,7 @@ import com.sideproject.manlihyang.side.contents.view.onboarding.OnBoardingDatama
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
+import com.sideproject.manlihyang.side.contents.viewmodel.RegisterEmailViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -33,6 +34,7 @@ val viewModule : Module = module {
     viewModel { OnBoardingViewModel<BaseNavigator>(get()) }
     viewModel { MainViewModel<MainNavigator>(get()) }
     viewModel { MoveVIewModel<BaseNavigator>(get()) }
+    viewModel { RegisterEmailViewModel<BaseNavigator>(get()) }
 }
 
 val module = listOf(appModule, viewModule)

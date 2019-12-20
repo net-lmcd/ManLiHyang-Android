@@ -1,11 +1,12 @@
 package com.sideproject.manlihyang.side.contents.base
 
 import android.content.Context
+import com.sideproject.manlihyang.side.contents.local.preference.PreferenceHelper
 import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
 import com.sideproject.manlihyang.side.contents.remote.model.User
 
-open class BaseDataManager constructor(context: Context, private val preferenceManager: PreferenceManager) : BaseDataManagerImpl {
+open class BaseDataManager constructor(context: Context, private val preferenceManager: PreferenceManager) : PreferenceHelper {
 
     override fun getUser(): User {
         return preferenceManager.getUser()!!

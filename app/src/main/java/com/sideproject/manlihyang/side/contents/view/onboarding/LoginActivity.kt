@@ -26,6 +26,7 @@ import com.sideproject.manlihyang.databinding.ActivityLoginBinding
 import com.sideproject.manlihyang.side.contents.view.SplashActivity
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
+import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
 import com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import kotlinx.android.synthetic.main.activity_login.*
@@ -38,6 +39,7 @@ import java.util.*
 class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
 
     private val mCrashlytics: Crashlytics by inject()
+    private val mPreferenceManager : PreferenceManager by inject()
     override fun getLayoutId(): Int = R.layout.activity_login
 
     private val onBoardingViewModel: OnBoardingViewModel<BaseNavigator> by viewModel()
