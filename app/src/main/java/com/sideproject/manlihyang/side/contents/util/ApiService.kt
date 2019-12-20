@@ -1,15 +1,19 @@
 package com.sideproject.manlihyang.side.contents.util
 
 import android.content.Context
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.sideproject.manlihyang.BuildConfig
+import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
+import com.sideproject.manlihyang.side.contents.model.AuthResponse
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 object ApiService {
@@ -28,7 +32,7 @@ object ApiService {
                 .client(provideOKHttpClientWithoutAuth())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addConverterFactory(EnumConverterFactory())
+               // .addConverterFactory(EnumConverterFactory())
                 .build()
         }
         return mRerfoitWithoutAuth
@@ -37,7 +41,7 @@ object ApiService {
     private fun provideOKHttpClientWithoutAuth(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(provideHttpLoggingInterceptor())
-            .addNetworkInterceptor(StethoInterceptor())
+      //      .addNetworkInterceptor(StethoInterceptor())
             .build()
     }
 
@@ -53,7 +57,7 @@ object ApiService {
                 .client(provideOkHttpClient(context))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addConverterFactory(EnumConverterFactory())
+              //  .addConverterFactory(EnumConverterFactory())
                 .build()
         }
         return mRetrofit
@@ -76,12 +80,12 @@ object ApiService {
             val requestBuilder = original.newBuilder()
                 .url(url)
             if (context != null) {
-                val accessToken: AuthResponse =
-                    PreferencesManager.getInstance(context).getAccessToken()
+                val accessToken: AuthResponse? =
+                    PreferenceManager.getInstance(context).getAccessToken()
                 if (accessToken != null) {
                     requestBuilder.addHeader(
                         "Authorization",
-                        "Bearer " + accessToken.getAccessToken()
+                        "Bearer " + accessToken.accessToken
                     )
                 }
             }
@@ -99,16 +103,16 @@ object ApiService {
             val requestBuilder = original.newBuilder()
                 .url(url)
             if (context != null) {
-                val accessToken: AuthResponse =
-                    PreferencesManager.getInstance(context).getAccessToken()
+                val accessToken: AuthResponse? =
+                    PreferenceManager.getInstance(context).getAccessToken()
                 if (accessToken != null) {
                     if (!url.url().toString().endsWith("refresh")) {
-                        if (url.url().toString().contains(BuildConfig.BASE_URL_FOR_CHECK)) {
+                      //  if (url.url().toString().contains(BuildConfig.BASE_URL_FOR_CHECK)) {
                             requestBuilder.addHeader(
                                 "Authorization",
-                                "Bearer " + accessToken.getAccessToken()
+                                "Bearer " + accessToken.accessToken
                             )
-                        }
+                      // }
                     }
                 }
             }
@@ -122,12 +126,12 @@ object ApiService {
         response: okhttp3.Response,
         chain: Interceptor.Chain,
         requestBuilder: Request.Builder,
-        context: Context?
+        context: Context
     ): okhttp3.Response {
         if (response.code() == 401) {
             connectionTime++
             if (connectionTime < 10) {
-                val token: AuthResponse = PreferencesManager.getInstance(context).getAccessToken()
+                val token: AuthResponse? = PreferenceManager.getInstance(context).getAccessToken()
                 // create a new request and modify it accordingly using the new token
 //                token.setUser(null);
                 var refreshToken: Response<AuthResponse?>? = null
@@ -141,7 +145,7 @@ object ApiService {
                 if (refreshToken!!.code() == 201) {
                     connectionTime = 1
                     val newtoken: AuthResponse = refreshToken.body()!!
-                    if (newtoken.getAccessToken() != null) {
+                    if (newtoken.accessToken != null) {
                         token.setAccessToken(newtoken.getAccessToken())
                     }
                     if (newtoken.getRefreshToken() != null) {
