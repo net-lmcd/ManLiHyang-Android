@@ -38,23 +38,26 @@ class ManLiHyangApplication : Application() {
         }
     }
 
+    fun getManLiHyangApplicationContext(): ManLiHyangApplication {
+        checkNotNull(instance) { "this application does not inherit com.kakao.GlobalApplication" }
+        return instance!!
+    }
 
     companion object {
-
         private var instance : ManLiHyangApplication? = null
-
-        fun getManLiHyangApplicationContext(): ManLiHyangApplication {
-            checkNotNull(instance) { "this application does not inherit com.kakao.GlobalApplication" }
-            return instance!!
-        }
-
         private class KakaoSDKAdapter : KakaoAdapter() {
 
-            override fun getApplicationConfig(): IApplicationConfig? {
+/*            override fun getApplicationConfig(): IApplicationConfig? {
                 return object : IApplicationConfig {
                     override fun getApplicationContext(): Context {
                         return ManLiHyangApplication.getManLiHyangApplicationContext()
                     }
+                }
+            }*/
+
+            override fun getApplicationConfig(): IApplicationConfig {
+                return IApplicationConfig {
+                    instance?.getManLiHyangApplicationContext()
                 }
             }
 
@@ -81,7 +84,6 @@ class ManLiHyangApplication : Application() {
                     }
                 }
             }
-
         }
     }
 }

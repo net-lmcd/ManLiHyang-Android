@@ -1,18 +1,9 @@
 package com.sideproject.manlihyang.side.contents.util
 
-import android.content.Context
-import android.graphics.Color
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.databinding.BindingAdapter
-import androidx.databinding.InverseBindingAdapter
-import androidx.databinding.InverseBindingListener
 import androidx.lifecycle.LiveData
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sideproject.manlihyang.R
 

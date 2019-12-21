@@ -118,7 +118,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:5.11.2'
 
     // Kakao login
-    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.22.0'
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.25.0'
 
     // Firebase
     implementation 'com.google.firebase:firebase-analytics:17.2.1'
