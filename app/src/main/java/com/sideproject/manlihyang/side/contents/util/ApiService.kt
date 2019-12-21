@@ -1,6 +1,7 @@
 package com.sideproject.manlihyang.side.contents.util
 
 import android.content.Context
+import android.content.Intent
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -8,9 +9,12 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.sideproject.manlihyang.BuildConfig
 import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
+import com.sideproject.manlihyang.side.contents.repository.OnBoardingApi
+import com.sideproject.manlihyang.side.contents.view.onboarding.LoginActivity
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -94,7 +98,7 @@ object ApiService {
         }
     }
 
-    private fun provideAuthInterceptor(context: Context?): Interceptor {
+    private fun provideAuthInterceptor(context: Context): Interceptor {
         return Interceptor { chain: Interceptor.Chain ->
             val original = chain.request()
             val originalHttpUrl = original.url()
@@ -136,8 +140,8 @@ object ApiService {
 //                token.setUser(null);
                 var refreshToken: Response<AuthResponse?>? = null
                 try {
-                    refreshToken = provideApiWithoutAuth<T>(OnBoardingApi::class.java)
-                        .refreshToken(token).execute()
+                    refreshToken = provideApiWithoutAuth(OnBoardingApi::class.java)
+                        .refreshToken(token!!).execute()
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -146,17 +150,17 @@ object ApiService {
                     connectionTime = 1
                     val newtoken: AuthResponse = refreshToken.body()!!
                     if (newtoken.accessToken != null) {
-                        token.setAccessToken(newtoken.getAccessToken())
+                        token?.refreshToken = newtoken.refreshToken
                     }
-                    if (newtoken.getRefreshToken() != null) {
-                        token.setRefreshToken(newtoken.getRefreshToken())
+                    if (newtoken.refreshToken != null) {
+                        token?.refreshToken = newtoken.refreshToken
                     }
-                    PreferencesManager.getInstance(context).setAccessToken(Gson().toJson(token))
+                    PreferenceManager.getInstance(context).setAccessToken(Gson().toJson(token))
                     requestBuilder.removeHeader("Authorization")
-                    if (newtoken.getAccessToken() != null) {
+                    if (newtoken.accessToken != null) {
                         requestBuilder.addHeader(
                             "Authorization",
-                            "Bearer " + newtoken.getAccessToken()
+                            "Bearer " + newtoken.accessToken
                         )
                     }
                     val request = requestBuilder.build()
@@ -166,7 +170,7 @@ object ApiService {
                         e.printStackTrace()
                     }
                 } else {
-                    Function.logoutFromToken(context)
+                    logoutFromToken(context)
                     //                    return createWellDoneResponse(response, chain, requestBuilder, context);
                 }
             } else { //                Function.logoutFromToken(context, PreferencesManager.getInstance(context).getUser().getUserSeq());
@@ -191,5 +195,14 @@ object ApiService {
 
     fun <T> provideApiWithoutAuth(service: Class<T>?): T {
         return provideRetrofitWithoutAuth()!!.create(service)
+    }
+
+    fun logoutFromToken(context: Context) {
+        PreferenceManager.getInstance(context).remove(PreferenceManager.Key.signed)
+        PreferenceManager.getInstance(context).remove(PreferenceManager.Key.accessToken)
+        PreferenceManager.getInstance(context).clear()
+        val intent = Intent(context, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(intent)
     }
 }

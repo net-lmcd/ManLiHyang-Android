@@ -8,10 +8,13 @@ import com.sideproject.manlihyang.side.contents.base.BaseActivity
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 import com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
+import com.sideproject.manlihyang.side.contents.viewmodel.RegisterEmailViewModel
+import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding>() {
 
+    private val registerViewModel : RegisterEmailViewModel<BaseNavigator> by viewModel()
     private val onBoardingViewModel : OnBoardingViewModel<BaseNavigator> by viewModel()
     private val moveViewMode : MoveVIewModel<BaseNavigator> by viewModel()
 
@@ -22,10 +25,10 @@ class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding>() {
 
     override fun getLayoutId(): Int = R.layout.activity_register_email
     override fun initViewModel() {
-        onBoardingViewModel.setNavigator(this)
+        registerViewModel.setNavigator(this)
     }
 
     override fun initView() {
-        binding.setVariable(BR.onBoardingModel, onBoardingViewModel)
+        binding.setVariable(BR.registerModel, registerViewModel)
     }
 }

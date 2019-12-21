@@ -9,6 +9,10 @@ class BaseNavigatorImpl(
     private val activity: Activity
 ) : BaseNavigator {
 
+    override fun backActivity() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun nextActivity(move: Move) {
         activity?.startActivity(Intent(activity, Class.forName(move.getName())))
     }

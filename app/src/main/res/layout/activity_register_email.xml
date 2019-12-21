@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
-            name="onBoardingModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel" />
+            name="registerModel"
+            type="com.sideproject.manlihyang.side.contents.viewmodel.RegisterEmailViewModel" />
         <variable
             name="moveModel"
             type="com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel" />
@@ -85,11 +86,12 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/email"
                     style="@style/NotoRegularEdit"
+                    android:text="@={registerModel.email}"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginBottom="10dp"
                     android:hint="이메일을 입력하세요"
-                    android:inputType="textPassword"
+                    android:inputType="textVisiblePassword"
                     android:letterSpacing="-0.02"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -103,8 +105,25 @@
                     app:layout_constraintEnd_toStartOf="@id/_end_guide"
                     android:layout_marginTop="8dp"
                     android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingStart="18dp"/>
+                    android:paddingStart="18dp"
+                    notblank="@{registerModel.isNotBlankEmail}"
+                    validation="@{registerModel.isValidEmail}"/>
+
+                <TextView
+                    style="@style/NotoRegularText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/email"
+                    app:layout_constraintStart_toEndOf="@id/_start_guide"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="5dp"
+                    android:text="이미 사용중인 이메일 입니다."
+                    android:textSize="12sp"
+                    android:textColor="@color/red"
+                    android:visibility="@{registerModel.isNotBlankEmail &amp;&amp; !registerModel.isValidEmail ? View.VISIBLE : View.INVISIBLE}"
+                    />
 
                 <TextView
                     android:id="@+id/_pw_title"
@@ -122,6 +141,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/pw"
                     style="@style/NotoRegularEdit"
+                    android:text="@={registerModel.password}"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginBottom="10dp"
@@ -140,12 +160,16 @@
                     app:layout_constraintEnd_toStartOf="@id/_end_guide"
                     android:layout_marginTop="8dp"
                     android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingStart="18dp"/>
+                    android:paddingStart="18dp"
+                    notblank="@{registerModel.isNotBlankPassword()}"
+                    validation="@{registerModel.isValidPassword()}"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/pw_check"
                     style="@style/NotoRegularEdit"
+                    android:text="@={registerModel.passwordChecked}"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginBottom="10dp"
@@ -164,8 +188,11 @@
                     app:layout_constraintEnd_toStartOf="@id/_end_guide"
                     android:layout_marginTop="10dp"
                     android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingStart="18dp"/>
+                    android:paddingStart="18dp"
+                    notblank="@{registerModel.isNotBlankPasswordCheck()}"
+                    validation="@{registerModel.isSamePassword()}"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
@@ -186,6 +213,7 @@
                         android:text="[필수] 이용약관 및 개인정보 수집/이용에 동의"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        android:checked="@={registerModel.policyChecked}"
                         />
 
                     <ImageView
@@ -212,11 +240,13 @@
             android:layout_marginBottom="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:background="@color/gray"
             android:gravity="center"
             android:text="다음"
             android:textSize="15sp"
             android:textColor="#ffffff"
+            android:background="@{registerModel.isValidRegister ? @color/black : @color/gray}"
+            android:enabled="@{registerModel.isValidRegister}"
+            android:onClick="@{()->registerModel.onNextClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/_nested"
             app:layout_constraintVertical_bias="1"

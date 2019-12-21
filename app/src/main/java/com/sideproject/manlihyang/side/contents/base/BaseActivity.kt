@@ -79,6 +79,10 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
         }
     }
 
+    override fun backActivity() {
+        onBackPressed()
+    }
+
     override fun nextActivity(move: Move) {
 
         startActivity(Intent(this, Class.forName(move.getName())))

@@ -9,6 +9,8 @@ interface BaseNavigator {
      * @param move: Open activity depending on move
      * @see Move
      */
+    fun backActivity()
+
     fun nextActivity(move: Move)
 
     /**

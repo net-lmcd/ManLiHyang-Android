@@ -1,40 +1,16 @@
 package com.sideproject.manlihyang.side.contents.util
 
-import android.text.TextUtils
+import android.util.Patterns
 import java.util.regex.Pattern
 
-class Validation {
+enum class Validation(val regex: String){
+    NAME("^[a-zA-Z가-힣](?!.*?\\\\s{2})[a-zA-Z가-힣 ]{0,28}[a-zA-Z가-힣]$"),
+    EMAIL(Patterns.EMAIL_ADDRESS.pattern()),
+    PHONE("^01[016789][0-9]{3,4}[0-9]{4}$"),
+    PASSWORD("^[0-9a-zA-Z!@#\$%^&*()?+-_~=/]{6,40}\$"),
+    OTP_CODE("^[0-9]{6,6}$");
 
-    companion object {
-
-        fun isValidOrNot(input : String, tag : String) : Boolean {
-            var result = false
-            if (TextUtils.isEmpty(input)) { return false }
-            val validator : String = when(tag) {
-                CheckType.Email.tag -> "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$"
-                CheckType.Name.tag -> ""
-                CheckType.Password.tag -> "^[0-9a-zA-Z!@#\$%^&*()?+-_~=/]{6,40}\$"
-                CheckType.PhoneNumber.tag -> "^01[016789][0-9]{3,4}[0-9]{4}$"
-                CheckType.Error.tag -> ""
-                else -> ""
-            }
-
-            if(validator == "") {
-                return false
-            } else {
-                val pattern = Pattern.compile(validator)
-                val matcher = pattern.matcher(input)
-                if (matcher.matches()) { result = true }
-            }
-            return result
-        }
-    }
-
-    enum class CheckType(var tag : String) {
-        Email("email"),
-        Name("name"),
-        Password("password"),
-        PhoneNumber("phonenumber"),
-        Error("error")
+    fun validate(text: String): Boolean{
+        return Pattern.matches(this.regex, text)
     }
 }

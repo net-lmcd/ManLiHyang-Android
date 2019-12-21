@@ -34,7 +34,7 @@ val viewModule : Module = module {
     viewModel { OnBoardingViewModel<BaseNavigator>(get()) }
     viewModel { MainViewModel<MainNavigator>(get()) }
     viewModel { MoveVIewModel<BaseNavigator>(get()) }
-    viewModel { RegisterEmailViewModel<BaseNavigator>(get()) }
+    viewModel { RegisterEmailViewModel<BaseNavigator>(get(), get()) }
 }
 
 val module = listOf(appModule, viewModule)
