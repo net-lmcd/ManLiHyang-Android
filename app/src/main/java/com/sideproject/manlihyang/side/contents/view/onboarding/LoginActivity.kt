@@ -71,6 +71,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
             FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
         }*/
 
+        Log.e("keyhash ", getHashKey(this))
         facebook.setOnClickListener {
             val loginManager : LoginManager = LoginManager.getInstance()
             loginManager.apply {
