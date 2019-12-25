@@ -22,6 +22,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('') // 기준은 App 폴더 기준이다.
+            storePassword ''
+            keyAlias ""
+            keyPassword ''
+        }
+    }
+
     buildTypes {
         debug {
             buildConfigField "String", "BASE_URL", "\"https://api-dev.manlihyang.com/\""
@@ -29,6 +38,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
+            signingConfig signingConfigs.release
             buildConfigField "String", "BASE_URL", "\"https://api-dev.manlihyang.com/\""
 
             minifyEnabled true

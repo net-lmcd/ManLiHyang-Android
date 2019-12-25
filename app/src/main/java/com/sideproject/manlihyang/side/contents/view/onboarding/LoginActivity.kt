@@ -9,6 +9,7 @@ import android.util.Base64
 import android.util.Base64.NO_WRAP
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.facebook.*
 import com.facebook.login.LoginManager
@@ -70,7 +71,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
             FacebookSdk.setIsDebugEnabled(true);
             FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
         }*/
-        Log.e("hash key ", getHashKey(this))
 
         facebook.setOnClickListener {
             val loginManager : LoginManager = LoginManager.getInstance()
@@ -92,15 +92,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
                 sessionCallback = SessionCallback()
                 addCallback(sessionCallback)
                 open(AuthType.KAKAO_LOGIN_ALL, this@LoginActivity)
-                Session.getCurrentSession().checkAndImplicitOpen()
-                /*
+
                 if(Session.getCurrentSession().isOpenable()){
-
-                }*/
-
-                Log.e("kakaotoken", "토큰 : " + Session.getCurrentSession().getTokenInfo().getAccessToken());
-                Log.e("kakaotoken", "토큰 리프레쉬토큰 : " + Session.getCurrentSession().getTokenInfo().getRefreshToken());
-                Log.e("kakaotoken", "토큰 파이어데이트 : " + Session.getCurrentSession().getTokenInfo().getRemainingExpireTime());
+                    Session.getCurrentSession().checkAndImplicitOpen()
+                    Log.e("kakaotoken", "토큰 : " + Session.getCurrentSession().getTokenInfo().getAccessToken());
+                    Log.e("kakaotoken", "토큰 리프레쉬토큰 : " + Session.getCurrentSession().getTokenInfo().getRefreshToken());
+                    Log.e("kakaotoken", "토큰 파이어데이트 : " + Session.getCurrentSession().getTokenInfo().getRemainingExpireTime());
+                }
             }
         }
 
@@ -172,35 +170,31 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
     inner class SessionCallback : ISessionCallback {
         override fun onSessionOpenFailed(exception: KakaoException?) {
             //Maybe when the hash key or android_native_key is invalid, it happens
-            Log.e("SessionCallback :: ", "onSessionOpenFailed : " + exception?.message);
+            Toast.makeText(this@LoginActivity, "${exception?.message}",Toast.LENGTH_SHORT).show()
         }
 
         override fun onSessionOpened() {
-            Log.e("asdf", "카카오 로그인 성공")
             requestMe()
         }
 
         fun requestMe() {
-
-            var keys: ArrayList<String> = arrayListOf();
-            keys.add("properties.nickname");
-            keys.add("properties.profile_image");
-            keys.add("kakao_account.email");
-
-            UserManagement.getInstance().me(keys, object : MeV2ResponseCallback() {
+            UserManagement.getInstance().me(object : MeV2ResponseCallback() {
                 override fun onSuccess(result: MeV2Response?) {
-                    Log.e(
+                    /*Log.e(
                         "kakao onSuccess",
                         "requestMe onSuccess message : " + result?.getKakaoAccount()?.getEmail() + " " + result?.getId() + " " + result?.getNickname()
                     )
+                    */
+                    Toast.makeText(applicationContext, "requestMe executed", Toast.LENGTH_SHORT).show()
                     onBoardingViewModel.toMainActivity()
                 }
 
                 override fun onSessionClosed(errorResult: ErrorResult?) {
-                    Log.e(
+                    /*Log.e(
                         "kakao onSessionClosed",
                         "requestMe onSessionClosed message : " + errorResult?.getErrorMessage()
-                    )
+                    )*/
+                    Toast.makeText(applicationContext, "${errorResult?.errorMessage}", Toast.LENGTH_SHORT).show()
                 }
 
             })
@@ -245,7 +239,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
                     try {
                         val md = MessageDigest.getInstance("SHA")
                         md.update(signature.toByteArray())
-                        return Base64.encodeToString(md.digest(), Base64.NO_WRAP)
+                        return Base64.encodeToString(md.digest(), NO_WRAP)
                     } catch (e: NoSuchAlgorithmException) {
                         Log.e("Unable to get MessageD", " $signature")
                     }

@@ -2,8 +2,10 @@ package com.sideproject.manlihyang.side.contents.application
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import com.crashlytics.android.Crashlytics
 import com.kakao.auth.*
+import com.kakao.util.helper.Utility
 import com.sideproject.manlihyang.side.contents.di.module
 import io.fabric.sdk.android.Fabric
 import org.koin.android.ext.android.inject
