@@ -2,6 +2,7 @@ package com.sideproject.manlihyang.side.contents.repository
 
 import com.kakao.auth.network.request.AuthRequest
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
+import com.sideproject.manlihyang.side.contents.model.onboardingmodels.EmailDuplicationCheck
 import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.Call
@@ -15,8 +16,8 @@ interface OnBoardingApi {
     @POST("auth/refresh")
     fun refreshToken(@Body token: AuthResponse): Call<AuthResponse>
 
-    @GET("/auth/register")
-    fun checkForDuplication(@Query("email") email: String) : Completable
+    @POST("users/confirm")
+    fun checkForDuplication(@Body emailDuplicationCheck: EmailDuplicationCheck) : Completable
 
 /*    @POST("/auth/register")
     fun register(@Body userCreate: UserCreateRequest) : Single<AuthResponse>

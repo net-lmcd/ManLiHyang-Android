@@ -5,6 +5,7 @@ import com.kakao.auth.network.request.AuthRequest
 import com.sideproject.manlihyang.side.contents.base.BaseDataManager
 import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
+import com.sideproject.manlihyang.side.contents.model.onboardingmodels.EmailDuplicationCheck
 import com.sideproject.manlihyang.side.contents.repository.OnBoardingApi
 import com.sideproject.manlihyang.side.contents.util.ApiService
 import io.reactivex.Completable
@@ -27,7 +28,7 @@ class OnBoardingDatamanager(
         return onBoardingApi.refreshToken(token)
     }
 
-    override fun checkForDuplication(email: String): Completable {
-        return onBoardingApi.checkForDuplication(email)
+    override fun checkForDuplication(emailDuplicationCheck: EmailDuplicationCheck): Completable {
+        return onBoardingApi.checkForDuplication(emailDuplicationCheck)
     }
 }

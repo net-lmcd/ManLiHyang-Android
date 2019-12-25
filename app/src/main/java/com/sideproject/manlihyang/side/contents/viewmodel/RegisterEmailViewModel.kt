@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 import com.sideproject.manlihyang.side.contents.base.BaseViewModel
+import com.sideproject.manlihyang.side.contents.model.onboardingmodels.EmailDuplicationCheck
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
 import com.sideproject.manlihyang.side.contents.util.Validation
 import com.sideproject.manlihyang.side.contents.util.extension.combinelivedata
@@ -52,7 +53,27 @@ class RegisterEmailViewModel<N : BaseNavigator>(
                 passwordchecked!! && policychecked!!
     }
 
+    fun duplicationChecked() {
+        val inputEmail = email.value ?: return
+        compositeDisposable.add(
+            onBoardingDatamanager.checkForDuplication(
+                EmailDuplicationCheck(
+                    service_code = 1000,
+                    email = inputEmail
+                )
+            )
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.main())
+                .subscribe({
+                    Log.e("test","success")
+                }, {
+                Log.e("test","failed")
+            })
+        )
+    }
+
     fun onNextClicked() {
-        getNavigator().backActivity()
+        duplicationChecked()
+        //getNavigator().backActivity()
     }
 }

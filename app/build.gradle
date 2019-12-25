@@ -24,22 +24,22 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('') // 기준은 App 폴더 기준이다.
-            storePassword ''
-            keyAlias ""
-            keyPassword ''
+            storeFile file('manlihyang_window.jks') // 기준은 App 폴더 기준이다.
+            storePassword '12tjswnr8#$'
+            keyAlias "iron"
+            keyPassword '12tjswnr8#$'
         }
     }
 
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", "\"https://api-dev.manlihyang.com/\""
+            buildConfigField "String", "BASE_URL", "\"http://13.125.245.254:31323/\""
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
             signingConfig signingConfigs.release
-            buildConfigField "String", "BASE_URL", "\"https://api-dev.manlihyang.com/\""
+            buildConfigField "String", "BASE_URL", "\"http://13.125.245.254:31323/\""
 
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
