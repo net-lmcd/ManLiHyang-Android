@@ -86,7 +86,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/email"
                     style="@style/NotoRegularEdit"
-                    android:text="@={registerModel.email}"
+                    android:text="@={registerModel.observableEmail}"
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginBottom="10dp"
@@ -119,10 +119,9 @@
                     app:layout_constraintStart_toEndOf="@id/_start_guide"
                     android:layout_marginTop="6dp"
                     android:layout_marginStart="5dp"
-                    android:text="이미 사용중인 이메일 입니다."
+                    android:text="@{registerModel.emailNotify}"
                     android:textSize="12sp"
                     android:textColor="@color/red"
-                    android:visibility="@{registerModel.isNotBlankEmail &amp;&amp; !registerModel.isValidEmail ? View.VISIBLE : View.INVISIBLE}"
                     />
 
                 <TextView

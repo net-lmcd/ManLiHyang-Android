@@ -185,7 +185,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
                         "requestMe onSuccess message : " + result?.getKakaoAccount()?.getEmail() + " " + result?.getId() + " " + result?.getNickname()
                     )
                     */
-                    Toast.makeText(applicationContext, "requestMe executed", Toast.LENGTH_SHORT).show()
                     onBoardingViewModel.toMainActivity()
                 }
 
@@ -252,5 +251,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
         }
 
         return null
+    }
+
+    fun onParams1(out : () -> String ) {
+
+    }
+
+    fun onParams2(out : (String) -> String ) {
+
     }
 }

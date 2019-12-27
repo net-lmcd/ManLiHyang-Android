@@ -24,7 +24,7 @@ val appModule : Module = module {
     single { Crashlytics() }
     single { AppSchedulerProvider() as SchedulerProvider }
     single { PreferenceManager(get()) }
-    single { OnBoardingDatamanager(get(), get()) }
+    single { OnBoardingDatamanager(get(), get(), get()) }
 
 }
 
