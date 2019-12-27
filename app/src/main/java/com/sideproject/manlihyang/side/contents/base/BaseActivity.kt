@@ -10,8 +10,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.sideproject.manlihyang.R
+import com.sideproject.manlihyang.side.contents.util.Dialog
 import com.sideproject.manlihyang.side.contents.util.Move
 import com.sideproject.manlihyang.side.contents.util.Keyboard
+import com.sideproject.manlihyang.side.contents.util.MessageDialogClickListener
 import com.sideproject.manlihyang.side.contents.widget.CircularProgress
 import kotlinx.android.synthetic.main.actionbar.*
 import java.util.*
@@ -38,10 +40,10 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.lifecycleOwner = this
         loading = CircularProgress(this)
-
         initViewModel()
         setActionBar()
         initView()
+        binding.executePendingBindings()
     }
 
     fun setActionBar() {
@@ -145,15 +147,18 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
     }
 
     override fun showDialogMessage(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Dialog.showMessage(this, supportFragmentManager, message)
     }
 
     override fun showDialogMessage(message: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Dialog.showMessage(this, supportFragmentManager, getString(message))
     }
 
     override fun showDialogMessageAndFinish(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Dialog.showMessage(this, supportFragmentManager, message)
+            .setMessageDialogClickListener(object : MessageDialogClickListener {
+                override fun confirmClick() { finish() }
+            })
     }
 
     override fun onRefreshData() {
@@ -161,6 +166,6 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
     }
 
     override fun finishActivityFromViewModel() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        onBackPressed()
     }
 }
