@@ -19,3 +19,71 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+##---------------Begin: proguard configuration for Retrofit  ----------
+# Platform calls Class.forName on types which do not exist on Android to determine platform.
+-dontnote retrofit2.Platform
+
+# Platform used when running on Java 8 VMs. Will not be used at runtime.
+-dontwarn retrofit2.Platform$Java8
+
+# Retain generic type information for use by reflection by converters and adapters.
+-keepattributes Signature
+
+# Retain declared checked exceptions for use by a Proxy instance.
+-keepattributes Exceptions
+
+-dontwarn okio.**
+-dontwarn okhttp3.**
+-dontwarn javax.annotation.**
+##---------------End: proguard configuration for Retrofit  ----------
+
+##---------------Begin: proguard configuration for Gson  ----------
+# Gson uses generic type information stored in a class file when working with fields. Proguard
+# removes such information by default, so configure it to keep all of it.
+-keepattributes Signature
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.google.gson.examples.android.model.** { <fields>; }
+
+# Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+-keep class * implements com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+
+##---------------End: proguard configuration for Gson  ----------
+
+##---------------Begin: proguard configuration for SupportLibrary  ----------
+-keep class android.support.v4.**
+-keep interface android.support.v4.**
+
+-keep class android.support.v7.**
+-keep interface android.support.v7.**
+##---------------End: proguard configuration for SupportLibrary  ----------
+
+##---------------Begin: proguard configuration for Crashlytics  ----------
+-keep class com.crashlytics.** { *; }
+-dontwarn com.crashlytics.**
+##---------------End: proguard configuration for Crashlytics  ----------
+
+##---------------Begin: proguard configuration for Koin  ----------
+-keepnames class androidx.lifecycle.ViewModel
+-keepclassmembers public class * extends androidx.lifecycle.ViewModel { public <init>(...); }
+-keepclassmembers class com.lebao.app.domain.** { public <init>(...); }
+-keepclassmembers class * { public <init>(...); }
+##---------------End: proguard configuration for Koin  ----------
+
+-keepclassmembers class **.R$* {public static <fields>;}
+-keep class **.R$*
