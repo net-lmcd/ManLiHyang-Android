@@ -134,7 +134,7 @@ public class Dialog {
         }
 
         public MessageDialogFragment build(){
-            final MessageDialogFragment dialogFragment =  MessageDialogFragment.Companion.instantiate(
+            final MessageDialogFragment dialogFragment =  MessageDialogFragment.instantiate(
                     title, subTitle,
                     negativeTitle, positiveTitle,
                     negativeColor, positiveColor

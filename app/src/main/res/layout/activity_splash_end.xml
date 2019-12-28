@@ -17,12 +17,13 @@
 
     <TextView
         android:id="@+id/_title_start1"
+        style="@style/NotoBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/_top_guide"
         app:layout_constraintStart_toStartOf="parent"
         android:alpha="1"
-        android:layout_marginStart="115dp"
+        android:layout_marginStart="125dp"
         android:textSize="50sp"
         android:textColor="@color/black"
         android:text="만"
@@ -30,6 +31,7 @@
 
     <TextView
         android:id="@+id/_title_start2"
+        style="@style/NotoBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/_top_guide"
@@ -44,12 +46,13 @@
 
     <TextView
         android:id="@+id/_title_start3"
+        style="@style/NotoBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/_top_guide"
         app:layout_constraintEnd_toEndOf="parent"
         android:alpha="1"
-        android:layout_marginRight="115dp"
+        android:layout_marginRight="125dp"
         android:textSize="50sp"
         android:textColor="@color/black"
         android:text="향"
@@ -68,6 +71,7 @@
 
     <TextView
         android:id="@+id/_title_end"
+        style="@style/NotoBoldText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

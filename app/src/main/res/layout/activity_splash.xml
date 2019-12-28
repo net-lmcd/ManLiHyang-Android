@@ -21,6 +21,7 @@
 
         <TextView
             android:id="@+id/_title_start1"
+            style="@style/NotoBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/_top_guide"
@@ -34,6 +35,7 @@
 
         <TextView
             android:id="@+id/_title_start2"
+            style="@style/NotoBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/_top_guide"
@@ -47,6 +49,7 @@
 
         <TextView
             android:id="@+id/_title_start3"
+            style="@style/NotoBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/_top_guide"
@@ -71,6 +74,7 @@
 
         <TextView
             android:id="@+id/_title_end"
+            style="@style/NotoBoldText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

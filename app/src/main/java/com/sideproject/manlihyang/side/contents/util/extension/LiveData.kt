@@ -15,30 +15,35 @@ inline fun <T,R> LiveData<T>.map(
     }
 }
 
-inline fun<T1,T2,T3,T4,R> LiveData<T1>.combinelivedata(
+inline fun<T0,T1,T2,T3,T4,R> LiveData<T0>.combinelivedata(
+    first : LiveData<T1>,
     second : LiveData<T2>,
     third : LiveData<T3>,
     fourth : LiveData<T4>,
     default : R? = null,
-    crossinline block: (T1?, T2?, T3?, T4?) -> R?
+    crossinline block: (T0?, T1?, T2?, T3?, T4?) -> R?
 ) : LiveData<R> {
     return MediatorLiveData<R>().apply {
         value = default
-        addSource(this@combinelivedata) { item : T1? ->
+        addSource(this@combinelivedata) { item : T0? ->
             this.value =
-                block.invoke(item, second.value, third.value, fourth.value)
+                block.invoke(item, first.value, second.value, third.value, fourth.value)
+        }
+        addSource(first) { item : T1? ->
+            this.value =
+                block.invoke(this@combinelivedata.value, item, second.value, third.value, fourth.value)
         }
         addSource(second) { item : T2? ->
             this.value =
-                block.invoke(this@combinelivedata.value, item, third.value, fourth.value)
+                block.invoke(this@combinelivedata.value, first.value, item, third.value, fourth.value)
         }
         addSource(third) { item : T3? ->
             this.value =
-                block.invoke(this@combinelivedata.value, second.value, item, fourth.value)
+                block.invoke(this@combinelivedata.value, first.value, second.value, item, fourth.value)
         }
         addSource(fourth) { item : T4? ->
             this.value =
-                block.invoke(this@combinelivedata.value, second.value, third.value, item)
+                block.invoke(this@combinelivedata.value, first.value, second.value, third.value, item)
         }
     }
 }

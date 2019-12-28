@@ -21,9 +21,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 object ApiService {
+
+    var connectionTime = 1
     private var mRetrofit: Retrofit? = null
     private var mRerfoitWithoutAuth: Retrofit? = null
-    var connectionTime = 1
+
     private fun provideRetrofitWithoutAuth(): Retrofit? {
         if (mRerfoitWithoutAuth == null) {
             val gson = GsonBuilder()
@@ -45,7 +47,7 @@ object ApiService {
     private fun provideOKHttpClientWithoutAuth(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(provideHttpLoggingInterceptor())
-      //      .addNetworkInterceptor(StethoInterceptor())
+            .addNetworkInterceptor(StethoInterceptor())
             .build()
     }
 
@@ -70,7 +72,7 @@ object ApiService {
     private fun provideOkHttpClient(context: Context): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(provideAuthInterceptor(context))
-            .addInterceptor(provideHttpLoggingInterceptor())
+            .addInterceptor(provideHttpLoggingInterceptor())   // log로 request, response 확인
             .addNetworkInterceptor(StethoInterceptor())
             .build()
     }

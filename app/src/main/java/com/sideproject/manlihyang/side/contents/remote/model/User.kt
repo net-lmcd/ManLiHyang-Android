@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName
 import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.side.contents.model.UserRequest
 import java.io.Serializable
+import java.sql.Timestamp
 
 // "id": 12,
 //  "name": "Iron",
@@ -18,21 +19,39 @@ data class User(
 
     @SerializedName("id")
     @Expose
-    val id: Long = 0L,
-    @SerializedName("name")
+    val id: Int = 0,
+    @SerializedName("usn")
     @Expose
     private var _name : String = "",
-    @SerializedName("phone")
+    @SerializedName("username")
     @Expose
-    private var _phone : String = "",
-    @SerializedName("profilePath")
-    @Expose
-    private var _profilePath : String? = "",
+    private var username : String = "",
     @SerializedName("email")
     @Expose
-    private var _email : String = ""
+    private var email : String? = "",
+    @SerializedName("password")
+    @Expose
+    private var password : String = "",
+    @SerializedName("password")
+    @Expose
+    private var created_at : Timestamp = Timestamp(0),
+    @SerializedName("notice")
+    @Expose
+    private var notice : Boolean = false,
+    @SerializedName("notice_chat")
+    @Expose
+    private var notice_chat : Boolean = false,
+    @SerializedName("profile_url")
+    @Expose
+    private var profile_url : String? = null,
+    @SerializedName("is_blocked")
+    @Expose
+    private var is_blocked : Boolean = false,
+    @SerializedName("report_cnt")
+    @Expose
+    private var report_cnt : Int = 0
 ) : BaseObservable(), Serializable {
-    @get:Bindable
+ /*   @get:Bindable
     var name: String
         get() = _name
         set(value) {
@@ -69,5 +88,5 @@ data class User(
             profilePath = _profilePath,
             name = _name
         )
-    }
+    }*/
 }

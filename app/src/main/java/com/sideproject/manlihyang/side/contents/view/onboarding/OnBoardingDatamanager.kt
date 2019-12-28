@@ -15,6 +15,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Call
+import retrofit2.Callback
 
 class OnBoardingDatamanager(
     val context: Context,
@@ -42,7 +43,7 @@ class OnBoardingDatamanager(
     }
 
     override fun checkForDuplication(emailDuplicationRequest: EmailDuplicationRequest): Single<EmailDuplicationResponse> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return onBoardingApi.checkForDuplication(emailDuplicationRequest)
     }
 
     override fun checkforduplication(email : String): Observable<EmailDuplicationResponse> {

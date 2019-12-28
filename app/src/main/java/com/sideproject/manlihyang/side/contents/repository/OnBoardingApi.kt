@@ -9,6 +9,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.http.*
 
 interface OnBoardingApi {
@@ -24,6 +25,8 @@ interface OnBoardingApi {
 
     @POST("users/confirm")
     fun checkForDuplication(@Body emailDuplicationRequest: EmailDuplicationRequest) : Single<EmailDuplicationResponse>
+
+
 
 /*    @POST("/auth/register")
     fun register(@Body userCreate: UserCreateRequest) : Single<AuthResponse>
