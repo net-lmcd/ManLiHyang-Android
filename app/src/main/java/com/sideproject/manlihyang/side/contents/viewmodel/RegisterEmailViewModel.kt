@@ -84,13 +84,13 @@ class RegisterEmailViewModel<N : BaseNavigator>(
                     .observeOn(schedulerProvider.main())
                     .subscribe({
                         isServicableEmail.value = true
-                        getNavigator().showDialogMessage("사용 가능한 이메일 입니다.")
+                        getNavigator().showDialogMessage("사용 가능한 이메일 입니다")
                     }, {
                         if(it is HttpException) when(it.code()) {
                             409 ->
-                                getNavigator().showDialogMessage("이미 사용하고 있는 이메일 입니다.")
+                                getNavigator().showDialogMessage("이미 사용하고 있는 이메일 입니다")
                             500 ->
-                                getNavigator().showDialogMessage("잠시후 다시 시도해주세요.")
+                                getNavigator().showDialogMessage("잠시후 다시 시도해주세요")
                             else ->
                                 getNavigator().showDialogMessage("${it.message()}")
                         }
@@ -158,9 +158,9 @@ class RegisterEmailViewModel<N : BaseNavigator>(
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.main())
                 .subscribe({
-                    getNavigator().showDialogMessageAndFinish("회원가입이 성공적으로 완료되었습니다.")
+                    getNavigator().showDialogMessageAndFinish("회원가입이 성공적으로 완료되었습니다")
                 },{
-                    getNavigator().showDialogMessage("회원가입에 실패하셨습니다.")
+                    getNavigator().showDialogMessage("회원가입에 실패하셨습니다")
                 })
         )
     }

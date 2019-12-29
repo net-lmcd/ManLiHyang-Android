@@ -32,6 +32,7 @@ import com.sideproject.manlihyang.side.contents.view.SplashActivity
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
+import com.sideproject.manlihyang.side.contents.util.AsteriskPasswordTransformationMethod
 import com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import kotlinx.android.synthetic.main.activity_login.*

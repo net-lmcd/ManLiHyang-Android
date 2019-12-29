@@ -67,7 +67,7 @@ object Bindings {
             notblank?.value ?: return && !(validation.value ?: return) ->
                 R.drawable.button_nocheck_red
             notblank.value ?: return && (validation.value ?: return) ->
-                R.drawable.button_check_green
+                R.drawable.button_check_blue
             else -> null
         }
 

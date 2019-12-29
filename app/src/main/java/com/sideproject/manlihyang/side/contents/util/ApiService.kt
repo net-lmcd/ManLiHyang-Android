@@ -71,7 +71,7 @@ object ApiService {
 
     private fun provideOkHttpClient(context: Context): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(provideAuthInterceptor(context))
+       //     .addInterceptor(provideAuthInterceptor(context))
             .addInterceptor(provideHttpLoggingInterceptor())   // log로 request, response 확인
             .addNetworkInterceptor(StethoInterceptor())
             .build()
