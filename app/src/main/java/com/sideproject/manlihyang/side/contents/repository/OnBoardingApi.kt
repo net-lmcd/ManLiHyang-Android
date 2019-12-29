@@ -23,7 +23,7 @@ interface OnBoardingApi {
     @POST("auth/refresh")
     fun refreshToken(@Body token: AuthResponse): Call<AuthResponse>
 
-    @POST("users/confirm")
+    @POST("users/1000/confirm")
     fun checkForDuplication(@Body emailDuplicationRequest: EmailDuplicationRequest) : Single<EmailDuplicationResponse>
 
 

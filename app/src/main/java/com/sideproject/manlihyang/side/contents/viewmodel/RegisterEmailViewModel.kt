@@ -92,7 +92,7 @@ class RegisterEmailViewModel<N : BaseNavigator>(
                             500 ->
                                 getNavigator().showDialogMessage("잠시후 다시 시도해주세요")
                             else ->
-                                getNavigator().showDialogMessage("${it.message()}")
+                                getNavigator().showDialogMessage(it.message())
                         }
                     })
             )

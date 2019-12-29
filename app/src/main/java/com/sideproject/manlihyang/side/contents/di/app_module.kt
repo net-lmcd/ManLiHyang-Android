@@ -2,6 +2,7 @@ package com.sideproject.manlihyang.side.contents.di
 
 import android.app.Activity
 import com.crashlytics.android.Crashlytics
+import com.google.firebase.messaging.FirebaseMessaging
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 import com.sideproject.manlihyang.side.contents.base.BaseNavigatorImpl
 import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
@@ -25,7 +26,7 @@ val appModule : Module = module {
     single { AppSchedulerProvider() as SchedulerProvider }
     single { PreferenceManager(get()) }
     single { OnBoardingDatamanager(get(), get(), get()) }
-
+    single { FirebaseMessaging.getInstance() }
 }
 
 //viewModel, factory 사용
