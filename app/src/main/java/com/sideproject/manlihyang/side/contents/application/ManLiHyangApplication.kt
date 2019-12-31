@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import com.crashlytics.android.Crashlytics
+import com.google.firebase.FirebaseApp
+import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.auth.*
 import com.kakao.util.helper.Utility
 import com.sideproject.manlihyang.side.contents.di.module
@@ -16,6 +18,7 @@ import org.koin.core.context.startKoin
 class ManLiHyangApplication : Application() {
 
     private val mCrashlytics : Crashlytics by inject()
+    private val mMessaging: FirebaseMessaging by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -23,6 +26,7 @@ class ManLiHyangApplication : Application() {
         //Koin must be started first because of dependency injection
         initializeKoin()
         initializeFabric()
+        initializeFirebase()
 
         //Kakao Login
         instance = this
@@ -38,6 +42,10 @@ class ManLiHyangApplication : Application() {
             androidContext(this@ManLiHyangApplication)
             modules(module)
         }
+    }
+
+    private fun initializeFirebase() {
+        FirebaseApp.initializeApp(this)
     }
 
     fun getManLiHyangApplicationContext(): ManLiHyangApplication {

@@ -14,6 +14,8 @@ import com.crashlytics.android.Crashlytics
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.kakao.auth.AuthType
 import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
@@ -73,6 +75,18 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
             FacebookSdk.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
         }*/
 
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener {
+                if (!it.isSuccessful) {
+                    Log.e("LoginActivity", "getInstanceId failed", it.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                val token = it.result?.token
+
+                Log.e("LoginActivity", token)
+            })
         facebook.setOnClickListener {
             val loginManager : LoginManager = LoginManager.getInstance()
             loginManager.apply {
