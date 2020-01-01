@@ -3,10 +3,8 @@ package com.sideproject.manlihyang.side.contents.view.main
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 
 import com.sideproject.manlihyang.R
@@ -26,6 +24,11 @@ class FourthFragment : BaseFragment<FragmentFourthBinding>()  {
         val customTabsIntent = builder.build()
         customTabsIntent.launchUrl(view.context, Uri.parse(url))
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.bottom_nav_menu, menu)
     }
 
     companion object {

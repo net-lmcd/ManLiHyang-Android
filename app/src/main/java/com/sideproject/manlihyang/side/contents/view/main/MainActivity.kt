@@ -24,7 +24,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
-    private val mCrashlytics : Crashlytics by inject()
     private val mainViewModel : MainViewModel<MainNavigator> by viewModel()
 
     override fun getLayoutId(): Int = R.layout.activity_main
@@ -40,7 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
     override fun onNavigationTabSelected(tab: TypeofTab) {
 
-        val webSetting = webView.settings
+        /*val webSetting = webView.settings
         webSetting.javaScriptEnabled = true
         webSetting.loadWithOverviewMode = true
         webView.webChromeClient = WebChromeClient()
@@ -52,28 +51,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
             TypeofTab.Write   -> "https://www.naver.com"
             TypeofTab.Mypage  -> "https://www.google.com"
         }
-        webView.loadUrl(url)
-    }
+        webView.loadUrl(url)*/
 
-    /**
-     *  어떠한 것을 추가기능을 넣고싶을때 WebViewClient 이용함
-     */
-
-    inner class CustomWebViewClient : WebViewClient() {
-
-        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-            showLoading()
-        }
-        override fun onPageFinished(view: WebView?, url: String?) {
-            hideLoading()
-        }
-    }
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if(keyCode==KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
-            webView.goBack()
-            return true
-        }
-        return super.onKeyDown(keyCode, event)
+        val cureentFragment = supportFragmentManager.findFragmentByTag(tab.tag)
+        supportFragmentManager.beginTransaction().apply {
+            if(cureentFragment==null)
+                add(R.id.container,
+                    when(tab) {
+                        TypeofTab.Content -> FirstFragment.instantiate()
+                        TypeofTab.Chat -> FirstFragment.instantiate()
+                        TypeofTab.Write -> FirstFragment.instantiate()
+                        TypeofTab.Mypage -> FourthFragment.instantiate()
+                    },
+                    tab.tag
+                )
+            supportFragmentManager.fragments.forEach { fragment ->
+                when {
+                    fragment.tag != tab.tag -> hide(fragment)
+                    fragment.isAdded -> show(fragment)
+                    else -> add(R.id.container, fragment, tab.tag)
+                }
+            }
+        }.commit()
     }
 }
