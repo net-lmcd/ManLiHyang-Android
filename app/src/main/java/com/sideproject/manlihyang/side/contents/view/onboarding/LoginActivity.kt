@@ -8,9 +8,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Base64.NO_WRAP
 import android.util.Log
-import android.view.View
 import android.widget.Toast
-import com.crashlytics.android.Crashlytics
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -27,19 +25,15 @@ import com.kakao.usermgmt.response.MeV2Response
 import com.kakao.util.exception.KakaoException
 import com.kakao.util.helper.Utility.getPackageInfo
 import com.sideproject.manlihyang.BR
-import com.sideproject.manlihyang.BuildConfig
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityLoginBinding
 import com.sideproject.manlihyang.side.contents.view.SplashActivity
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
-import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
-import com.sideproject.manlihyang.side.contents.util.AsteriskPasswordTransformationMethod
 import com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -47,8 +41,6 @@ import java.util.*
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
 
-    private val mCrashlytics: Crashlytics by inject()
-    private val mPreferenceManager : PreferenceManager by inject()
     override fun getLayoutId(): Int = R.layout.activity_login
 
     private val onBoardingViewModel: OnBoardingViewModel<BaseNavigator> by viewModel()

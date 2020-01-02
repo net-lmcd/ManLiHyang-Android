@@ -4,19 +4,19 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
             android:id="@+id/navigation_content"
-            android:icon="@drawable/navigation_content"
+            android:icon="@drawable/navi_content"
             android:title="contents"
     />
 
     <item
             android:id="@+id/navigation_chat"
-            android:icon="@drawable/navigation_chat"
+            android:icon="@drawable/navi_chat"
             android:title="chat"
     />
 
     <item
             android:id="@+id/navigation_write"
-            android:icon="@drawable/navigation_write"
+            android:icon="@drawable/navi_write"
             android:title="write"
     />
 

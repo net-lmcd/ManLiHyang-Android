@@ -13,14 +13,6 @@ import com.sideproject.manlihyang.R
 
 object Bindings {
 
-    @JvmStatic
-    @BindingAdapter(value = ["string","number"] ,requireAll = false)
-    fun bindingSetting(view : BottomNavigationView,
-                       string : Int,
-                       number : Int) {
-        Log.e("BottomNavigationView",  "$string " + number)
-    }
-
   /*  @JvmStatic
     @BindingAdapter("textAttrChanged")
     fun confirmTextViewChanged(view : TextView, listener: InverseBindingListener) {

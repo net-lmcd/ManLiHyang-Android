@@ -1,21 +1,18 @@
 package com.sideproject.manlihyang.side.contents.view.main
 
+
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 
 import com.sideproject.manlihyang.R
-import com.sideproject.manlihyang.databinding.FragmentFirstBinding
-import com.sideproject.manlihyang.databinding.FragmentSecondBinding
+import com.sideproject.manlihyang.databinding.FragmentWriteBinding
 import com.sideproject.manlihyang.side.contents.base.BaseFragment
 
-class SecondFragment : BaseFragment<FragmentSecondBinding>()  {
+class WriteFragment : BaseFragment<FragmentWriteBinding>()  {
 
-    override fun getLayoutId() = R.layout.fragment_second
+    override fun getLayoutId() = R.layout.fragment_write
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,8 +24,8 @@ class SecondFragment : BaseFragment<FragmentSecondBinding>()  {
     }
 
     companion object {
-      fun instantiate() : SecondFragment{
-          return SecondFragment()
+      fun instantiate() : WriteFragment{
+          return WriteFragment()
       }
     }
 }

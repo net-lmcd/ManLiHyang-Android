@@ -1,7 +1,13 @@
 package com.sideproject.manlihyang.side.contents.view.main
 
-import com.sideproject.manlihyang.side.contents.rx.AppSchedulerProvider
+import android.content.Context
+import com.sideproject.manlihyang.side.contents.base.BaseDataManager
+import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
+import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
 
-class MainDataManager  : AppSchedulerProvider() {
-
+class MainDataManager(
+    context: Context,
+    private val schedulerProvider: SchedulerProvider,
+    private val preferenceManager: PreferenceManager
+) : BaseDataManager(context, preferenceManager) {
 }

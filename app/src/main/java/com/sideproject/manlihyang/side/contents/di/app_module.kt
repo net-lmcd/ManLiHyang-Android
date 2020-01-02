@@ -25,6 +25,7 @@ val appModule : Module = module {
     single { Crashlytics() }
     single { AppSchedulerProvider() as SchedulerProvider }
     single { PreferenceManager(get()) }
+    single { MainDataManager(get(), get(), get()) }
     single { OnBoardingDatamanager(get(), get(), get()) }
     single { FirebaseMessaging.getInstance() }
 }

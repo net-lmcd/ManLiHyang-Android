@@ -22,25 +22,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/navigation"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavi"
             />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigation"
+            android:id="@+id/bottomNavi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_nav_background"
-            app:itemIconSize="30dp"
+            app:itemIconSize="26dp"
             app:itemIconTint="@color/bottom_nav_item_color"
-            app:itemTextColor="@color/bottom_nav_item_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_nav_menu"
             app:labelVisibilityMode="unlabeled"
-            android:tag="2"
-            app:string="@{10}"
-            app:number="@{5}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

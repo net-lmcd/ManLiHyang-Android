@@ -13,17 +13,14 @@ class MainViewModel<N : MainNavigator>(
     schedulerProvider: SchedulerProvider)
     : BaseViewModel<N>(schedulerProvider) {
 
-    var currentTab = TypeofTab.Content
-
-    val navigationItemSelectedListener : BottomNavigationView.OnNavigationItemSelectedListener
+    val bottomNaviSelectedListener : BottomNavigationView.OnNavigationItemSelectedListener
         get() = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId) {
-                R.id.navigation_content -> currentTab = TypeofTab.Content
-                R.id.navigation_chat -> currentTab = TypeofTab.Chat
-                R.id.navigation_write -> currentTab = TypeofTab.Write
-                R.id.navigation_mypage -> currentTab = TypeofTab.Mypage
+                R.id.navigation_content -> getNavigator().onNavigationTabSelected(TypeofTab.Content)
+                R.id.navigation_chat -> getNavigator().onNavigationTabSelected(TypeofTab.Chat)
+                R.id.navigation_write -> getNavigator().onNavigationTabSelected(TypeofTab.Write)
+                R.id.navigation_mypage -> getNavigator().onNavigationTabSelected(TypeofTab.Mypage)
             }
-            getNavigator().onNavigationTabSelected(currentTab)
             true
         }
 }

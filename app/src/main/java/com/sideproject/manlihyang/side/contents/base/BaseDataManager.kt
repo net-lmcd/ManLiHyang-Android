@@ -6,7 +6,10 @@ import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManag
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
 import com.sideproject.manlihyang.side.contents.remote.model.User
 
-open class BaseDataManager constructor(context: Context, private val preferenceManager: PreferenceManager) : PreferenceHelper {
+open class BaseDataManager constructor(
+    context: Context,
+    private val preferenceManager: PreferenceManager
+) : PreferenceHelper {
 
     override fun getUser(): User {
         return preferenceManager.getUser()!!

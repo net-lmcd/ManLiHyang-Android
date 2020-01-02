@@ -2,23 +2,20 @@ package com.sideproject.manlihyang.side.contents.view.main
 
 
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.fragment.app.Fragment
-import androidx.browser.customtabs.CustomTabsIntent
 
 import com.sideproject.manlihyang.R
-import com.sideproject.manlihyang.databinding.FragmentFirstBinding
+import com.sideproject.manlihyang.databinding.FragmentContentBinding
 import com.sideproject.manlihyang.side.contents.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_first.*
+import kotlinx.android.synthetic.main.fragment_content.*
 
-class FirstFragment : BaseFragment<FragmentFirstBinding>() {
+class ContentFragment : BaseFragment<FragmentContentBinding>() {
 
-    override fun getLayoutId() = R.layout.fragment_first
+    override fun getLayoutId() = R.layout.fragment_content
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -66,8 +63,8 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>() {
     }
 
     companion object {
-        fun instantiate(): FirstFragment {
-            return FirstFragment()
+        fun instantiate(): ContentFragment {
+            return ContentFragment()
         }
     }
 }
