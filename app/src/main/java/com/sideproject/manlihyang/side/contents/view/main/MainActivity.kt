@@ -11,7 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
     private val mainViewModel : MainViewModel<MainNavigator> by viewModel()
-
+    
     override fun getLayoutId(): Int = R.layout.activity_main
     override fun hasActionBar(): Boolean = false
     override fun hasBackIcon(): Boolean = false
@@ -25,8 +25,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
         onNavigationTabSelected(TypeofTab.Content) // initialized at the first tab
     }
 
-    override fun onNavigationTabSelected(tab: TypeofTab) {
+    override fun onResume() {
+        super.onResume()
+        changeMenuIconWithUserProfileImage()
+    }
 
+    override fun onNavigationTabSelected(tab: TypeofTab) {
         val currentFragment = supportFragmentManager.findFragmentByTag(tab.tag)
         supportFragmentManager.beginTransaction().apply {
             if(currentFragment==null)
@@ -47,7 +51,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
                 }
             }
         }.commit()
+    }
 
-
+    private fun changeMenuIconWithUserProfileImage() {
+        // Will be changed to a image of user.
+        val menu = bottomNavi.menu
+        menu.findItem(R.id.navigation_mypage).setIcon(R.drawable.app_icon)
     }
 }
