@@ -27,7 +27,7 @@ abstract class BaseRecyclerViewAdapterImpl<T>(
     }
 
     override fun onBindViewHolder(holder: MVVMViewHolder<T>, position: Int) {
-        //holder.onBind(listDiffer.currentList.getOrNull(position))
+        holder.onBind(listDiffer.currentList.getOrNull(position))
     }
 
     override fun getItemCount(): Int {
@@ -47,8 +47,8 @@ open class MVVMViewHolder<T>(private val binding : ViewDataBinding) : RecyclerVi
     private val context : Context
         get() = itemView.context
 
-    /*open fun onBind(item : T?) {
+    open fun onBind(item : T?) {
         binding.setVariable(BR.item, item)
         binding.executePendingBindings()
-    }*/
+    }
 }

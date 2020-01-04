@@ -2,6 +2,15 @@
 
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="adapter"
+            type="com.sideproject.manlihyang.side.contents.view.adapter.BoardAdapter" />
+        <variable
+            name="mainModel"
+            type="com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -166,7 +175,10 @@
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="3"
                     tools:listitem="@layout/item_boards"
+                    submitList="@{mainModel.boardList}"
+                    adapter="@{adapter}"
                     />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>

@@ -2,6 +2,12 @@
 
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="mainModel"
+            type="com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel" />
+    </data>
+
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"

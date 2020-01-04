@@ -17,6 +17,7 @@
             android:layout_centerInParent="true"
             android:background="@android:color/transparent"
             android:backgroundDimEnabled="true"
+            android:indeterminateTint="@color/black"
             />
     </RelativeLayout>
 </layout>

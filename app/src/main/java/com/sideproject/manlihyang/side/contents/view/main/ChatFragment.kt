@@ -4,14 +4,21 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.browser.customtabs.CustomTabsIntent
+import com.sideproject.manlihyang.BR
 
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.FragmentChatBinding
 import com.sideproject.manlihyang.side.contents.base.BaseFragment
+import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class ChatFragment : BaseFragment<FragmentChatBinding>()  {
+class ChatFragment : BaseFragment<FragmentChatBinding, MainViewModel<MainNavigator>>()  {
+
+    private val mainViewModel : MainViewModel<MainNavigator> by sharedViewModel()
 
     override fun getLayoutId() = R.layout.fragment_chat
+    override fun getViewModel(): MainViewModel<MainNavigator> = mainViewModel
+    override fun getBindingVariable(): Int = BR.mainModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

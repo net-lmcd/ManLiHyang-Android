@@ -7,14 +7,21 @@ import android.view.*
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.sideproject.manlihyang.BR
 
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.FragmentContentBinding
 import com.sideproject.manlihyang.side.contents.base.BaseFragment
+import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_content.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class ContentFragment : BaseFragment<FragmentContentBinding>() {
+class ContentFragment : BaseFragment<FragmentContentBinding, MainViewModel<MainNavigator>>() {
 
+    private val mainViewModel : MainViewModel<MainNavigator> by sharedViewModel()
+
+    override fun getViewModel(): MainViewModel<MainNavigator> = mainViewModel
+    override fun getBindingVariable(): Int = BR.mainModel
     override fun getLayoutId() = R.layout.fragment_content
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,7 +49,7 @@ class ContentFragment : BaseFragment<FragmentContentBinding>() {
                 }
             })
             webChromeClient = WebChromeClient()
-            webViewClient = WebViewClient()
+            webViewClient = CustomWebViewClient()
             loadUrl(url)
         }
     }
@@ -54,11 +61,11 @@ class ContentFragment : BaseFragment<FragmentContentBinding>() {
     inner class CustomWebViewClient : WebViewClient() {
 
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-            //showLoading()
+            showLoading()
         }
 
         override fun onPageFinished(view: WebView?, url: String?) {
-            //hideLoading()
+            hideLoading()
         }
     }
 
