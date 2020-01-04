@@ -175,7 +175,7 @@
                     app:layout_constraintStart_toEndOf="@id/_start_guide"
                     android:layout_marginTop="6dp"
                     android:layout_marginStart="5dp"
-                    android:text="올바른 이메일 형식이 아닙니다."
+                    android:text="@string/notaformofemail"
                     android:textSize="12sp"
                     android:textColor="@color/red"
                     android:visibility="@{registerModel.isNotBlankEmail() &amp;&amp; !registerModel.isValidEmail() ? View.VISIBLE : View.INVISIBLE}"
@@ -248,7 +248,7 @@
                     android:paddingBottom="10dp"
                     android:paddingStart="18dp"
                     notblank="@{registerModel.isNotBlankPasswordCheck()}"
-                    validation="@{registerModel.isSamePassword()}"/>
+                    validation="@{registerModel.isConfiremdPassword}"/>
 
                 <TextView
                     android:id="@+id/_pw_check"
@@ -259,10 +259,10 @@
                     app:layout_constraintStart_toEndOf="@id/_start_guide"
                     android:layout_marginTop="6dp"
                     android:layout_marginStart="5dp"
-                    android:text="비밀번호를 동일하게 입력해주세요."
+                    android:text="@string/pleasesamepw"
                     android:textSize="12sp"
                     android:textColor="@color/red"
-                    android:visibility="@{ registerModel.isSamePassword == false ? View.VISIBLE : View.INVISIBLE}"
+                    android:visibility="@{ registerModel.isConfiremdPassword == false ? View.VISIBLE : View.INVISIBLE}"
                     />
 
                 <androidx.constraintlayout.widget.ConstraintLayout

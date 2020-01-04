@@ -27,7 +27,7 @@ class ContentFragment : BaseFragment<FragmentContentBinding, MainViewModel<MainN
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val url = "https://www.naver.com"
+        val url = "http://ec2-52-78-80-199.ap-northeast-2.compute.amazonaws.com/"
 
         val webSetting = webView.settings
         webSetting.javaScriptEnabled = true

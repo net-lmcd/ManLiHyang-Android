@@ -1,13 +1,10 @@
 package com.sideproject.manlihyang.side.contents.application
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
 import com.crashlytics.android.Crashlytics
 import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.auth.*
-import com.kakao.util.helper.Utility
 import com.sideproject.manlihyang.side.contents.di.module
 import io.fabric.sdk.android.Fabric
 import org.koin.android.ext.android.inject
@@ -33,10 +30,6 @@ class ManLiHyangApplication : Application() {
         KakaoSDK.init(KakaoSDKAdapter())
     }
 
-    private fun initializeFabric() {
-        Fabric.with(this, mCrashlytics)
-    }
-
     private fun initializeKoin() {
         startKoin {
             androidContext(this@ManLiHyangApplication)
@@ -44,56 +37,20 @@ class ManLiHyangApplication : Application() {
         }
     }
 
+    private fun initializeFabric() {
+        Fabric.with(this, mCrashlytics)
+    }
+
     private fun initializeFirebase() {
         FirebaseApp.initializeApp(this)
     }
 
-    fun getManLiHyangApplicationContext(): ManLiHyangApplication {
-        checkNotNull(instance) { "this application does not inherit com.kakao.GlobalApplication" }
-        return instance!!
-    }
-
     companion object {
         private var instance : ManLiHyangApplication? = null
-        private class KakaoSDKAdapter : KakaoAdapter() {
 
-/*            override fun getApplicationConfig(): IApplicationConfig? {
-                return object : IApplicationConfig {
-                    override fun getApplicationContext(): Context {
-                        return ManLiHyangApplication.getManLiHyangApplicationContext()
-                    }
-                }
-            }*/
-
-            override fun getApplicationConfig(): IApplicationConfig {
-                return IApplicationConfig {
-                    instance?.getManLiHyangApplicationContext()
-                }
-            }
-
-            override fun getSessionConfig(): ISessionConfig? {
-                return object : ISessionConfig {
-                    override fun getAuthTypes(): Array<AuthType> {
-                        return arrayOf(AuthType.KAKAO_LOGIN_ALL)
-                    }
-
-                    override fun isUsingWebviewTimer(): Boolean {
-                        return false
-                    }
-
-                    override fun isSecureMode(): Boolean {
-                        return false
-                    }
-
-                    override fun getApprovalType(): ApprovalType? {
-                        return ApprovalType.INDIVIDUAL
-                    }
-
-                    override fun isSaveFormData(): Boolean {
-                        return true
-                    }
-                }
-            }
+        fun getManLiHyangApplicationContext(): ManLiHyangApplication {
+            checkNotNull(instance) { "this application does not inherit com.kakao.GlobalApplication" }
+            return instance!!
         }
     }
 }

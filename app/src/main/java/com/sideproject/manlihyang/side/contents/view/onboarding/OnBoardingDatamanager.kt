@@ -3,7 +3,7 @@ package com.sideproject.manlihyang.side.contents.view.onboarding
 import android.content.Context
 import com.kakao.auth.network.request.AuthRequest
 import com.sideproject.manlihyang.side.contents.base.BaseDataManager
-import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
+import com.sideproject.manlihyang.side.contents.data.local.PreferenceManager
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
 import com.sideproject.manlihyang.side.contents.model.onboardingmodels.EmailDuplicationRequest
 import com.sideproject.manlihyang.side.contents.model.onboardingmodels.EmailDuplicationResponse
@@ -15,12 +15,12 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Call
-import retrofit2.Callback
 
 class OnBoardingDatamanager(
     val context: Context,
     private val schedulerProvider: SchedulerProvider,
-    private val preferenceManager: PreferenceManager )
+    private val preferenceManager: PreferenceManager
+)
     : BaseDataManager(context, preferenceManager), OnBoardingDataManagerImpl {
 
     private val onBoardingApi = ApiService.provideApi(OnBoardingApi::class.java, context)

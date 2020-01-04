@@ -37,8 +37,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
                 add(R.id.container,
                     when(tab) {
                         TypeofTab.Content -> ContentFragment.instantiate()
-                        TypeofTab.Chat -> ContentFragment.instantiate()
-                        TypeofTab.Write -> ContentFragment.instantiate()
+                        TypeofTab.Chat -> ChatFragment.instantiate()
+                        TypeofTab.Write -> WriteFragment.instantiate()
                         TypeofTab.Mypage -> MyPageFragment.instantiate()
                     },
                     tab.tag

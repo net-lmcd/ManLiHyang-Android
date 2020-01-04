@@ -1,4 +1,4 @@
-package com.sideproject.manlihyang.side.contents.remote.model
+package com.sideproject.manlihyang.side.contents.data.remote
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable

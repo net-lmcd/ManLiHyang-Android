@@ -1,6 +1,5 @@
 package com.sideproject.manlihyang.side.contents.viewmodel
 
-import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
@@ -8,17 +7,12 @@ import com.sideproject.manlihyang.side.contents.base.BaseNavigator
 import com.sideproject.manlihyang.side.contents.base.BaseViewModel
 import com.sideproject.manlihyang.side.contents.model.onboardingmodels.EmailDuplicationRequest
 import com.sideproject.manlihyang.side.contents.model.onboardingmodels.UserCreateRequest
-import com.sideproject.manlihyang.side.contents.remote.model.User
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
-import com.sideproject.manlihyang.side.contents.util.MessageDialogClickListener
 import com.sideproject.manlihyang.side.contents.util.Validation
 import com.sideproject.manlihyang.side.contents.util.extension.combinelivedata
 import com.sideproject.manlihyang.side.contents.util.extension.map
-import com.sideproject.manlihyang.side.contents.util.extension.rx
 import com.sideproject.manlihyang.side.contents.util.extension.validate
 import com.sideproject.manlihyang.side.contents.view.onboarding.OnBoardingDatamanager
-import io.reactivex.exceptions.CompositeException
-import java.util.concurrent.TimeUnit
 
 class RegisterEmailViewModel<N : BaseNavigator>(
     private val onBoardingDatamanager: OnBoardingDatamanager,
@@ -53,14 +47,16 @@ class RegisterEmailViewModel<N : BaseNavigator>(
     val isValidPassword = password.map {
         it?.validate(Validation.PASSWORD) ?: false
     }
-    val isSamePassword = passwordChecked.map {
-        it?.equals(password.value) ?: false
+    val isConfiremdPassword = password.combinelivedata(
+        passwordChecked
+    ) { pw1, pw2 ->
+        pw1.equals(pw2)
     }
 
     val isValidRegister = isNotBlankNickname.combinelivedata(
         isServicableEmail,
         isValidPassword,
-        isSamePassword,
+        isConfiremdPassword,
         policyChecked,
         default = null
     ) { nick, email, password, passwordchecked, policychecked ->

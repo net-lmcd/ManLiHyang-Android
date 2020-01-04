@@ -1,10 +1,10 @@
 package com.sideproject.manlihyang.side.contents.base
 
 import android.content.Context
-import com.sideproject.manlihyang.side.contents.local.preference.PreferenceHelper
-import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
+import com.sideproject.manlihyang.side.contents.data.local.PreferenceHelper
+import com.sideproject.manlihyang.side.contents.data.local.PreferenceManager
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
-import com.sideproject.manlihyang.side.contents.remote.model.User
+import com.sideproject.manlihyang.side.contents.data.remote.User
 
 open class BaseDataManager constructor(
     context: Context,

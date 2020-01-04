@@ -7,7 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.sideproject.manlihyang.BuildConfig
-import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
+import com.sideproject.manlihyang.side.contents.data.local.PreferenceManager
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
 import com.sideproject.manlihyang.side.contents.repository.OnBoardingApi
 import com.sideproject.manlihyang.side.contents.view.onboarding.LoginActivity
@@ -200,8 +200,10 @@ object ApiService {
     }
 
     fun logoutFromToken(context: Context) {
-        PreferenceManager.getInstance(context).remove(PreferenceManager.Key.signed)
-        PreferenceManager.getInstance(context).remove(PreferenceManager.Key.accessToken)
+        PreferenceManager.getInstance(context).remove(
+            PreferenceManager.Key.signed)
+        PreferenceManager.getInstance(context).remove(
+            PreferenceManager.Key.accessToken)
         PreferenceManager.getInstance(context).clear()
         val intent = Intent(context, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)

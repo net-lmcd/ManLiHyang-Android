@@ -1,11 +1,9 @@
 package com.sideproject.manlihyang.side.contents.di
 
-import android.app.Activity
 import com.crashlytics.android.Crashlytics
 import com.google.firebase.messaging.FirebaseMessaging
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
-import com.sideproject.manlihyang.side.contents.base.BaseNavigatorImpl
-import com.sideproject.manlihyang.side.contents.local.preference.PreferenceManager
+import com.sideproject.manlihyang.side.contents.data.local.PreferenceManager
 import com.sideproject.manlihyang.side.contents.rx.AppSchedulerProvider
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
 import com.sideproject.manlihyang.side.contents.view.adapter.BoardAdapter

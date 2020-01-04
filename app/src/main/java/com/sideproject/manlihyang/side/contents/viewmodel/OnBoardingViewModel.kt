@@ -2,15 +2,12 @@ package com.sideproject.manlihyang.side.contents.viewmodel
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
-import com.sideproject.manlihyang.side.contents.base.BaseNavigatorImpl
 import com.sideproject.manlihyang.side.contents.base.BaseViewModel
-import com.sideproject.manlihyang.side.contents.remote.model.User
+import com.sideproject.manlihyang.side.contents.data.remote.User
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
 import com.sideproject.manlihyang.side.contents.util.Move
-import com.sideproject.manlihyang.side.contents.view.onboarding.OnBoardingDatamanager
 
 class OnBoardingViewModel<N : BaseNavigator>(
     schedulerProvider: SchedulerProvider

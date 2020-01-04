@@ -1,4 +1,4 @@
-package com.sideproject.manlihyang.side.contents.local.preference
+package com.sideproject.manlihyang.side.contents.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,20 +6,23 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.sideproject.manlihyang.BuildConfig
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
-import com.sideproject.manlihyang.side.contents.remote.model.User
+import com.sideproject.manlihyang.side.contents.data.remote.User
 
-class PreferenceManager : PreferenceHelper {
+class PreferenceManager :
+    PreferenceHelper {
 
     override fun getAccessToken(): AuthResponse? {
         return Gson()
-            .fromJson(getValue(String::class.java, Key.accessToken, "") as String, AuthResponse::class.java)
+            .fromJson(getValue(String::class.java,
+                Key.accessToken, "") as String, AuthResponse::class.java)
     }
 
     override fun setAccessToken(accessToken: String) {
         setValue(Key.accessToken, accessToken) }
 
     override fun isSignedIn(): Boolean? {
-        return getValue(Boolean::class.java, Key.signed, false) as Boolean
+        return getValue(Boolean::class.java,
+            Key.signed, false) as Boolean
     }
 
     override fun setSignedIn(signedIn: Boolean) {
@@ -27,7 +30,8 @@ class PreferenceManager : PreferenceHelper {
 
     override fun getUser(): User? {
         return Gson()
-            .fromJson(getValue(String::class.java, Key.user, "") as String, User::class.java)
+            .fromJson(getValue(String::class.java,
+                Key.user, "") as String, User::class.java)
     }
 
     override fun setUser(user: User) {
@@ -84,7 +88,8 @@ class PreferenceManager : PreferenceHelper {
     }
 
     constructor(context : Context) {
-        mPref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        mPref = context.getSharedPreferences(
+            PREF_NAME, Context.MODE_PRIVATE)
     }
 
     companion object {
@@ -95,7 +100,10 @@ class PreferenceManager : PreferenceHelper {
         @Synchronized
         fun getInstance(context: Context): PreferenceManager {
             if (mInstance == null) {
-                mInstance = PreferenceManager(context)
+                mInstance =
+                    PreferenceManager(
+                        context
+                    )
             }
             return mInstance!!
         }

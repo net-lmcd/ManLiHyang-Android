@@ -1,6 +1,6 @@
 package com.sideproject.manlihyang.side.contents.model
 
-import com.sideproject.manlihyang.side.contents.remote.model.User
+import com.sideproject.manlihyang.side.contents.data.remote.User
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

@@ -15,6 +15,24 @@ inline fun <T,R> LiveData<T>.map(
     }
 }
 
+inline fun<T0,T1,R> LiveData<T0>.combinelivedata(
+    first : LiveData<T1>,
+    default: R? = null,
+    crossinline block: (T0?, T1?) -> R?
+) : LiveData<R> {
+    return MediatorLiveData<R>().apply {
+        value = default
+        addSource(this@combinelivedata) { item : T0? ->
+            this.value =
+                block.invoke(item, first.value)
+        }
+        addSource(first) { item : T1? ->
+            this.value =
+                block.invoke(this@combinelivedata.value, item)
+        }
+    }
+}
+
 inline fun<T0,T1,T2,T3,T4,R> LiveData<T0>.combinelivedata(
     first : LiveData<T1>,
     second : LiveData<T2>,

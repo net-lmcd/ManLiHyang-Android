@@ -1,7 +1,7 @@
-package com.sideproject.manlihyang.side.contents.local.preference
+package com.sideproject.manlihyang.side.contents.data.local
 
 import com.sideproject.manlihyang.side.contents.model.AuthResponse
-import com.sideproject.manlihyang.side.contents.remote.model.User
+import com.sideproject.manlihyang.side.contents.data.remote.User
 
 interface PreferenceHelper{
 
