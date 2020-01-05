@@ -1,6 +1,5 @@
 package com.sideproject.manlihyang.side.contents.view.main
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
@@ -11,9 +10,7 @@ import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.FragmentMypageBinding
 import com.sideproject.manlihyang.side.contents.base.BaseFragment
-import com.sideproject.manlihyang.side.contents.util.OnItemSelectedListener
 import com.sideproject.manlihyang.side.contents.view.adapter.BoardAdapter
-import com.sideproject.manlihyang.side.contents.view.onboarding.LoginActivity
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.actionbar.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
@@ -38,13 +35,8 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding, MainViewModel<MainNav
             }
         }
 
-        binding?.run {
-            adapter = boardadapter.apply {
-                setOnItemSelectedListener { item, position ->
-                    startActivity(Intent(this@MyPageFragment.context, LoginActivity::class.java))
-                }
-            }
-        }
+        tab.addTab(tab.newTab().setText("게시글"))
+        tab.addTab(tab.newTab().setText("저장글"))
     }
 
     override fun onResume() {

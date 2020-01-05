@@ -49,7 +49,7 @@ class BoardAdapter : BaseRecyclerViewAdapterImpl<Board>(
             itemView.setOnClickListener {
                 onItemSelectedListener?.invoke(item, adapterPosition)
             }
-            Glide.with(itemView.context).load(R.drawable.board_sample_s).into(mBinding.boardImage)
+            //Glide.with(itemView.context).load(R.drawable.board_sample_t).into(mBinding.boardImage)
         }
     }
 }

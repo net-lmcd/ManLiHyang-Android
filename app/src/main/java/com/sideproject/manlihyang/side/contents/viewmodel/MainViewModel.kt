@@ -43,7 +43,6 @@ class MainViewModel<N : MainNavigator>(
             Board("","","","",0,0),
             Board("","","","",0,0),
             Board("","","","",0,0),
-            Board("","","","",0,0),
             Board("","","","",0,0)
         )
     }
