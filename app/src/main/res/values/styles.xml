@@ -13,6 +13,11 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="PopupTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="actionBarTheme">@null</item>
+        <item name="actionBarSize">0dp</item>
+    </style>
+
     <style name="AppThemewithMenu" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

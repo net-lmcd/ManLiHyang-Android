@@ -3,6 +3,8 @@ package com.sideproject.manlihyang.side.contents.view.main
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityMainBinding
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
+import com.sideproject.manlihyang.side.contents.util.Dialog
+import com.sideproject.manlihyang.side.contents.util.MessageDialogClickListener
 import com.sideproject.manlihyang.side.contents.util.TypeofTab
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -57,5 +59,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
         // Will be changed to a image of user.
         val menu = bottomNavi.menu
         menu.findItem(R.id.navigation_mypage).setIcon(R.drawable.profile_sample)
+    }
+
+    override fun onBackPressed() {
+        Dialog.showMessageConfirm(this, supportFragmentManager, "로그인 화면으로 돌아가시겠습니까?")
+            .setMessageDialogClickListener(object : MessageDialogClickListener {
+                override fun confirmClick() { finish() }
+                override fun cancelClick() {}
+            })
     }
 }

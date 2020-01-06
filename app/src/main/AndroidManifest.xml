@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".side.contents.view.main.mypage.DetailedBoardActivity"></activity>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -28,7 +27,11 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".side.contents.view.onboarding.PolicyPopupActivity"
+            android:theme="@style/PopupTheme"/>
+        <activity android:name=".side.contents.view.main.mypage.DetailedBoardActivity" />
         <activity android:name=".side.contents.view.onboarding.RegisterEmailActivity" />
+
         <activity
             android:name=".side.contents.view.SplashActivity"
             android:screenOrientation="portrait"

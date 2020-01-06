@@ -266,8 +266,9 @@
                     />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/policy"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/_pw_check"
                     app:layout_constraintStart_toEndOf="@id/_start_guide"
                     app:layout_constraintEnd_toStartOf="@id/_end_guide"
@@ -288,14 +289,14 @@
                         android:buttonTint="@color/black"
                         />
 
-                    <ImageView
-                        android:layout_width="11dp"
-                        android:layout_height="7dp"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="13dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginEnd="5dp"
-                        android:background="@drawable/button_down_black"
+                        android:text="@string/policy"
                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
