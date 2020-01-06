@@ -6,7 +6,6 @@ import com.sideproject.manlihyang.side.contents.base.BaseActivity
 import com.sideproject.manlihyang.side.contents.util.TypeofTab
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_mypage.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
@@ -28,7 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainNavigator {
 
     override fun onResume() {
         super.onResume()
-        tab.setupWithViewPager(pager)
+        //changeMenuIconWithUserProfileImage()
     }
 
     override fun onNavigationTabSelected(tab: TypeofTab) {

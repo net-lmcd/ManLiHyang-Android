@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.sideproject.manlihyang.side.contents.util.Move
 import com.sideproject.manlihyang.side.contents.widget.CircularProgress
 
-abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragment() {
+abstract class  BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragment() {
 
     lateinit var loading : CircularProgress
     var binding : T? = null

@@ -7,6 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TestTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
     <style name="AppThemewithMenu" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

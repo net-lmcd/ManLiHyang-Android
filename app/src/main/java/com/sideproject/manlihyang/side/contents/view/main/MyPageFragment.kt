@@ -1,6 +1,5 @@
 package com.sideproject.manlihyang.side.contents.view.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.PopupMenu
@@ -10,17 +9,20 @@ import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.FragmentMypageBinding
 import com.sideproject.manlihyang.side.contents.base.BaseFragment
-import com.sideproject.manlihyang.side.contents.view.adapter.BoardAdapter
+import com.sideproject.manlihyang.side.contents.view.adapter.MyPageAdapter
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.actionbar.*
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import org.koin.android.ext.android.inject
+import kotlinx.android.synthetic.main.actionbar.menu
+import kotlinx.android.synthetic.main.fragment_mypage.pager
+import kotlinx.android.synthetic.main.fragment_mypage.tab
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class MyPageFragment : BaseFragment<FragmentMypageBinding, MainViewModel<MainNavigator>>()  {
 
     private val mainViewModel : MainViewModel<MainNavigator> by sharedViewModel()
-    private val boardadapter : BoardAdapter by inject()
+    private val pagerAdapter : MyPageAdapter by lazy {
+        MyPageAdapter(fragmentManager = childFragmentManager, pageCount = 2)
+    }
+
     override fun getLayoutId() = R.layout.fragment_mypage
     override fun getViewModel(): MainViewModel<MainNavigator> = mainViewModel
     override fun getBindingVariable(): Int = BR.mainModel
@@ -34,14 +36,17 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding, MainViewModel<MainNav
                 menuClick(it)
             }
         }
-
-        tab.addTab(tab.newTab().setText("게시글"))
-        tab.addTab(tab.newTab().setText("저장글"))
     }
 
     override fun onResume() {
         super.onResume()
         mainViewModel.getBoardsOfUser()
+
+        pager.apply {
+            adapter = pagerAdapter
+        }.also {
+            tab.setupWithViewPager(it)
+        }
     }
 
     fun menuClick(view : View) {

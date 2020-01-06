@@ -26,6 +26,7 @@ class MainViewModel<N : MainNavigator>(
         }
 
     var boardList = MutableLiveData<List<Board>>()
+    var storeList = MutableLiveData<List<Board>>()
 
     fun getBoardsOfUser() {
         boardList.value = listOf(
@@ -39,6 +40,21 @@ class MainViewModel<N : MainNavigator>(
             Board("","","","",0,0),
             Board("","","","",0,0),
             Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0),
+            Board("","","","",0,0)
+        )
+    }
+
+    fun getStoresOfUser() {
+        storeList.value = listOf(
             Board("","","","",0,0),
             Board("","","","",0,0),
             Board("","","","",0,0),
