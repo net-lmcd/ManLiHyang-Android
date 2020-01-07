@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.DisplayMetrics
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
 import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityRegisterEmailBinding
@@ -49,8 +50,20 @@ class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding>() {
             window.attributes = lp
         }*/
         policy.setOnClickListener {
-            startActivity(Intent(applicationContext, PolicyPopupActivity::class.java))
+            startActivityForResult(
+                Intent(applicationContext, PolicyPopupActivity::class.java), REQUEST_POPUP_CONFIRM)
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_POPUP_CONFIRM &&
+                resultCode == Activity.RESULT_OK) {
+            registerViewModel.policyChecked.value = true
+        }
+    }
+
+    companion object {
+        const val REQUEST_POPUP_CONFIRM = 0x1111
+    }
 }

@@ -1,5 +1,6 @@
 package com.sideproject.manlihyang.side.contents.view.onboarding
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.Window
 import androidx.fragment.app.FragmentActivity
@@ -14,6 +15,8 @@ class PolicyPopupActivity : FragmentActivity() {
         setContentView(R.layout.activity_policy_popup)
 
         confirm.setOnClickListener {
+            //to register screen
+            setResult(Activity.RESULT_OK)
             finish()
         }
     }

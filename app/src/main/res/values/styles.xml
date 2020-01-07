@@ -2,6 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -16,12 +17,6 @@
     <style name="PopupTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="actionBarTheme">@null</item>
         <item name="actionBarSize">0dp</item>
-    </style>
-
-    <style name="AppThemewithMenu" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.Splash" parent="@style/Theme.AppCompat.NoActionBar">
@@ -76,6 +71,16 @@
         <item name="android:fontFamily">@font/notoserifkr_medium</item>
         <item name="fontFamily">@font/notoserifkr_medium</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_background</item>
     </style>
 
 </resources>

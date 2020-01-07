@@ -75,7 +75,7 @@
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintEnd_toEndOf="parent"
                    android:layout_marginTop="13dp"
-                   android:text="오늘의 한줄을 남겨보세요"
+                   android:text="@string/todays_goal"
                    android:textSize="16sp"
                    android:textColor="#949494"
                    android:lineSpacingExtra="4sp"
