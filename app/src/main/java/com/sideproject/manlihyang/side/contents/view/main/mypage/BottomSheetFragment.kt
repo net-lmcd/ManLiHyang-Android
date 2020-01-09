@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
+import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.side.contents.util.Dialog
@@ -42,11 +44,18 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         edit_profile.setOnClickListener {
-
+            startActivity(Intent(it.context, EditMypageActivity::class.java))
         }
 
-        notification.setOnClickListener {
-
-        }
+        switch_noti.setOnCheckedChangeListener(
+            object : CompoundButton.OnCheckedChangeListener {
+                override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+                    when(isChecked) {
+                        true -> Toast.makeText(view.context, "noti on", Toast.LENGTH_SHORT).show()
+                        false -> Toast.makeText(view.context, "noti off", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        )
     }
 }

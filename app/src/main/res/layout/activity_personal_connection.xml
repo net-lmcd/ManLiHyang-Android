@@ -13,39 +13,44 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/transparent">
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:fitsSystemWindows="true">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/transparent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                android:fitsSystemWindows="true">
 
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize">
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="none">
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="10dp"
-                        android:orientation="horizontal">
+                        android:layout_marginEnd="@dimen/dp_16">
 
                         <TextView
                             android:id="@+id/bar_title"
+                            style="@style/NotoBoldText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:gravity="left"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="CheolHun"
                             android:textColor="@color/black"
                             android:textSize="20sp"/>
 
@@ -53,21 +58,24 @@
                             android:id="@+id/back"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:visibility="gone"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:src="@drawable/button_back_black"
                             />
 
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.appcompat.widget.Toolbar>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab"
+                    style="@style/NotoBoldText"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     app:tabGravity="fill"
                     app:tabMode="fixed"
-                    app:tabTextColor="@color/black"
+                    app:tabTextColor="@color/gray"
                     app:tabSelectedTextColor="@color/black"
                     app:tabIndicatorColor="@color/black"
                     app:layout_constraintTop_toTopOf="parent"
@@ -107,3 +115,4 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>
+

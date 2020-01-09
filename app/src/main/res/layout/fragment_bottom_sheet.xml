@@ -9,8 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bottom_nav_background">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/_group_user"
@@ -69,20 +68,38 @@
             app:layout_constraintTop_toBottomOf="@id/_group_user"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/notification"
-            style="@style/NotoBoldText"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/_group_noti"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            app:layout_constraintTop_toBottomOf="@id/edit_profile"
-            android:layout_marginEnd="@dimen/dp_16"
-            android:layout_marginStart="@dimen/dp_16"
-            android:backgroundTint="@android:color/white"
-            android:drawablePadding="@dimen/dp_16"
-            android:text="알림"
-            android:gravity="start|center_vertical"
-            android:drawableStart="@drawable/button_notification"
-            android:textSize="16sp" />
+            app:layout_constraintTop_toBottomOf="@id/edit_profile">
+
+            <TextView
+                style="@style/NotoBoldText"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:layout_marginStart="@dimen/dp_16"
+                android:backgroundTint="@android:color/white"
+                android:drawablePadding="@dimen/dp_16"
+                android:text="알림"
+                android:gravity="start|center_vertical"
+                android:drawableStart="@drawable/button_notification"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_noti"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/logout"
@@ -92,7 +109,7 @@
             android:layout_marginEnd="@dimen/dp_16"
             android:layout_marginStart="@dimen/dp_16"
             android:backgroundTint="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@id/notification"
+            app:layout_constraintTop_toBottomOf="@id/_group_noti"
             android:drawablePadding="@dimen/dp_16"
             android:drawableStart="@drawable/button_exit"
             android:drawableTint="@color/black"

@@ -41,13 +41,15 @@ import java.util.*
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
 
+    override fun hasActionBar(): Boolean = false
+    override fun hasBackIcon(): Boolean = false
+    override fun hasEdit(): Boolean = false
     override fun getLayoutId(): Int = R.layout.activity_login
 
     private val onBoardingViewModel: OnBoardingViewModel<BaseNavigator> by viewModel()
     private val moveVIewModel : MoveVIewModel<BaseNavigator> by viewModel()
-
-    val callbackManager: CallbackManager? = CallbackManager.Factory.create()
-    var sessionCallback: SessionCallback? = null
+    private val callbackManager: CallbackManager? = CallbackManager.Factory.create()
+    private var sessionCallback: SessionCallback? = null
 
     override fun initViewModel() {
         onBoardingViewModel.setNavigator(this)

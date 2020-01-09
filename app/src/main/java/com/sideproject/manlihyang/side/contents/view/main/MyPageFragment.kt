@@ -1,5 +1,6 @@
 package com.sideproject.manlihyang.side.contents.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -14,6 +15,8 @@ import com.sideproject.manlihyang.databinding.FragmentMypageBinding
 import com.sideproject.manlihyang.side.contents.base.BaseFragment
 import com.sideproject.manlihyang.side.contents.view.adapter.MyPageAdapter
 import com.sideproject.manlihyang.side.contents.view.main.mypage.BottomSheetFragment
+import com.sideproject.manlihyang.side.contents.view.main.mypage.EditMypageActivity
+import com.sideproject.manlihyang.side.contents.view.main.mypage.PersonalConnectionActivity
 import com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.actionbar.menu
 import kotlinx.android.synthetic.main.fragment_mypage.*
@@ -38,6 +41,10 @@ class MyPageFragment : BaseFragment<FragmentMypageBinding, MainViewModel<MainNav
             setOnClickListener{
                 menuClick(it)
             }
+        }
+
+        follower_group.setOnClickListener {
+            startActivity(Intent(it.context, PersonalConnectionActivity::class.java))
         }
     }
 

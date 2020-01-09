@@ -86,12 +86,10 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
     }
 
     override fun nextActivity(move: Move) {
-
         startActivity(Intent(this, Class.forName(move.getName())))
     }
 
     override fun nextActivityClearTop(move: Move) {
-
         try {
             val intent = Intent(this, Class.forName(move.getName()))
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -102,7 +100,6 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity(), BaseNavi
     }
 
     override fun nextActivityFinish(move: Move) {
-
         try {
             val intent = Intent(this, Class.forName(move.getName()))
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)

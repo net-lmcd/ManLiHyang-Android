@@ -7,6 +7,7 @@ import com.sideproject.manlihyang.side.contents.data.local.PreferenceManager
 import com.sideproject.manlihyang.side.contents.rx.AppSchedulerProvider
 import com.sideproject.manlihyang.side.contents.rx.SchedulerProvider
 import com.sideproject.manlihyang.side.contents.view.adapter.BoardAdapter
+import com.sideproject.manlihyang.side.contents.view.adapter.FollowAdapter
 import com.sideproject.manlihyang.side.contents.view.main.MainDataManager
 import com.sideproject.manlihyang.side.contents.view.main.MainNavigator
 import com.sideproject.manlihyang.side.contents.view.onboarding.OnBoardingDatamanager
@@ -33,6 +34,7 @@ val appModule : Module = module {
 val viewModule : Module = module {
 
     factory { BoardAdapter() }
+    factory { FollowAdapter() }
     viewModel { OnBoardingViewModel<BaseNavigator>(get()) }
     viewModel { MainViewModel<MainNavigator>(get()) }
     viewModel { MoveVIewModel<BaseNavigator>(get()) }
