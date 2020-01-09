@@ -90,7 +90,7 @@
                     android:layout_width="0dp"
                     android:layout_height="42dp"
                     android:layout_marginBottom="10dp"
-                    android:hint="사용하실 닉네임을 설정해 주세요."
+                    android:hint="사용할 닉네임을 설정해 주세요."
                     android:inputType="textVisiblePassword"
                     android:letterSpacing="-0.02"
                     android:maxLines="1"
