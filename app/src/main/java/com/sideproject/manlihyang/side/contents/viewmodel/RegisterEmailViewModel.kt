@@ -69,29 +69,28 @@ class RegisterEmailViewModel<N : BaseNavigator>(
     fun duplicationChecked() {
         val inputEmail : String = email.value ?: return
         if(isValidEmail.value!! && isNotBlankEmail.value!!) {
-            compositeDisposable.add(
-                onBoardingDatamanager.checkForDuplication(
-                    EmailDuplicationRequest(
-                        service_code = 1000,
-                        email = inputEmail
-                    )
+            onBoardingDatamanager.checkForDuplication(
+                EmailDuplicationRequest(
+                    service_code = 1000,
+                    email = inputEmail
                 )
-                    .subscribeOn(schedulerProvider.io())
-                    .observeOn(schedulerProvider.main())
-                    .subscribe({
-                        isServicableEmail.value = true
-                        getNavigator().showDialogMessage("사용 가능한 이메일 입니다")
-                    }, {
-                        if(it is HttpException) when(it.code()) {
-                            409 ->
-                                getNavigator().showDialogMessage("이미 사용하고 있는 이메일 입니다")
-                            500 ->
-                                getNavigator().showDialogMessage("잠시후 다시 시도해주세요")
-                            else ->
-                                getNavigator().showDialogMessage(it.message())
-                        }
-                    })
             )
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.main())
+                .subscribe({
+                    isServicableEmail.value = true
+                    getNavigator().showDialogMessage("사용 가능한 이메일 입니다")
+                }, {
+                    if(it is HttpException) when(it.code()) {
+                        409 ->
+                            getNavigator().showDialogMessage("이미 사용하고 있는 이메일 입니다")
+                        500 ->
+                            getNavigator().showDialogMessage("잠시후 다시 시도해주세요")
+                        else ->
+                            getNavigator().showDialogMessage(it.message())
+                    }
+                })
+                .let(compositeDisposable::add)
         } else {
             getNavigator().showDialogMessage("이메일을 다시 한 번 확인해 주세요.")
         }
@@ -141,23 +140,22 @@ class RegisterEmailViewModel<N : BaseNavigator>(
         val inputNickname = nickname.value ?: return
         val inputEmail = email.value ?: return
         val inputPassword = password.value ?: return
-        compositeDisposable.add(
-            onBoardingDatamanager.createUser(
-                UserCreateRequest(
-                    username = inputNickname,
-                    email = inputEmail,
-                    password = inputPassword,
-                    notice = false,
-                    notice_chat = false
-                )
+        onBoardingDatamanager.createUser(
+            UserCreateRequest(
+                username = inputNickname,
+                email = inputEmail,
+                password = inputPassword,
+                notice = false,
+                notice_chat = false
             )
-                .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.main())
-                .subscribe({
-                    getNavigator().showDialogMessageAndFinish("회원가입이 성공적으로 완료되었습니다")
-                },{
-                    getNavigator().showDialogMessage("회원가입에 실패하셨습니다")
-                })
         )
+            .subscribeOn(schedulerProvider.io())
+            .observeOn(schedulerProvider.main())
+            .subscribe({
+                getNavigator().showDialogMessageAndFinish("회원가입이 성공적으로 완료되었습니다")
+            },{
+                getNavigator().showDialogMessage("회원가입에 실패하셨습니다")
+            })
+            .let(compositeDisposable::add)
     }
 }

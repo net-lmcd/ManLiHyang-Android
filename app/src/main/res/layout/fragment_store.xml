@@ -21,6 +21,8 @@
             android:id="@+id/recyclerview_boards"
             adapter="@{adapter}"
             submitList="@{mainModel.storeList}"
+            itemSpacing="@{1}"
+            lineSpacing="@{1}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
