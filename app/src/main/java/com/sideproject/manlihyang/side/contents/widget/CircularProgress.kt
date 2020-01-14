@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import com.sideproject.manlihyang.R
+import kotlinx.android.synthetic.main.dialog_loading.*
 
 class CircularProgress(context: Context) : Dialog(context) {
 
