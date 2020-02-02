@@ -11,6 +11,8 @@ import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityRegisterEmailBinding
 import com.sideproject.manlihyang.side.contents.base.BaseActivity
 import com.sideproject.manlihyang.side.contents.base.BaseNavigator
+import com.sideproject.manlihyang.side.contents.base.BaseSpinnerAdapter
+import com.sideproject.manlihyang.side.contents.view.adapter.QuestionAdapter
 import com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel
 import com.sideproject.manlihyang.side.contents.viewmodel.RegisterEmailViewModel
@@ -35,8 +37,11 @@ class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding>() {
 
     override fun initView() {
         binding.setVariable(BR.registerModel, registerViewModel)
+        spinner.adapter = QuestionAdapter(this@RegisterEmailActivity)
+
     }
 
+    @Suppress("UNCHECKED_CAST")
     override fun onResume() {
         super.onResume()
 
@@ -53,6 +58,8 @@ class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding>() {
             startActivityForResult(
                 Intent(applicationContext, PolicyPopupActivity::class.java), REQUEST_POPUP_CONFIRM)
         }
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

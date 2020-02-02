@@ -280,7 +280,8 @@
                     android:spinnerMode="dialog"
                     app:layout_constraintEnd_toStartOf="@id/_end_guide"
                     app:layout_constraintStart_toEndOf="@id/_start_guide"
-                    app:layout_constraintTop_toBottomOf="@id/_spinner" />
+                    app:layout_constraintTop_toBottomOf="@id/_spinner"
+                    submitList="@{registerModel.spinner}"/>
 
                 <TextView
                     android:id="@+id/_spinner_check"

@@ -27,6 +27,9 @@ class RegisterEmailViewModel<N : BaseNavigator>(
     val passwordChecked = MutableLiveData<String>("")
     var policyChecked = MutableLiveData<Boolean>(false)
 
+    //sample
+    val spinner = listOf<String>("short question 1","short question 2")
+
     val isNotBlankNickname = nickname.map {
         it?.isNotBlank()
     }

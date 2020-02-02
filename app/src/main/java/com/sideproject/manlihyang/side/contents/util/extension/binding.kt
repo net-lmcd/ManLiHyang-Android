@@ -1,11 +1,22 @@
 package com.sideproject.manlihyang.side.contents.util.extension
 
-import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.Spinner
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sideproject.manlihyang.side.contents.base.BaseRecyclerViewAdapterImpl
+import com.sideproject.manlihyang.side.contents.base.BaseSpinnerAdapter
 import com.sideproject.manlihyang.side.contents.util.ItemDecoration
+
+@Suppress("UNCHECKED_CAST")
+@BindingAdapter("submitList")
+fun<T: Any> Spinner.bindList(list: List<T>? = null){
+    if(list == null) return
+    this.run{
+        if(adapter is BaseSpinnerAdapter<*>) list.let{
+            (adapter as? BaseSpinnerAdapter<T>)?.submitList(it)
+        }
+    }
+}
 
 @BindingAdapter("adapter")
 fun<T> RecyclerView.binding(adapter: RecyclerView.Adapter<*>? = null) {
