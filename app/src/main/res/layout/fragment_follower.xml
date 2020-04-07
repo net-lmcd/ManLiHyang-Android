@@ -7,10 +7,10 @@
     <data>
         <variable
             name="moveModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.MoveVIewModel" />
         <variable
             name="adapter"
-            type="com.sideproject.manlihyang.side.contents.view.adapter.FollowAdapter" />
+            type="com.sideproject.manlihyang.ui.adapter.FollowAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

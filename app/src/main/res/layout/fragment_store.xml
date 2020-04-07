@@ -7,10 +7,10 @@
     <data>
         <variable
             name="adapter"
-            type="com.sideproject.manlihyang.side.contents.view.adapter.BoardAdapter" />
+            type="com.sideproject.manlihyang.ui.adapter.BoardAdapter" />
         <variable
             name="mainModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,17 +19,17 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_boards"
-            adapter="@{adapter}"
-            submitList="@{mainModel.storeList}"
             itemSpacing="@{1}"
             lineSpacing="@{1}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_boards"
             app:spanCount="3"
-            tools:itemCount="9"
-            tools:listitem="@layout/item_boards" />
+            tools:itemCount="4"
+            adapter="@{adapter}"
+            submitList="@{mainModel.storeList}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

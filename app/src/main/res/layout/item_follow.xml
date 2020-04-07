@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.sideproject.manlihyang.side.contents.model.main.Follow" />
+            type="com.sideproject.manlihyang.model.main.Follow" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

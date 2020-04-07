@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.sideproject.manlihyang.side.contents.model.main.Board" />
+            type="com.sideproject.manlihyang.model.main.Board" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

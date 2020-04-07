@@ -5,14 +5,14 @@
     <data>
         <variable
             name="mainModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.MainViewModel" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".side.contents.view.main.ContentFragment">
+        tools:context=".view.main.ContentFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <WebView

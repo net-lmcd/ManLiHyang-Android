@@ -7,10 +7,10 @@
     <data>
         <variable
             name="adapter"
-            type="com.sideproject.manlihyang.side.contents.view.adapter.BoardAdapter" />
+            type="com.sideproject.manlihyang.ui.adapter.BoardAdapter" />
         <variable
             name="mainModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

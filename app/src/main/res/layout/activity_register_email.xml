@@ -8,10 +8,10 @@
         <import type="android.view.View"/>
         <variable
             name="registerModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.RegisterEmailViewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.RegisterEmailViewModel" />
         <variable
             name="moveModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.MoveVIewModel" />
         <variable
             name="view"
             type="android.view.View" />
@@ -21,10 +21,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".side.contents.view.onboarding.RegisterEmailActivity">
+        tools:context=".view.onboarding.RegisterEmailActivity">
 
-        <include
-            layout="@layout/actionbar" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/_top"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->registerModel.back()}"
+                android:src="@drawable/button_back_black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/_nested"
@@ -32,7 +47,7 @@
             android:layout_height="0dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@id/next"
-            app:layout_constraintTop_toBottomOf="@+id/actionBar"
+            app:layout_constraintTop_toBottomOf="@+id/_top"
             tools:layout_editor_absoluteX="0dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -7,10 +7,10 @@
     <data>
         <variable
             name="onBoardingModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.OnBoardingViewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.OnBoardingViewModel" />
         <variable
             name="moveModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.MoveVIewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.MoveVIewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

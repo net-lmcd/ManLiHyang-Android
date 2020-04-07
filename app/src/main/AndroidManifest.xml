@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".side.contents.application.ManLiHyangApplication"
+        android:name=".ui.application.ManLiHyangApplication"
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
@@ -13,8 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".side.contents.view.main.mypage.PersonalConnectionActivity"></activity>
-        <activity android:name=".side.contents.view.main.mypage.EditMypageActivity" />
+
+        <activity android:name=".ui.activity.PersonalConnectionActivity"/>
+        <activity android:name=".ui.activity.RegisterEmailActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.EditMypageActivity" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
@@ -23,19 +26,18 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <service android:name=".side.contents.service.ManLiHyangMessagingService">
+        <service android:name=".service.ManLiHyangMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name=".side.contents.view.onboarding.PolicyPopupActivity"
+            android:name=".ui.activity.PolicyPopupActivity"
             android:theme="@style/PopupTheme" />
-        <activity android:name=".side.contents.view.main.mypage.DetailedBoardActivity" />
-        <activity android:name=".side.contents.view.onboarding.RegisterEmailActivity" />
+        <activity android:name=".ui.activity.DetailedBoardActivity" />
         <activity
-            android:name=".side.contents.view.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
@@ -58,9 +60,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".side.contents.view.onboarding.LoginActivity" />
         <activity
-            android:name=".side.contents.view.main.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
     </application>
 

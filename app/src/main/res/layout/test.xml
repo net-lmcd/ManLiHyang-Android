@@ -8,7 +8,7 @@
     <data>
         <variable
             name="mainModel"
-            type="com.sideproject.manlihyang.side.contents.viewmodel.MainViewModel" />
+            type="com.sideproject.manlihyang.ui.viewmodel.MainViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
