@@ -30,16 +30,6 @@ import androidx.fragment.app.FragmentManager
 
 abstract class BaseDialog : DialogFragment() {
 
-    var baseActivity: BaseActivity<*>? = null
-        private set
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is BaseActivity<*>) {
-            this.baseActivity = context
-        }
-    }
-
     override fun onStart() {
         super.onStart()
         val dialog = dialog
@@ -82,11 +72,6 @@ abstract class BaseDialog : DialogFragment() {
         }
         dialog.setCanceledOnTouchOutside(false)
         return dialog
-    }
-
-    override fun onDetach() {
-        baseActivity = null
-        super.onDetach()
     }
 
     override fun show(fragmentManager: FragmentManager, tag: String?) {

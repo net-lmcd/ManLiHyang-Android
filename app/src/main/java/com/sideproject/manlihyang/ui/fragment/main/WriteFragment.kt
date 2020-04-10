@@ -16,11 +16,11 @@ import com.sideproject.manlihyang.ui.navigator.MainNavigator
 import com.sideproject.manlihyang.ui.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class WriteFragment : BaseFragment<FragmentWriteBinding, MainViewModel<MainNavigator>>()  {
+class WriteFragment : BaseFragment<FragmentWriteBinding, MainViewModel>()  {
 
-    private val mainViewModel : MainViewModel<MainNavigator> by sharedViewModel()
+    private val mainViewModel : MainViewModel by sharedViewModel()
 
-    override fun getViewModel(): MainViewModel<MainNavigator> = mainViewModel
+    override fun getViewModel(): MainViewModel = mainViewModel
     override fun getBindingVariable(): Int = BR.mainModel
     override fun getLayoutId() = R.layout.fragment_write
 

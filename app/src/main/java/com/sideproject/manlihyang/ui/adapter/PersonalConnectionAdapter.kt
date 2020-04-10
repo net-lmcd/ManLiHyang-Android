@@ -3,8 +3,8 @@ package com.sideproject.manlihyang.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.sideproject.manlihyang.ui.fragment.FollowerFragment
-import com.sideproject.manlihyang.ui.fragment.FollowingFragment
+import com.sideproject.manlihyang.ui.fragment.mypage.FollowerFragment
+import com.sideproject.manlihyang.ui.fragment.mypage.FollowingFragment
 
 class PersonalConnectionAdapter (
     fragmentManager: FragmentManager,

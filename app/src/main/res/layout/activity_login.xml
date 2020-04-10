@@ -6,11 +6,8 @@
 
     <data>
         <variable
-            name="onBoardingModel"
+            name="viewModel"
             type="com.sideproject.manlihyang.ui.viewmodel.OnBoardingViewModel" />
-        <variable
-            name="moveModel"
-            type="com.sideproject.manlihyang.ui.viewmodel.MoveVIewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -175,7 +172,7 @@
                            android:text="회원가입"
                            app:layout_constraintStart_toStartOf="parent"
                            app:layout_constraintTop_toTopOf="parent"
-                           android:onClick="@{()->onBoardingModel.toRegisterEmailActivity()}"/>
+                           android:onClick="@{()-> viewModel.toRegisterEmailActivity()}"/>
 
                        <ImageView
                            android:id="@+id/_line_left"

@@ -16,11 +16,11 @@ import com.sideproject.manlihyang.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_content.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class ContentFragment : BaseFragment<FragmentContentBinding, MainViewModel<MainNavigator>>() {
+class ContentFragment : BaseFragment<FragmentContentBinding, MainViewModel>() {
 
-    private val mainViewModel : MainViewModel<MainNavigator> by sharedViewModel()
+    private val mainViewModel : MainViewModel by sharedViewModel()
 
-    override fun getViewModel(): MainViewModel<MainNavigator> = mainViewModel
+    override fun getViewModel(): MainViewModel = mainViewModel
     override fun getBindingVariable(): Int = BR.mainModel
     override fun getLayoutId() = R.layout.fragment_content
 

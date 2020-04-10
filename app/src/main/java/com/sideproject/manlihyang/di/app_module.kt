@@ -39,27 +39,11 @@ val viewModule : Module = module {
 
     factory { BoardAdapter() }
     factory { FollowAdapter() }
-    viewModel {
-        OnBoardingViewModel<BaseNavigator>(
-            get()
-        )
-    }
-    viewModel {
-        MainViewModel<MainNavigator>(
-            get()
-        )
-    }
-    viewModel {
-        MoveVIewModel<BaseNavigator>(
-            get()
-        )
-    }
-    viewModel {
-        RegisterEmailViewModel<BaseNavigator>(
-            get(),
-            get()
-        )
-    }
+
+    viewModel { OnBoardingViewModel(get()) }
+    viewModel { MainViewModel(get()) }
+    viewModel { MoveVIewModel(get()) }
+    viewModel { RegisterEmailViewModel(get(), get()) }
 }
 
 val module = listOf(appModule, viewModule)

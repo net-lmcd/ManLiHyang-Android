@@ -16,12 +16,12 @@ import com.sideproject.manlihyang.ui.navigator.MainNavigator
 import com.sideproject.manlihyang.ui.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class ChatFragment : BaseFragment<FragmentChatBinding, MainViewModel<MainNavigator>>()  {
+class ChatFragment : BaseFragment<FragmentChatBinding, MainViewModel>()  {
 
-    private val mainViewModel : MainViewModel<MainNavigator> by sharedViewModel()
+    private val mainViewModel : MainViewModel by sharedViewModel()
 
     override fun getLayoutId() = R.layout.fragment_chat
-    override fun getViewModel(): MainViewModel<MainNavigator> = mainViewModel
+    override fun getViewModel(): MainViewModel = mainViewModel
     override fun getBindingVariable(): Int = BR.mainModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

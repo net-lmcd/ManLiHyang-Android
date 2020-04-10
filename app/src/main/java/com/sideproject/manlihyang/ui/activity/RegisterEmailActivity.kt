@@ -12,23 +12,23 @@ import com.sideproject.manlihyang.ui.adapter.QuestionAdapter
 import com.sideproject.manlihyang.ui.viewmodel.RegisterEmailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding>() {
+class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding, RegisterEmailViewModel>(), BaseNavigator {
 
-    private val registerViewModel : RegisterEmailViewModel<BaseNavigator> by viewModel()
+    private val mViewModell : RegisterEmailViewModel by viewModel()
+
+    override val viewModel: RegisterEmailViewModel
+        get() = mViewModell
 
     override val layoutResId: Int
         get() = R.layout.activity_register_email
 
     override fun registerNavigator() {
-        registerViewModel.setNavigator(this)
+        viewModel.setNavigator(this)
     }
 
-    override fun initViewModel() {
-
-    }
-
-    override fun initView() {
-        viewDataBinding.setVariable(BR.registerModel, registerViewModel)
+    override fun setBindingVariables() {
+        super.setBindingVariables()
+        viewDataBinding.setVariable(BR.registerModel, viewModel)
         viewDataBinding.spinner.adapter = QuestionAdapter(this@RegisterEmailActivity)
     }
 
@@ -54,7 +54,7 @@ class RegisterEmailActivity : BaseActivity<ActivityRegisterEmailBinding>() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == REQUEST_POPUP_CONFIRM && resultCode == Activity.RESULT_OK) {
-            registerViewModel.policyChecked.value = true
+            viewModel.policyChecked.value = true
         }
     }
 

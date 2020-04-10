@@ -3,8 +3,8 @@ package com.sideproject.manlihyang.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.sideproject.manlihyang.ui.fragment.BoardFragment
-import com.sideproject.manlihyang.ui.fragment.StoreFragment
+import com.sideproject.manlihyang.ui.fragment.mypage.BoardFragment
+import com.sideproject.manlihyang.ui.fragment.mypage.StoreFragment
 
 class MyPageAdapter (
     fragmentManager: FragmentManager,

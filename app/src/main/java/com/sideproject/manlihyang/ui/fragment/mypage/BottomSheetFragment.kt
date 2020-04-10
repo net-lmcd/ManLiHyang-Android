@@ -1,4 +1,4 @@
-package com.sideproject.manlihyang.ui.fragment
+package com.sideproject.manlihyang.ui.fragment.mypage
 
 import android.content.Intent
 import android.os.Bundle

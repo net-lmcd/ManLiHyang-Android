@@ -7,11 +7,12 @@ import com.sideproject.manlihyang.util.rx.SchedulerProvider
 import com.sideproject.manlihyang.util.TypeofTab
 import com.sideproject.manlihyang.ui.navigator.MainNavigator
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.sideproject.manlihyang.base.BaseNavigator
 import com.sideproject.manlihyang.model.main.Board
 
-class MainViewModel<N : MainNavigator>(
-    schedulerProvider: SchedulerProvider)
-    : BaseViewModel<N>(schedulerProvider) {
+class MainViewModel(
+    private val schedulerProvider: SchedulerProvider
+) : BaseViewModel<MainNavigator>() {
 
     val bottomNaviSelectedListener : BottomNavigationView.OnNavigationItemSelectedListener
         get() = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->

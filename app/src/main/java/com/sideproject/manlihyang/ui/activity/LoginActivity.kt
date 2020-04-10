@@ -26,11 +26,11 @@ import com.kakao.util.exception.KakaoException
 import com.kakao.util.helper.Utility.getPackageInfo
 import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.R
+import com.sideproject.manlihyang.base.*
 import com.sideproject.manlihyang.databinding.ActivityLoginBinding
-import com.sideproject.manlihyang.base.BaseActivity
-import com.sideproject.manlihyang.base.BaseNavigator
-import com.sideproject.manlihyang.ui.viewmodel.MoveVIewModel
 import com.sideproject.manlihyang.ui.viewmodel.OnBoardingViewModel
+import com.sideproject.manlihyang.util.dialog.Dialog
+import com.sideproject.manlihyang.util.dialog.MessageDialogClickListener
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,31 +38,44 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.util.*
 
-class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
+class LoginActivity : BaseActivity<ActivityLoginBinding, OnBoardingViewModel>(), BaseNavigator {
+
+    private val mViewModel: OnBoardingViewModel by viewModel()
+
+    override val viewModel: OnBoardingViewModel
+        get() = mViewModel
 
     override val layoutResId: Int
         get() = R.layout.activity_login
 
-    private val onBoardingViewModel: OnBoardingViewModel<BaseNavigator> by viewModel()
-    private val moveVIewModel : MoveVIewModel<BaseNavigator> by viewModel()
     private val callbackManager: CallbackManager? = CallbackManager.Factory.create()
     private var sessionCallback: SessionCallback? = null
 
     override fun registerNavigator() {
-        onBoardingViewModel.setNavigator(this)
-        moveVIewModel.setNavigator(this)
+        mViewModel.setNavigator(this)
     }
 
-    override fun initViewModel() {
-    }
-
-    override fun initView() {
-        viewDataBinding.setVariable(BR.onBoardingModel, onBoardingViewModel)
-        viewDataBinding.setVariable(BR.moveModel, moveVIewModel)
+    override fun setBindingVariables() {
+        super.setBindingVariables()
+        viewDataBinding.setVariable(BR.viewModel, mViewModel)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        _sub_title.setOnClickListener {
+            Dialog.showMessage(this, supportFragmentManager, "hi", "hello", false)
+                .setMessageDialogClickListener(object:
+                    MessageDialogClickListener {
+                    override fun confirmClick() {
+                        super.confirmClick()
+                    }
+
+                    override fun cancelClick() {
+                        super.cancelClick()
+                    }
+                })
+        }
 
         //to get HashKey from FacebookSdk, Because of default settings
         /*       if (BuildConfig.DEBUG) {
@@ -88,7 +101,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
                 logInWithReadPermissions(this@LoginActivity, Arrays.asList("email","public_profile"))
                 registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
                     override fun onSuccess(result: LoginResult?) {
-                        onBoardingViewModel.toMainActivity()
+                        nextActivity(MainActivity::class)
                     }
                     override fun onCancel() {}
                     override fun onError(error: FacebookException?) {}
@@ -194,7 +207,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), BaseNavigator {
                         "requestMe onSuccess message : " + result?.getKakaoAccount()?.getEmail() + " " + result?.getId() + " " + result?.getNickname()
                     )
                     */
-                    onBoardingViewModel.toMainActivity()
+                    nextActivity(MainActivity::class)
                 }
 
                 override fun onSessionClosed(errorResult: ErrorResult?) {

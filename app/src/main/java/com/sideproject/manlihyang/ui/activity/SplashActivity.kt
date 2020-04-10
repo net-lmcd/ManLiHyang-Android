@@ -25,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
 
         root.post{
             TransitionManager.beginDelayedTransition(root, AutoTransition().apply {
-                duration = 2500L
+                duration = 1300L
                 interpolator = AccelerateInterpolator()
                 addListener(onEnd = {
                     startActivity(

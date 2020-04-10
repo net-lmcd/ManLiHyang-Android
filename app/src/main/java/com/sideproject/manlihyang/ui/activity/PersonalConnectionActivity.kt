@@ -4,28 +4,28 @@ import com.sideproject.manlihyang.BR
 import com.sideproject.manlihyang.R
 import com.sideproject.manlihyang.databinding.ActivityPersonalConnectionBinding
 import com.sideproject.manlihyang.base.BaseActivity
-import com.sideproject.manlihyang.base.BaseNavigator
 import com.sideproject.manlihyang.ui.adapter.PersonalConnectionAdapter
 import com.sideproject.manlihyang.ui.viewmodel.MoveVIewModel
 import kotlinx.android.synthetic.main.activity_personal_connection.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PersonalConnectionActivity : BaseActivity<ActivityPersonalConnectionBinding>() {
+class PersonalConnectionActivity : BaseActivity<ActivityPersonalConnectionBinding, MoveVIewModel>() {
 
-    private val moveViewModel : MoveVIewModel<BaseNavigator> by viewModel()
+    private val mViewModel : MoveVIewModel by viewModel()
+
+    override val viewModel: MoveVIewModel
+        get() = mViewModel
 
     override val layoutResId: Int
         get() = R.layout.activity_personal_connection
 
     override fun registerNavigator() {
-        moveViewModel.setNavigator(this)
+        viewModel.setNavigator(this)
     }
 
-    override fun initViewModel() {
-    }
-
-    override fun initView() {
-        viewDataBinding.setVariable(BR.moveModel, moveViewModel)
+    override fun setBindingVariables() {
+        super.setBindingVariables()
+        viewDataBinding.setVariable(BR.moveModel, viewModel)
     }
 
     override fun onResume() {
@@ -45,6 +45,6 @@ class PersonalConnectionActivity : BaseActivity<ActivityPersonalConnectionBindin
         }
 
         //get info of user
-        moveViewModel.getUser()
+        viewModel.getUser()
     }
 }

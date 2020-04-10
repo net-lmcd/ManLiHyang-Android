@@ -1,14 +1,15 @@
 package com.sideproject.manlihyang.base
 
 import androidx.lifecycle.ViewModel
-import com.sideproject.manlihyang.util.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
-open class BaseViewModel<N : BaseNavigator>(val schedulerProvider: SchedulerProvider) : ViewModel() {
+open class BaseViewModel<N : BaseNavigator>: ViewModel() {
 
-    protected val compositeDisposable: CompositeDisposable = CompositeDisposable()
     private lateinit var mNavigator: WeakReference<N>
+    protected val compositeDisposable: CompositeDisposable by lazy {
+        CompositeDisposable()
+    }
 
     fun setNavigator(navigator: N) {
         mNavigator = WeakReference<N>(navigator)

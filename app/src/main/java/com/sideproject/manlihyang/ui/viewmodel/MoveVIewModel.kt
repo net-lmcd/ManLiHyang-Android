@@ -7,9 +7,9 @@ import com.sideproject.manlihyang.data.remote.User
 import com.sideproject.manlihyang.model.main.Follow
 import com.sideproject.manlihyang.util.rx.SchedulerProvider
 
-class MoveVIewModel <N : BaseNavigator>(
-    schedulerProvider: SchedulerProvider
-) : BaseViewModel<N>(schedulerProvider) {
+class MoveVIewModel(
+    private val schedulerProvider: SchedulerProvider
+) : BaseViewModel<BaseNavigator>() {
 
     var user : MutableLiveData<User> = MutableLiveData()
 

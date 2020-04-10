@@ -10,9 +10,9 @@ import com.sideproject.manlihyang.util.rx.SchedulerProvider
 import com.sideproject.manlihyang.ui.activity.MainActivity
 import com.sideproject.manlihyang.ui.activity.RegisterEmailActivity
 
-class OnBoardingViewModel<N : BaseNavigator>(
-    schedulerProvider: SchedulerProvider
-) : BaseViewModel<N>(schedulerProvider) {
+class OnBoardingViewModel(
+    private val schedulerProvider: SchedulerProvider
+) : BaseViewModel<BaseNavigator>() {
 
     val _user : MutableLiveData<User> by lazy { MutableLiveData<User>() }
     var email = MutableLiveData<String>("")

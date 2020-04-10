@@ -13,11 +13,12 @@ import com.sideproject.manlihyang.util.extension.combinelivedata
 import com.sideproject.manlihyang.util.extension.map
 import com.sideproject.manlihyang.util.extension.validate
 import com.sideproject.manlihyang.data.OnBoardingDataSourceImpl
+import com.sideproject.manlihyang.util.dialog.MessageDialogClickListener
 
-class RegisterEmailViewModel<N : BaseNavigator>(
+class RegisterEmailViewModel(
     private val onBoardingdataSource: OnBoardingDataSourceImpl,
-    schedulerProvider: SchedulerProvider
-) : BaseViewModel<N>(schedulerProvider) {
+    private val schedulerProvider: SchedulerProvider
+) : BaseViewModel<BaseNavigator>() {
 
     val nickname = MutableLiveData<String>("")
     val email = MutableLiveData<String>("")
@@ -85,15 +86,10 @@ class RegisterEmailViewModel<N : BaseNavigator>(
                     getNavigator().showDialogMessage("사용 가능한 이메일 입니다")
                 }, {
                     if(it is HttpException) when(it.code()) {
-                        409 ->
-                            getNavigator().showDialogMessage("이미 사용하고 있는 이메일 입니다")
-                        500 ->
-                            getNavigator().showDialogMessage("잠시후 다시 시도해주세요")
-                        else ->
-                            getNavigator().showDialogMessage(it.message())
-                    }
-                })
-                .let(compositeDisposable::add)
+                        409 -> getNavigator().showDialogMessage("이미 사용하고 있는 이메일 입니다")
+                        500 -> getNavigator().showDialogMessage("잠시후 다시 시도해주세요")
+                        else -> getNavigator().showDialogMessage(it.message()) }
+                }).let(compositeDisposable::add)
         } else {
             getNavigator().showDialogMessage("이메일을 다시 한 번 확인해 주세요.")
         }
@@ -155,7 +151,8 @@ class RegisterEmailViewModel<N : BaseNavigator>(
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.main())
             .subscribe({
-                getNavigator().showDialogMessageAndFinish("회원가입이 성공적으로 완료되었습니다")
+                getNavigator().showDialogMessage("회원가입이 성공적으로 완료되었습니다",
+                    object: MessageDialogClickListener{ override fun confirmClick() { back() } })
             },{
                 getNavigator().showDialogMessage("회원가입에 실패하셨습니다")
             })
